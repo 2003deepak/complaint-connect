@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- To integrate Google Sign-in -->
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+        
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+        .content{
+            display: flex;
+        }
+        .main_form{
+            width: 404px;
+            min-height: 583px;
+            margin-top: 178px;
+            margin-left: 230px;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .main_form input[type="email"],
+        .main_form input[type="number"] {
+            width: 100%;
+            height: 32px;
+            border: 2px solid #D9D9D9;
+            border-radius: 10px;
+        }
+        input::placeholder {
+            font-size: 10px;
+        }
+        .main_form .heading {
+            margin-top: 15px;
+        }
+        .heading_label1{
+            font-weight: 600;
+            margin-top: 55px;
+        }
+        .btn1{
+            width: 100%;
+            font-size: 13px;
+            height: 35.4px;
+            background-color: #3A5B22;
+            color: white;
+            font-weight: 600;
+            border-radius: 10px;
+            margin-top: 25px;
+            border: none;
+        }
+    </style>
+    
+    <title>Reset Password</title>
+</head>
+<body>
+    <div class="content">
+        <div class="main_form">
+            <form action="/forgot/verify" method="post">
+                <h1>Reset Your Password</h1>
+                <p class="heading" style="width: 350px;">Enter the email address associated with your ComplaintConnect account.</p>
+
+
+                <% if(typeof(otpsent) == "undefined"){
+                    otpsent = false;
+                    
+                } 
+
+                if(typeof(email) == "undefined" ){
+                    email = '';
+                } %>
+        
+                <% if (otpsent) { %>
+                    <p class="heading_label1">Email</p>
+                    <input type="email" placeholder="Enter your email" name="email" value="<%= email %>" disabled>
+                    <input type="submit" value="Send Link" name="save" class="btn1" disabled>
+                <% } else { %>
+                    <p class="heading_label1">Email</p>
+                    <input type="email" placeholder="Enter your email" name="email" required>
+                    <input type="submit" value="Send Link" name="save" class="btn1">
+                <% } %>
+            </form>
+
+            <% if (otpsent) { %>
+                <form action="/verify/otp/<%= email %>" method="post" id="otp">
+                    <h1>Enter OTP</h1>
+                    <p class="heading" style="width: 350px;">OTP is sent to your Email ID</p>
+                    <p class="heading_label1">OTP</p>
+                    <input type="number" placeholder="Enter OTP" name="otp" required>
+                    <input type="submit" value="Submit" name="save" class="btn1">
+                </form>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

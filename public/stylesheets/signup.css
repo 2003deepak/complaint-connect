@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Lilita+One&family=Montserrat:wght@500&family=Poppins:wght@500&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../images/Marble 5.svg");
+    background-color: rgb(24, 23, 23);
+    font-family: 'Poppins', sans-serif;
+}
+
+.content {
+    width: 100%;
+    height: calc(98vh - 100px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1rem;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.heading {
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 38px;
+    font-weight: 600;
+    margin-top: -20px;
+    color: white;
+}
+
+span {
+    color: #FFB219;
+}
+
+.box {
+    width: 1205px;
+    height: 85%;
+    background-color: #2a2a2d;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+}
+
+.innerBox {
+    width: 60%;
+    height: 95%;
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.innerBox .top {
+    display: flex;
+    flex-direction: column;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    color: white;
+}
+
+.logo {
+    width: 50%;
+    height: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.innerBox .top {
+    display: flex;
+    flex-direction: column;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    color: white;
+    padding-left: 5rem;
+    width: 25vw;
+}
+
+.boxtop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    padding-top: 1rem;
+    visibility: hidden;
+}
+
+.toggle {
+    width: 50%;
+    display: flex;
+    gap: 2rem;
+    height: 3vw;
+    padding-left: 5rem;
+}
+
+.toggle button {
+    width: 121px;
+    height: 40px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #fdfdfc;
+    border-radius: 8px;
+}
+
+.boxbottom {
+    display: flex;
+    height: 92%;
+}
+
+.innerBox form {
+    display: flex;
+    flex-direction: column;
+    font-family: "Inter", sans-serif;
+    gap: 1.5rem;
+    padding-left: 5rem;
+}
+
+form input[type="text"], form input[type="password"], form input[type="email"] {
+    width: 448.94px;
+    height: 50.85px;
+    padding-left: 1rem;
+    border-radius: 10px;
+    border: none;
+    background-color: #B4B4B4;
+    font-size: 17px;
+    color: rgb(7, 7, 7);
+}
+
+select {
+    width: 465.94px;
+    height: 50.85px;
+    padding-left: 1rem;
+    border-radius: 10px;
+    border: none;
+    font-size: 17px;
+    background-color: #B4B4B4;
+}
+
+form .forgot {
+    display: flex;
+    width: 77%;
+    justify-content: space-between;
+    margin-top: 1rem;
+    color: rgb(255, 255, 255);
+}
+
+.forgot a {
+    text-decoration: none;
+    font-size: 17px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+form input[type="submit"] {
+    width: 448.94px;
+    height: 60.85px;
+    background-color: #232429;
+    border: none;
+    font-size: 23px;
+    color: #FFB219;
+    border-radius: 10px;
+    cursor: pointer;
+}

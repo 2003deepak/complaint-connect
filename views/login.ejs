@@ -1,0 +1,75 @@
+<%- include('./partials/navTop') %>
+
+
+        <!-- CSS File Import -->
+        <link rel="stylesheet" href="stylesheets/login.css">
+
+        <div class="content">
+
+            <div class="heading">
+                <p>You are <span>just</span> a Step <span>away.</span></p>
+
+                
+
+            </div>
+
+            <div class="box">
+
+                <div class="innerBox">
+
+                    <div class="top">
+                        <h1 style="font-size: 48px;" id="heading">Login <span>now</span></h1>
+                    </div>
+                    <div class="toggle">
+                        <button id="user" style="background-color: #FF9F00;">User</button>
+                        <button id="worker">Worker</button>
+                        
+                    </div>
+
+                    <form class="form"  action="/user/login" method="POST"  >
+
+                    
+
+                        <input type="text" name="username" id="username" placeholder="Username" value="<%= credentials.username %>" required>
+
+                        <input type="password" id="password" placeholder="Password" name = "password" value="<%= credentials.password %>"  required>
+
+
+                        <div class="forgot">
+    
+                            <div>
+                                <input  type="checkbox" name="rememberme" id="flexCheckDefault">
+                                <label > Remember for 7 days </label>
+    
+                            </div>
+                            
+                            <a href="../html/forgot.html">Forgot Password ?</a>
+
+    
+                        </div>
+                    
+                    <input type="submit" name = "save" value="Continue" id="btn">    
+
+                </form>
+
+
+                </div>
+                <div class="logo">
+
+                    <img src="../images/Artboard 2@4x 1.svg" alt="" width="400px" >
+
+                </div>
+
+                
+
+            </div>
+
+
+            
+        </div>
+
+
+   <script src="javascripts/loginBtnToggle.js"></script>
+    
+</body>
+</html>

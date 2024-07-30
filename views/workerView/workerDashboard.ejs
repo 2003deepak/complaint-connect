@@ -1,0 +1,550 @@
+<%- include('../partials/navLeft') %>
+
+
+
+   
+    <div class="content">
+
+
+        <style>
+
+            :root {
+                --background-color: #242424; 
+                --nav-background-color : #161717; 
+                --icon-color:#8C8C8C;
+                --preview-background-color:#161717;
+                --heading-color:white ; 
+                --font-color:white;
+                --boxes-bg-color: #0B0b0f;
+                --box-count-color: #242424;
+                
+            
+               
+            }
+            
+            .light-mode {
+                --background-color: #E3E3EA;
+                --nav-background-color: #FFFFFF;
+                --icon-color:#000000;
+                --preview-background-color:#FFFFFF;
+                --heading-color:black;
+                --font-color:black;
+                --boxes-bg-color:white;
+                --box-count-color:#E3E3EA;
+                
+                
+                
+              }
+                    * {
+                        margin: 0;
+                        padding: 0;
+                        box-sizing: content-box;
+                    }
+                    body{
+                        
+                        display: flex;
+                        
+                    }
+                    .nav:hover + .content {
+                        margin-left: 250px;
+                        
+                    }
+            
+                   
+                    .content {
+                        width: calc(100vw - 30vw );
+                        background-color: var(--background-color);
+                        min-height: 100vh;
+                        height : auto ; 
+                        display: flex;
+                        margin-left: 80px; /* Initial margin-left to match the nav width */
+                        transition: margin-left 0.3s; /* Add transition for a smooth effect */
+                    }
+            
+                    .preview{
+                        width: 30vw;
+                        position: fixed;
+                        min-height: 100vh;
+                        height: auto;
+                        right: 0rem;
+                        background-color: var(--preview-background-color);
+                }
+            
+                        
+                        .org-content{
+                            padding: 1rem 1rem 1rem 3rem;
+                            font-family: 'Poppins', sans-serif;
+                            width: 100%;
+                            
+                        }
+            
+                        .inner{
+                            
+                            color: var(--heading-color);
+                            
+                        }
+                        .inner h1{
+                           font-size: 40px;
+                           font-weight: bolder;
+            
+                           
+                        }
+            
+                        .boxes{
+                            display: flex;
+                            gap: 1rem;
+                            flex-wrap: wrap;
+                            color: var(--font-color);
+                            margin-top: 1.5rem;
+                            font-size: 19px;
+                        }
+                        .boxes .box11{
+                            width: 15.5vw;
+                            height: 150px;
+                            background-color: var(--boxes-bg-color);
+                            padding: 1rem;
+                            display: flex;
+                            flex-direction: column;
+                            border-radius: 10px;
+                            border-top: 10px solid #FF5858;
+                        }
+            
+                        .boxes .box13{
+                            width: 15.5vw;
+                            height: 150px;
+                            display: flex;
+                            flex-direction: column;
+                            background-color: var(--boxes-bg-color);
+                            padding: 1rem;
+                            border-radius: 10px;
+                            border-top: 10px solid #05FF00;
+                        }
+            
+                        .boxes .count{
+                            width: 40%;
+                            height: 81px;
+                            align-self: center;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            margin-top: 10px;
+                            border-radius: 5px;
+                            background-color: var(--box-count-color);
+                        }
+            
+                        .boxes .box12{
+                            width: 15.5vw;
+                            height: 150px;
+                            display: flex;
+                            flex-direction: column;
+                            background-color: var(--boxes-bg-color);
+                            padding: 1rem;
+                            border-radius: 10px;
+            
+                            border-top: 10px solid #FF9F00;
+                        }
+            
+                        .line{
+                            background-color: var(--boxes-bg-color);
+                            width: 79%;
+                            margin-top: 1.2rem;
+                            margin-bottom: 1.2rem;
+                            height: 10px;
+                        }
+            
+                        .complaints{
+                            width: 90%;
+                            height: 50px;
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 1rem;
+                            
+                        }
+                        .complaints p{
+                            color:  var(--text-boxes-color);
+                        }
+            
+                        .complaints .box21{
+                            width: 295px;
+                            height: 30px;
+                            display: flex;
+                            gap: 10px;
+                            align-items: baseline;
+                            padding: 1rem;
+                            
+                            border-radius: 10px;
+                            color: var(--font-color);
+            
+                            
+                        }
+                        .complaints .box22{
+                            width: 295px;
+                            height: 30px;
+                            display: flex;
+                            gap: 10px;
+                            align-items: baseline;
+                            padding: 1rem;
+                           
+                            border-radius: 10px;
+                            color: var(--font-color);
+                            
+                        }
+                        .complaints .box23{
+                            width: 295px;
+                            height: 30px;
+                            display: flex;
+                            gap: 10px;
+                            align-items: baseline;
+                            padding: 1rem;
+                            border-radius: 10px;
+                            color: var(--font-color);
+            
+                            
+                        }
+            
+                        .phpreply{
+                            
+                            display: flex;
+                            gap: 1rem;
+                            flex-wrap: wrap;
+                            color: var(--font-color);
+                            margin-top: 1.5rem;
+                            font-size: 19px;
+                        
+                    }
+            
+                    .pendingComplaints , .newComplaints , .completedComplaints{
+                        width:315px ; 
+                        height: 100vh ; 
+                        display: flex;
+                       
+                        flex-direction: column;
+                    }
+                    
+            
+                    .phpreply .box4{
+                                    width: 315px;
+                                    height: 6vw;
+                                    display: flex;
+                                    flex-direction: row;
+                                    padding: 0.4rem;
+                                    margin-bottom : 1rem;
+                                    background-color: var(--boxes-bg-color);
+                                    /* background-color: linear-gradient(180deg, var(--boxes-bg-color)); */
+                                    border-radius: 10px;
+                                    color: var(--font-color);
+                        
+                        
+            
+            
+                        
+                    }
+            
+                    .box4 .left{
+                        width: 5%;
+                        height: 100%;
+                        padding-left: 0.2rem;
+            
+                    }
+                    
+                    .box4 .middle{
+                        width: 80%;
+                        height: 100%;
+                        font-size: 16px;
+                        padding-top: 0.4rem;
+                        padding-left: 0.2rem;
+                        display:flex ; 
+                        flex-direction: column;
+                        font-family: 'Poppins', sans-serif;
+            
+                    }
+                    .box4 .view-details{
+                        width: 10%;
+                        height: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+            
+                    }
+                     .phpreply .box4:hover {
+                            animation: none !important;
+                    } 
+            
+                    .blank-area{
+                        width: 295px;
+                        height: 8vw;
+                        margin-left:38px;
+                    }
+
+                    @keyframes blink {
+                    0% { opacity: 1; }
+                    50% { opacity: 0; }
+                    100% { opacity: 1; }
+                }
+                    
+                        
+                       
+                       
+            
+            
+            
+            </style>
+            
+
+        
+
+        <div class="org-content">
+
+            <div class="inner">
+                <h1><%= user.username %></h1>
+                <p>Lorem ipsum dolor</p>
+            </div>
+            <div class="boxes">
+                <div class="box11">
+                    <p>New Request</p>
+                        <div class="count">
+                           <p style="color: #FF5858; font-size: 40px;"><%= newComplaint.length %></p>
+                        </div>
+
+                </div>
+                <div class="box12">
+                    <p>In Progress</p>
+                        <div class="count">
+                            <p style="color: #FF9F00; font-size: 40px;"><%= pendingComplaint.length %></p>
+                        </div>
+                    
+                </div>
+                <div class="box13">
+                    <p>Completed</p>
+                        <div class="count">
+                           <p style="color: #05FF00; font-size: 40px;"><%= completedComplaint.length %></p>
+                        </div>
+                    
+                </div>
+            </div>
+
+            <div class="line"></div>
+
+            
+
+            <div class="complaints">
+
+                <div class="box21">
+
+                    <div style="width: 11px; height: 11px; border-radius: 50%; background-color: #FF5858;"></div>
+
+                    <p style=" font-size: 19px; ">New Request</p>
+                    
+
+                </div>
+                <div class="box22">
+                    <div style="width: 11px; height: 11px; border-radius: 50%; background-color: #F4DD0E;"></div>
+                    <p style=" font-size: 19px;">In Progress</p>
+                    
+                    
+                </div>
+                <div class="box23">
+                    <div style="width: 11px; height: 11px; border-radius: 50%; background-color: #05FF00;"></div>
+                    <p style=" font-size: 19px;">Completed</p>
+                    
+                    
+                </div>
+                
+
+
+            </div>
+
+
+           
+
+            <div class="phpreply">
+
+                <div class="newComplaint">
+
+                    <% if(newComplaint.length > 0) {
+
+                        newComplaint.forEach((complaint) => { %>
+
+                            <div class="box4">
+                                <div class="left">
+                                    <div class="circle" style="width: 11px; height: 11px; border-radius: 50%; background-color: #FF5858;"></div>
+                                </div>
+                                <div class="middle">
+                                    <p>Complaint ID: <%= complaint.complaintId.complaintId %> </p>
+                                    <p>Complaint Type: <%= complaint.complaintId.complaintType %> </p>
+                                    <p>Subject: <%= complaint.complaintId.subject %> </p>
+                                </div>
+                                <div class="view-details">
+                                    <i class="fa-solid fa-greater-than fa-fade" style="color: #ffbc39;" data-complaint-id="<%= complaint.complaintId.complaintId %>"></i>
+                                </div>
+                            </div>
+
+                        <% }); %>
+
+                    <% } else { %>
+
+                        <!-- Display a blank area if there are no new complaints -->
+                        <div class="blank-area"></div>
+
+                    <% } %>      
+                
+
+                </div>
+
+
+
+                <div class="pendingComplaints">
+
+
+                    <% if(pendingComplaint.length > 0) {
+
+                        pendingComplaint.forEach((complaint) => { 
+
+                            let priorityStyle = (complaint.complaintId.isPriority) ? 'border: 1.5px solid red; animation: blink 1s infinite;' : '';
+                            %>
+
+                            <div class="box4" style = "<%= priorityStyle %>">
+
+                                <div class="left" >
+                                    <div class="circle" style="width: 11px; height: 11px; border-radius: 50%; background-color: #F4DD0E;"></div>
+
+                                </div>
+                                <div class="middle">
+                                    <p>Complaint ID: <%= complaint.complaintId.complaintId %> </p>
+                                    <p>Complaint Type: <%= complaint.complaintId.complaintType %> </p>
+                                    <p>Subject: <%= complaint.complaintId.subject %> </p>
+
+                                </div>
+                                <div class="view-details">
+
+                                    <i class="fa-solid fa-greater-than fa-fade" style="color: #ffbc39;" data-complaint-id="<%= complaint.complaintId.complaintId %>"></i>
+
+
+
+                                </div>
+
+                            </div>
+
+                            
+
+                        <% }); %>
+
+                    <% } else { %>
+
+                        <!-- Display a blank area if there are no new complaints -->
+                        <div class="blank-area"></div>
+                        
+                    <% } %>   
+
+                                
+             
+                </div>
+
+
+                <div class= "completedComplaints" style="margin-left: 1rem;">
+
+
+                    <% if(completedComplaint.length > 0) {
+
+                        completedComplaint.forEach((complaint) => { %>
+
+                            <div class="box4">
+
+                                <div class="left" >
+                                    <div class="circle" style="width: 11px; height: 11px; border-radius: 50%; background-color: #05FF00;"></div>
+
+                                </div>
+                                <div class="middle">
+                                    <p>Complaint ID: <%= complaint.complaintId.complaintId %> </p>
+                                    <p>Complaint Type: <%= complaint.complaintId.complaintType %> </p>
+                                    <p>Subject: <%= complaint.complaintId.subject %> </p>
+
+                                </div>
+                                <div class="view-details" >
+
+                                    <i class="fa-solid fa-greater-than fa-fade" style="color: #ffbc39;" data-complaint-id="<%= complaint.complaintId.complaintId %>"></i>
+
+
+
+                                </div>
+
+                            </div>
+            
+
+
+                            
+
+                        <% }); %>
+
+                    <% } else { %>
+
+                        <!-- Display a blank area if there are no new complaints -->
+                        <div class="blank-area"></div>
+                        
+                    <% } %>   
+
+                                        
+
+                </div>
+
+                
+
+                
+            </div>
+    
+   
+
+
+
+            
+
+
+
+
+            
+
+            
+
+            
+
+            
+
+            
+            
+        </div>
+
+        
+
+        
+
+            
+
+            
+        
+    </div>
+
+
+    <!-- Loading all complaints to display in preview mode -->
+
+  
+
+
+
+    <div class="preview">
+
+        
+
+        
+        
+    </div>
+
+        
+        
+    
+
+
+    
+    <script src="/javascripts/previewContent.js"></script>
+</body>
+</html>

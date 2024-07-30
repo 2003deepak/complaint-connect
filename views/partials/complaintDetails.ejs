@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        
+
+        /* Css for preview panel  */
+
+        :root {
+                --background-color: #242424; 
+                --nav-background-color : #161717; 
+                --icon-color:#8C8C8C;
+                --preview-background-color:#161717;
+                --heading-color:white ; 
+                --font-color:white;
+                --boxes-bg-color: #0B0b0f;
+                --box-count-color: #242424;
+                
+            
+               
+            }
+            
+            .light-mode {
+                --background-color: #E3E3EA;
+                --nav-background-color: #FFFFFF;
+                --icon-color:#000000;
+                --preview-background-color:#FFFFFF;
+                --heading-color:black;
+                --font-color:black;
+                --boxes-bg-color:white;
+                --box-count-color:#E3E3EA;
+                
+                
+                
+              }
+
+
+
+        .preview{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin-left: 4vw ; 
+            
+            
+           
+            
+        }
+
+        .cDetails{
+            display:flex ; 
+            flex-direction : column ; 
+            align-items : center ;
+            gap: 1.1rem ; 
+            color : var(--heading-color);
+            font-family: 'Poppins', sans-serif;
+        }
+        .values{
+            display:flex ; 
+            /* flex-direction : column ;  */
+            gap: 8.3rem ; 
+            
+            color : white;
+            font-family: 'Poppins', sans-serif;
+        }
+        ul{
+            list-style-type: none;
+            display:flex ;
+            flex-direction: column;
+            gap: 1.1rem ;
+        }
+
+        .details{
+            display : flex ; 
+            flex-direction: column;
+            margin-left: -15rem ; 
+            
+            gap: 15px;
+        }
+
+        .details_btn{
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        #complete{
+            
+            height: 29px;
+            width: 107px;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            border:none;
+            border-radius: 5px;
+        }
+        #raise{
+            background-color: #DCDEDB;
+            height: 29px;
+            width: 140px;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            border:none;
+            border-radius: 5px;
+        }
+
+        .desc-data{
+            background-color: #afafaf47;
+            width: 28rem;
+            height: 100px;
+            display: flex ; 
+            justify-content: start ; 
+            border-radius: 3px;
+            padding: 1rem ; 
+            color: #FFFFFF;
+        }
+
+        .imgComplaint{
+            width: 30rem;
+            height: 15rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .imgComplaint img {
+            height: 100%;
+            object-fit: cover; 
+            border-radius: 3px;
+}
+
+        #heading{
+            font-size: 20px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            color : var(--heading-color) ; 
+            margin-top: 1.5vw ;
+        }
+
+        #view{
+            width: 175px;
+            height: 50px;
+            background-color: #000000;
+            font-size: 15px;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            border:none;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .complaintDetails{
+            display:flex ; 
+            flex-direction: column;
+            gap:2rem ; 
+        }
+
+        .btn{
+            display: flex;
+            justify-content : center ; 
+            align-items : center;
+            gap: 1.5rem;
+        }
+
+    </style>
+
+
+
+      
+
+   
+
+            <div class='details'>
+                <p id='heading'>Complaint Details</p>
+                <div class='details_btn'>
+
+               
+            
+                <% if( !complaint.updatedAt && !complaint.resolvedAt) { %>
+                    <button id='complete' style='background-color: #eb1010'>New Request</button>
+                <% } %>
+
+                <% if(complaint.updatedAt && !complaint.resolvedAt) { %>
+                    <button id='complete' style='background-color: #f5f242'>Pending</button>
+                <% } %>
+
+                <% if(complaint.updatedAt && complaint.resolvedAt) { %>
+                    <button id='complete' style='background-color: #4ef542'>Completed</button>
+                <% } %> 
+
+  
+                <% if(complaint.updatedAt && complaint.resolvedAt) { %>
+                    <button id='raise' ><a href="/user/review/<%= complaint._id %>" style = "text-decoration: none; color : black;">Close Complaint</a></button>
+                <% } %>
+           
+           
+                
+                
+            
+
+           
+                </div>
+            </div>
+
+            <div class='imgComplaint'>
+                <img src='/userUpload/complaint_image/<%= complaint.complaintImage %>' alt='complaint' >
+            </div>
+
+            <div class='complaintDetails'>
+                <div class='cInfo'>
+                    <div class='cDetails'>
+                        <div class='cHeading'>
+                            <p style='color: var(--font-color);'>Details</p>
+                        </div>
+                        <div class='values'>
+                            <ul style='color: var(--font-color);'>
+                                <li> Complaint ID : </li>
+                                <li> Complaint Type : </li>
+                                <li> Subject : </li>
+                                <li> Date : </li>
+                            </ul>
+                            <ul style='color: var(--font-color);'> 
+                                <li><%= complaint.complaintId %></li>
+                                <li><%= complaint.complaintType %></li>
+                                <li><%= complaint.subject %></li>
+                                <li><%= complaint.createdAt.toLocaleDateString('en-GB') %></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class='description'>
+                    <div class='desc-data'>
+                        <p style='color: var(--font-color);'><%= complaint.description %></p>
+                    </div>
+                </div>
+
+                <div class='btn'>
+                    <button id='view' onclick='redirectToComplaintInfo()'>View Complaint</button>
+                    
+                </div>
+            </div>
+
+            
+
+
+           
+
+    <script>
+        function redirectToComplaintInfo() {
+            window.location.href = '/<%= role %>/complaintData/<%= complaint._id %>';
+            
+        }
+    </script>
+</body>
+</html>

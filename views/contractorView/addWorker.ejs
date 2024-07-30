@@ -1,0 +1,157 @@
+<%- include('../partials/navLeft') %>
+
+
+<div class="content">
+
+    <style>
+
+        .content {
+            width: calc(100vw - 80px );
+            background-color: var(--background-color);
+            height: 100vh;
+            display: flex;
+            margin-left: 80px; /* Initial margin-left to match the nav width */
+            transition: margin-left 0.3s; /* Add transition for a smooth effect */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .nav:hover {
+            width: 260px;
+        }
+        .nav:hover ~ .content {
+            margin-left: 260px;
+        }
+
+        .innerContent{
+        width: 90%;
+        height: 90%;
+        display: flex;
+    }
+    .left{
+        width: 40%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .right{
+        width: 50%;
+        height: 100%;
+        display: flex;
+        
+    }
+    .left h1{
+        font-family: "Poppins", sans-serif;
+        font-size: 40px;
+        color: var(--font-color);
+    }
+
+    .form_input form{
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    form div{
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+        width: 80%;
+        
+    }
+    form div p{
+        font-size: 20px;
+        font-family: "DM Sans", sans-serif;
+        color: var(--font-color);
+    }
+    
+    form input[type = "text"] , input[type ="password"] , input[type ="email"] {
+        width: 400px;
+        height: 55px;
+        background: #FFFFFF;
+        border: 1px solid #EFF0F6;
+        border-radius: 11px;
+        padding-left: 10px;
+    }
+    form select {
+        width: 284px;
+        height: 55px;
+        background: #FFFFFF;
+        border: 1px solid #EFF0F6;
+        border-radius: 11px;
+        padding-left: 10px;
+    }
+   
+    form input[type="submit"] {
+        width: 180px;
+        height: 40px;
+        font-size: 16px;
+        font-weight: 600;
+        background-color: #FFB219;
+        color: black;
+        border: none;
+        margin-left: 5rem;
+        margin-top: 3rem;
+    }
+        
+
+        
+    </style>
+
+    <div class="innerContent">
+        <div class="left">
+
+            <div>
+                <h1>Add Worker</h1>
+            </div>
+    
+            <div class="form_input">
+                <form action="/contractor/addWorker/saveWorker" enctype="multipart/form-data" method="post">
+    
+                    <div>
+                        <p>Username</p>
+                        <input type="text" id="username" name="username" placeholder="Enter Username" required>
+                    </div>
+                    <div>
+                        <p for="password">Password:</p>
+                        <input type="password" id="password" name="password" placeholder="Enter Password" required>
+                        <p id="minimum" style="color: red; display: none;">Minimum 8 Characters required</p>
+
+                    </div>
+                    <div>
+                        <p for="email">Email ID:</p>
+                        <input type="email" id="email" name="email" placeholder="Enter Email"required>
+                    </div>
+                    <div>
+                        <p for="aadharCard">Aadhar Card (PDF):</p>
+                        <input type="file" id="aadharCard" name="aadharCard" accept=".pdf" required>
+                    </div>
+                    <div>
+                        <p for="workArea">Work Area:</p>
+                        <select id="workArea" name="workArea" required>
+                            <option value="Electricity">Electrician</option>
+                            <option value="Carpenter">Carpenter</option>
+                            <option value="Water">Plumber</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <div>
+                        <input type="submit" value="Submit" name="save">
+                    </div>
+    
+    
+    
+    
+    
+                </form>
+            </div>
+
+        </div>
+        <div class="right">
+
+            <img src="../images/worker.svg" alt="" >
+
+        </div>
+    </div>
+    
+</div>
