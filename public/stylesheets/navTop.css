@@ -51,7 +51,7 @@ body{
 .nav{
     width: 100vw;
     height: 100px;
-    padding: 0vw 4vw;
+    padding: 0vw 5vw;
     display: flex;
     justify-content: space-between;
     align-items: center;

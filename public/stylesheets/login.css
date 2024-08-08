@@ -55,6 +55,7 @@ span{
     height: 95%;
     margin-left: 1rem;
     display: flex;
+    padding-top: 1.2rem;
     flex-direction: column;
     gap: 1.7rem;
 }

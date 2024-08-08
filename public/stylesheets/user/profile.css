@@ -1,0 +1,756 @@
+:root {
+    --background-color: #242424; 
+    --nav-background-color : #161717; 
+    --icon-color:#8C8C8C;
+    --preview-background-color:#161717;
+    --heading-color:white ; 
+    --font-color:white;
+    --boxes-bg-color: #0B0b0f;
+    --box-count-color: #242424;
+    --i-count: #8C8C8C;
+    --div-hover : #FF9F00;
+    
+
+   
+}
+
+.light-mode {
+    --background-color: #E3E3EA;
+    --nav-background-color: #FFFFFF;
+    --icon-color:#000000;
+    --preview-background-color:#FFFFFF;
+    --heading-color:black;
+    --font-color:black;
+    --boxes-bg-color:#FFFFFF;
+    --box-count-color:#E3E3EA;
+    --i-count: #000000;
+    --div-hover : #000000;
+    
+    
+  }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    width: 100%;
+    min-height: 100%;
+}
+
+.main{
+    width: 100%;
+    min-height: 100%;
+    background-color: var(--background-color);
+    display: flex;
+}
+.nav{
+    width: 80px;
+    height: 100%;
+    background-color: var(--nav-background-color);
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s;
+    position: fixed;
+    z-index: 999;
+}
+.ntop{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: center;
+    position: absolute;
+    top: 2%;
+}
+.nmid{
+    width: 100% ;
+    height: 55%;
+    position: absolute;
+    top: 17%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.nbtm{
+    width: 100%;
+    height: 15%;
+    position: absolute;
+    bottom: 2%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.logo{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo p{
+    font-size: 28px;
+    color: white;
+    font-family: 'Biryani', sans-serif;
+    font-weight: 600;
+}
+
+.nav:hover{
+    width: 270px;
+}
+
+.nmid div , .nbtm div{
+    width: 100%;
+    height: 65px;
+    display: flex;
+    gap: 1.9rem;
+    overflow: hidden;
+    align-items: center;
+    padding: 0rem 2rem;
+    border-radius: 10px 0px 0px 10px;
+}
+.nmid div a , .nbtm div a {
+    white-space: nowrap;
+    color: var(--icon-color);
+    font-size: 20px;
+    font-family: 'Biryani', sans-serif;
+    text-decoration: none;
+}
+.nmid div i , .nbtm div i {
+    font-size: 22px;
+    color: var(--i-count);
+}
+
+.nmid div:hover , .nbtm div:hover{
+    background-color: var(--div-hover); 
+}
+
+.nmid div:hover a, .nbtm div:hover a, .nmid div:hover i, .nbtm div:hover i {
+        color: white;
+}
+
+.nav .close{
+    display: none;
+}
+
+/* Code of Navbar End Here  */
+
+.content {
+    width: calc(100vw - 80px );
+    min-height : 100vh;
+    margin-left: 80px; /* Initial margin-left to match the nav width */
+    transition: margin-left 0.3s; /* Add transition for a smooth effect */
+    background-color: var(--background-color);
+    padding: 1rem 3rem;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+#toggle{
+    display: none;
+    color: var(--font-color);
+}
+
+
+.nav:hover + .content {
+    margin-left: 270px;  
+}
+
+.cinfo{
+    width: 100%;
+    height: 12%;
+}
+.cline{
+    width: 100%;
+    height: 5px;
+    background-color: var(--font-color);
+}
+.cinfo h1{
+    font-size: 2.5vw;
+    color: var(--font-color);
+    font-weight: 800;
+ 
+ }
+.cinfo p{
+    color: var(--font-color);
+}
+.cbtm{
+    width: 100%;
+    height: 85%;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.cbtmleft{
+    width: 50%;
+    height: 100%;
+}
+.cbtmright{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4rem;
+    gap: 2rem;
+
+}
+
+.cbtmright>img{
+    width: 50%;
+}
+form{
+    width: 100%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.upload{
+    min-width: 35%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    border: 2px solid #9D9D9D;
+}
+.upload label{
+    color: var(--font-color) ;
+    font-size: 20px;
+}
+.upload input[type="file"] {
+    display: none;
+}
+.contact{
+    width: 100%;
+    min-height: 20%;
+    display: flex;
+    gap: 2rem;
+}
+.name{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+}
+.name div{
+    display: flex;
+    gap: 5%;
+}
+.name p , .address p , .contact p{
+    font-size: 18px;
+    color: var(--font-color) ;;
+}
+input[type="text"]{
+    width: 50%;
+    padding: 1rem;
+    border: 1px solid black;
+    font-size: 16px;
+    border-radius: 10px;
+}
+input[type="email"],input[type="number"]{
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid black;
+    font-size: 16px;
+    border-radius: 10px;
+}
+input[type="password"]{
+    width: 47%;
+    padding: 1rem;
+    border: 1px solid black;
+    font-size: 16px;
+    border-radius: 10px;
+}
+.address{
+    width: 100%;
+    min-height: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+}
+.address textarea{
+    resize: none;
+    height: 70%;
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid black;
+    font-size: 16px;
+    border-radius: 10px;
+    background-color: white;
+
+}
+.contact{
+    width: 100%;
+    min-height: 15%;
+    display: flex;
+    gap: 5%;
+}
+.contact .email , .contact .mob{
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+    width: 50%;
+}
+.submit{
+    width: 100%;
+    min-height: 15%;
+    padding-top: 1rem;
+}
+input[type="submit"]{
+    background-color: #FFB219;
+    color: black;
+    width: 25%;
+    height: 55%;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+
+}
+
+/* Mobile View */
+@media (max-width: 500px) {
+
+    #toggle {
+        display: block;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 1.4rem;
+    }
+    
+    .content {
+        width: 100%;
+        min-height: 100vh; /* Ensures it occupies the full viewport height */
+        margin-left: 0;
+        background-color: var(--background-color);
+        padding: 1rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+    
+    .nav {
+        transform: translateX(-20rem);
+    }
+    
+    .nmid div a, .nbtm div a {
+        font-size: 14px;
+    }
+    
+    .nav:hover + .content {
+        margin-left: 0;
+    }
+    
+    .nav-active {
+        transform: translateX(0);
+        transition: 0.5s;
+        width: 270px;
+    }
+    
+    .blur {
+        filter: blur(10px);
+    }
+    
+    .nav .close {
+        position: absolute;
+        font-size: 22px;
+        display: flex;
+        right: -30px;
+        top: 0;
+    }
+    
+    .cinfo {
+        width: 100%;
+        height: auto; /* Allows height to adjust based on content */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .cinfo p {
+        display: none;
+    }
+    
+    .cinfo h1 {
+        font-size: 6.5vw;
+    }
+    
+    .cline {
+        height: 3px;
+    }
+    
+    .cbtm {
+        width: 100%;
+        flex-direction: column-reverse;
+        flex-grow: 1; /* Allows it to occupy remaining space */
+    }
+    
+    .cbtmright {
+        width: 100%;
+        height: auto;
+        padding-top: 1rem;
+        gap: 1rem;
+    }
+    .cbtmright>img {
+        width: 85%;
+    }
+    .upload {
+        min-width: 51%;
+        height: auto; /* Adjusts based on content */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        border: 2px solid #9D9D9D;
+    }
+    
+    .upload label {
+        font-size: 16px;
+    }
+    
+    .upload img {
+        height: 80%;
+    }
+    
+    .cbtmleft {
+        width: 100%;
+        height: auto; /* Adjusts based on content */
+    }
+    
+    form {
+        width: 100%;
+        height: auto; /* Adjusts based on content */
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+    
+    .name div {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+    }
+    
+    .name {
+        width: 100%;
+        height: auto; /* Adjusts based on content */
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    input[type="text"] {
+        width: 100%;
+        font-size: 16px;
+    }
+    
+    .contact {
+        height: auto; /* Adjusts based on content */
+        gap: 15px;
+        flex-direction: column;
+    }
+    
+    .contact .email, .contact .mob {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+    }
+    
+    input[type="password"] {
+        width: 100%;
+        border-radius: 10px;
+    }
+    
+    .submit {
+        justify-content: center;
+        display: flex;
+
+    }
+    
+    input[type="submit"] {
+        width: 35%;
+        height: 10vw;
+        font-size: 3.8vw;
+    }
+}
+
+
+/* Tablet */
+@media (max-width: 768px) and (min-width: 500px) {
+
+    #toggle{
+        display: block;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 1.8rem;
+    }
+    .content {
+        width: 100%;
+        min-height: 100vh; /* Ensures it occupies the full viewport height */
+        margin-left: 0;
+        background-color: var(--background-color);
+        padding: 1rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+    .nav{
+        transform: translateX(-20rem);
+    }
+    
+    .nmid div a, .nbtm div a {
+        font-size: 20px;
+    }
+    .nav:hover + .content{
+        margin-left: 0rem;
+    }
+    .preview{
+        display: none;
+    }
+    .nav-active {
+        transform: translateX(0);
+        transition: 0.5s;
+        width: 300px;
+    }
+    .blur{
+        filter: blur(10px);
+    }
+    .nav .close{
+        position: absolute;
+        font-size: 24px;
+        display: flex;
+        right: -30px;
+        top: 0;
+    }
+    .cinfo{
+        text-align: center;
+        height: 7%;
+    }
+    .cinfo h1 {
+        font-size: 5vw;
+    }
+    .cinfo p {
+        font-size: 16px;
+    }
+    .cbtm {
+        width: 100%;
+        flex-direction: column-reverse;
+        flex-grow: 1; /* Allows it to occupy remaining space */
+    }
+    .cbtmright {
+        width: 100%;
+        height: 100%;
+        padding-top: 2rem;
+        gap: 1rem;
+    }
+  
+    .upload {
+        min-width: 51%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        border: 2px solid #9D9D9D;
+    }
+    
+    .upload label {
+        font-size: 16px;
+    }
+    
+    .upload img {
+        height: 80%;
+    }
+    .cbtmleft {
+        width: 100%;
+        height: auto; /* Adjusts based on content */
+
+    }
+    
+    form {
+        width: 100%;
+        height: auto; /* Adjusts based on content */
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+    .name div {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+    }
+    .name {
+        width: 100%;
+        height: auto; /* Adjusts based on content */
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    input[type="text"] {
+        width: 100%;
+        font-size: 16px;
+        border-radius: 10px;
+    }
+    .contact {
+        height: auto; /* Adjusts based on content */
+        gap: 15px;
+        flex-direction: column;
+    }
+    
+    .contact .email, .contact .mob {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+    } 
+    
+    input[type="password"] {
+        width: 100%;
+    }
+    
+    .submit {
+        justify-content: center;
+        display: flex;
+
+    }
+    
+    input[type="submit"] {
+        width: 35%;
+        height: 7vw;
+        font-size: 3vw;
+    } */
+    
+   
+
+}
+
+/* Tablet To Laptop */
+@media (min-width: 768px) and (max-width: 992px) {
+
+    #toggle{
+        display: block;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 1.5rem;
+    }
+    .content {
+        width: 100%;
+        min-height : 100vh;
+        margin-left: 0px; /* Initial margin-left to match the nav width */
+        background-color: var(--background-color);
+        padding: 1rem 1rem;
+        align-items: center;
+    }
+    .nav{
+        transform: translateX(-20rem);
+    }
+    
+    .nmid div a, .nbtm div a {
+        font-size: 22px;
+    }
+    .nav:hover + .content{
+        margin-left: 0rem;
+    }
+    .preview{
+        display: none;
+    }
+    .nav-active {
+        transform: translateX(0);
+        transition: 0.5s;
+        width: 300px;
+    }
+    .blur{
+        filter: blur(10px);
+    }
+    .nav .close{
+        position: absolute;
+        font-size: 28px;
+        display: flex;
+        right: -30px;
+        top: 0;
+    }
+    .cinfo{
+        text-align: center;
+        height: 10%;
+    }
+    .cinfo h1 {
+        font-size: 4vw;
+    }
+    .cinfo p {
+        font-size: 16px;
+    }
+    .cbtm {
+        width: 100%;
+        gap: 2rem;
+        flex-grow: 1; /* Allows it to occupy remaining space */
+    }
+    .cbtmright {
+        width: 40%;
+        height: 100%;
+        padding-top: 2rem;
+        gap: 2rem;
+    }
+    .upload {
+        min-width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        border: 2px solid #9D9D9D;
+        height: 6vw;
+    }
+     
+    .upload label {
+        font-size: 18px;
+    } 
+
+    .cbtmright>img {
+        width: 80%;
+    }
+    
+    .upload img {
+        height: 60%;
+    }
+    .cbtmleft {
+        width: 56%;
+        height: 100%;
+    }
+    input[type="text"] {
+        width: 48%;
+    }
+    .contact .email, .contact .mob {
+        width: 48%;
+    }
+    input[type="password"] {
+        width: 47%;
+    }
+    .submit {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+   
+}
+
+
+

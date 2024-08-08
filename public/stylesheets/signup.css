@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Lilita+One&family=Montserrat:wght@500&family=Poppins:wght@500&display=swap');
 
-body {
+body{
     margin: 0;
     padding: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url("../images/Marble 5.svg");
+    background-image: url("../images/Marble\ 5.svg");
     background-color: rgb(24, 23, 23);
     font-family: 'Poppins', sans-serif;
 }
+
 
 .content {
     width: 100%;
@@ -21,7 +22,7 @@ body {
     gap: 1rem;
 }
 
-.heading {
+.heading{
     display: flex;
     width: 80%;
     justify-content: center;
@@ -32,37 +33,36 @@ body {
     color: white;
 }
 
-span {
+span{
     color: #FFB219;
 }
-
-.box {
+.box{
     width: 1205px;
     height: 85%;
     background-color: #2a2a2d;
     border-radius: 8px;
     display: flex;
-    flex-direction: column;
     border-radius: 15px;
+    
 }
 
-.innerBox {
+
+.innerBox{
     width: 60%;
     height: 95%;
     margin-left: 1rem;
+    padding-top: 1.2rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
 }
-
-.innerBox .top {
+.innerBox .top{
     display: flex;
     flex-direction: column;
     font-family: "Plus Jakarta Sans", sans-serif;
     color: white;
 }
-
-.logo {
+.logo{
     width: 50%;
     height: 95%;
     display: flex;
@@ -70,7 +70,7 @@ span {
     justify-content: center;
 }
 
-.innerBox .top {
+.innerBox .top{
     display: flex;
     flex-direction: column;
     font-family: "Plus Jakarta Sans", sans-serif;
@@ -79,7 +79,7 @@ span {
     width: 25vw;
 }
 
-.boxtop {
+.boxtop{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,7 +88,7 @@ span {
     visibility: hidden;
 }
 
-.toggle {
+.toggle{
     width: 50%;
     display: flex;
     gap: 2rem;
@@ -96,7 +96,7 @@ span {
     padding-left: 5rem;
 }
 
-.toggle button {
+.toggle button{
     width: 121px;
     height: 40px;
     border: none;
@@ -106,12 +106,12 @@ span {
     border-radius: 8px;
 }
 
-.boxbottom {
+.boxbottom{
     display: flex;
     height: 92%;
 }
 
-.innerBox form {
+.innerBox form{
     display: flex;
     flex-direction: column;
     font-family: "Inter", sans-serif;
@@ -119,8 +119,8 @@ span {
     padding-left: 5rem;
 }
 
-form input[type="text"], form input[type="password"], form input[type="email"] {
-    width: 448.94px;
+form input[type="text"] , form input[type="password"] , form input[type="email"]{
+    width: 448.94px ; 
     height: 50.85px;
     padding-left: 1rem;
     border-radius: 10px;
@@ -130,17 +130,18 @@ form input[type="text"], form input[type="password"], form input[type="email"] {
     color: rgb(7, 7, 7);
 }
 
-select {
-    width: 465.94px;
+select{
+    width: 465.94px ; 
     height: 50.85px;
     padding-left: 1rem;
     border-radius: 10px;
     border: none;
     font-size: 17px;
     background-color: #B4B4B4;
+
 }
 
-form .forgot {
+form .forgot{
     display: flex;
     width: 77%;
     justify-content: space-between;
@@ -148,15 +149,14 @@ form .forgot {
     color: rgb(255, 255, 255);
 }
 
-.forgot a {
+.forgot a{
     text-decoration: none;
     font-size: 17px;
     color: rgb(255, 255, 255);
     cursor: pointer;
 }
-
-form input[type="submit"] {
-    width: 448.94px;
+form input[type="submit"]{
+    width: 448.94px ; 
     height: 60.85px;
     background-color: #232429;
     border: none;
@@ -164,4 +164,31 @@ form input[type="submit"] {
     color: #FFB219;
     border-radius: 10px;
     cursor: pointer;
+}
+label{
+    font-size: 18px;
+    margin-left: 0.5rem;
+}
+
+.form-group{
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.form-group p{
+    color: white;
+    font-size: 18px;
+}
+input[type="file"]{
+    color: white;
+    font-size: 16px;
+}
+#learn{
+    font-size: 20px;
+    color: white;
+}
+
+a{
+    text-decoration: none;
 }

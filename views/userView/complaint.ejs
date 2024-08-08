@@ -1,268 +1,208 @@
-<%- include('../partials/navLeft') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="/stylesheets/user/complaint.css">
+    <link rel="stylesheet" href="/stylesheets/navLeft.css">
+
+    <!-- Dm Sans  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+
+    <!-- Poppins  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Biryani&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Biryani  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Biryani&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-    <div class="content">
+    <!-- Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
-        <style>
+   <!-- Overpass  -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
+   <!-- Include jQuery library -->
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: content-box;
-            }
-            body{
+</head>
+<body>
+
+    <div class="main">
+
+        <!-- Nav bar Starts for here -->
+        <%- include('../partials/navLeft') %>
+        
+        <div class="content">
+
+            <i class="fa-solid fa-bars" id="toggle"></i>
+
+            <div class="cinfo">
+
+                <h1>Deepak Kumar Yadav</h1>
+                <p>Address : 210/14</p>
                 
-                display: flex;
-                
-            }
-    
-            .nav:hover + .content {
-                margin-left: 250px;
-                
-            }
-            
-            
-    
-            .content {
-                width: calc(100vw - 80px );
-                background-color: var(--background-color);
-                min-height: 100vh;
-                height : auto ; 
-                display: flex;
-                margin-left: 80px; /* Initial margin-left to match the nav width */
-                transition: margin-left 0.3s; /* Add transition for a smooth effect */
-            }
-    
-            .preview{
-                    width: 30vw;
-                    position: fixed;
-                    min-height: 100vh;
-                    height: auto;
-                    right: 0rem;
-                    background-color: var(--preview-background-color);
-            }
-    
-    .inner{
-        
-        color: var(--heading-color);
-        
-    }
-    .inner h1{
-       font-size: 40px;
-       font-weight: bolder;
-    
-       
-    }
-    form{
-        margin-left: 5vw;
-        width: 55%;
-        padding: 1rem 0rem 0rem 2rem;
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-    }
-    .first{
-        display: flex;
-        gap: 1rem;
-        justify-content: space-between;
-       
-    }
-    .subject input{
-        width: 20vw;
-        height: 40px;
-        border-radius: 11px;
-        border: none;
-        padding: 0.5rem;
-        padding-left: 1rem;
-    }
-    .complaint-type select{
-        width: 284px;
-        height: 40px;
-        color: #6F6C90;
-        font-size: 15px;
-        padding: 0.5rem;
-        border: none;
-        border-radius: 11px;
-    }
-    .complaint-type , .subject , .description{
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        
-        
-    }
-    
-    .second textarea{
-        width: 98%;
-        height: 8vw;
-        color: #6F6C90;
-        font-size: 15px;
-        padding: 0.5rem;
-        border: none;
-        border-radius: 11px;
-        font-family: 'DM Sans', sans-serif;
-        
-    }
-    .third{
-        
-        border: none;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        font-family: 'DM Sans', sans-serif;
-    }
-    .image{
-        width: 100%;
-        height: 10vw;
-        border-radius: 11px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: white;
-        
-        
-       
-        
-    }
-    
-    form p{
-        font-size: 18px;
-        font-weight: 800;
-        font-family: 'DM Sans', sans-serif;
-        color:var(--font-color);
-    }
-    .file-logo {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 1rem;
-        align-items: center;
-    }
-    
-    .file-i{
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        justify-content: center;
-        align-items: center;
-        
-    }
-    
-    .file-logo input[type="file"] {
-        display: none; /* Hide the default file input */
-    }
-    
-    .file-logo label {
-        cursor: pointer;
-    }
-    
-    .btn {
-        display: flex;
-        justify-content: center;
-    }
-    
-    .btn input[type="submit"] {
-        width: 10vw;
-        height: 45px;
-        background-color: #000000;
-        color: white;
-        font-size: 24px;
-        border-radius: 12px;
-        font-family: 'DM Sans', sans-serif;
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    </style>
-    
-
-
-
-
-        <form action = "/user/complaint/fileComplaint" method = "post" enctype="multipart/form-data">
-          
-            <h1 style = "color : var(--font-color);"><%= user.username %></h1>
-        
-          
-            <div class="first">
-        
-                <div class="complaint-type">
-                    <p>Complaint Type</p>
-                    <select name="complaint_group">
-                        <option value = "Electricity">Electricity</option>
-                        <option value = "Water">Water </option>
-                        <option value = "Carpenter">Property Damage </option>
-                        
-                    </select>
-                </div>
-        
-                <div class="subject">
-                    <p>Subject</p>
-                    <input type="text" placeholder="Enter Complaint Subject" name="subject" id = "subject" required>
-                    <p id = "err1" style="color: red; font-size: 15px; visibility:hidden;">Maximum 50 words allowed</p>
-                </div>
-        
             </div>
-        
-            <div class="second">
-                <div class="description">
-                    <p>Description</p>
-                    <textarea placeholder="Enter Complaint Description" rows="20" cols="100" name = "desc" id = "desc" required></textarea>
-                    <p id = "err2" style="color: red; font-size: 15px;visibility:hidden;">Maximum 250 words allowed</p>
-                </div>
-        
-            </div>
-            <div class="third">
-                <p>Image</p>
-                <div class="image">
-        
-                    <div class="file-logo">
-        
-                        <label for="file-input" class="file-i">
-        
+           
+            <div class="cline"></div>
+
+            <div class="cbtm">
+
+                <div class="cbtmleft">
+
+                    <form action = "/user/complaint/fileComplaint" method = "post" enctype="multipart/form-data">
+
+                        <div class="complaint">
+                            <div class="type">
+                                 <p>Complaint Type</p>
+                                 <select name="complaint_group">
+                                    <option value = "Electricity">Electricity</option>
+                                    <option value = "Water">Water </option>
+                                    <option value = "Carpenter">Property Damage </option>
+                                    
+                                </select>
+                            </div>
+ 
+                            <div class="subject">
+                                 <p>Subject</p>
+                                 <input type="text" name="subject" placeholder="Complaint Subject" > 
+                            </div>
+ 
+                         </div>
+                        <div class="description">
+
                             
-                            <p style="font-size: 15px; color: #6F6C90;">Click to upload</p>
-        
-                        </label>
-        
-                        <input type="file" name="complaint_image" id="file-input" accept="image/*" required>
-                    </div>
+                                <p>Address</p>
+                                <textarea rows="4" cols="90" placeholder="Please mention here upto 500 words only." name = "desc" ></textarea>
+     
+                            
+                            
+                        </div>
+                        
+                        <div class="submit">
+                            <input type="submit" value="File Complaint">
+                        </div>
+                        
+                        
+
+
+
+                    
+
                 </div>
-            </div>
-            
-            <style>
-        
-        
-        
-        
-                
-            </style>
-            
-            <div class="btn">
-                <input type="submit" value="Submit" name="save" id = "btn">
-            </div>
-        
-            
-        
-              
-          </form>
+                <div class="cbtmright">
 
-        
+                    <img id="profileImage" src="/images/Profile.svg" alt="">
+
+                    <div class="upload">
+                        
+                        <img src="/images/file-add.svg" alt="">
+                        <label for="file"  id="fileLabel">Upload New</label>
+                        <input type="file" name="complaint_image" id="file" accept="image/*" required>
+                        
+                    </div>
+
+
+                </form>
+
+                </div>
+
+            </div>
+            
+
+            
+            
+        </div>
+
+        <script>
+            var toggle = document.getElementById('toggle');
+            var close = document.getElementById('close');
+            var nav = document.querySelector('.nav');
+            var content = document.querySelector('.content');
+            var preview = document.querySelector('.preview');
+            var previewContent = document.querySelectorAll('#previewContent');
+
+            toggle.addEventListener('click', function () {
+                nav.classList.add('nav-active');
+                content.classList.add('blur');
+            });
+
+            close.addEventListener('click', function () {
+                nav.classList.remove('nav-active');
+                content.classList.remove('blur');
+            });
+
+            previewContent.forEach(function(element) {
+                element.addEventListener('click', function () {
+                    preview.classList.add('preview-active');
+                });
+            });
+
+            const toggleNav = () => {
+                let mode = 'dark';
+                var a = document.querySelector(".dark");
+                if (document.body.classList.contains('light-mode')) {
+                    document.body.classList.remove("light-mode");
+                    a.innerHTML = "Light Mode";
+                } else {
+                    document.body.classList.add("light-mode");
+                    a.innerHTML = "Dark Mode";
+                    mode = 'light';
+                }
+                // Store the mode in session storage
+                sessionStorage.setItem('mode', mode);
+            }
+
+            // Function to apply mode when page loads
+            const applyMode = () => {
+                let mode = sessionStorage.getItem('mode');
+                if (mode === 'light') {
+                    document.body.classList.add("light-mode");
+                    document.querySelector(".dark").innerHTML = "Dark Mode";
+                } else {
+                    document.body.classList.remove("light-mode");
+                    document.querySelector(".dark").innerHTML = "Light Mode";
+                }
+            }
+
+            // Apply mode when page loads
+            applyMode();
+
+            function changeLogo(event) {
+                const fileInput = event.target;
+                const logoImg = document.getElementById("profileImage");
+
+                if (fileInput.files && fileInput.files[0]) {
+                    const reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        logoImg.src = e.target.result;
+                    };
+
+                    reader.readAsDataURL(fileInput.files[0]);
+                }
+            }
+
+            document.getElementById('file').addEventListener('change', function(event) {
+            var fileName = event.target.files[0].name;
+            var fileLabel = document.getElementById('fileLabel');
+            fileLabel.textContent = fileName;
+            changeLogo(event);
+            });
+        </script>
     </div>
-
-
-
-    
-
-
 </body>
 </html>

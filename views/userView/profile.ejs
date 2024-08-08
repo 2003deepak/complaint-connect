@@ -1,413 +1,225 @@
-<%- include('../partials/navLeft') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="/stylesheets/user/profile.css">
+    <link rel="stylesheet" href="/stylesheets/navLeft.css">
+
+    <!-- Dm Sans  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+
+    <!-- Poppins  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Biryani&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Biryani  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Biryani&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
+    <!-- Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
-    <div class="content">
+   <!-- Overpass  -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+   <!-- Include jQuery library -->
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 
+    
+</head>
+<body>
 
-        <style>
+    <div class="main">
 
-            
-                    * {
-                        margin: 0;
-                        padding: 0;
-                        box-sizing: content-box;
-                    }
-                    body{
-                        
-                        display: flex;
-                        
-                    }
-                    .nav:hover + .content {
-                        margin-left: 270px;
-                        
-                    }
-        
 
-        .content {
-            width: calc(100vw - 80px );
-            background-color: var(--background-color);
-            min-height: 100vh;
-            height : auto ; 
-            display: flex;
-            flex-direction: column;
-            margin-left: 80px; /* Initial margin-left to match the nav width */
-            transition: margin-left 0.3s; /* Add transition for a smooth effect */
-        }
-      
-            /* Code for profile  */
+         <!-- Nav bar Starts for here -->
+         <%- include('../partials/navLeft') %>
 
-            .top{
-                width: 100%;
-                height: 10%;
-                border-bottom: 4px solid white;
-                display: flex;
-                align-items: center;
-            }
-            .top h1{
-                font-size: 48px;
-                font-weight: 600;
-                font-family: "Inter", sans-serif;
-                margin-left: 7rem;
-                color: var(--font-color);
-            }
-            .bottom{
-                width: 85%;
-                height: 90%;
+        <div class="content">
+
+            <i class="fa-solid fa-bars" id="toggle"></i>
+
+            <div class="cinfo">
+
+                <h1>Edit Profile</h1>
+                <p>Lorem, ipsum dolor.</p>
                 
-                margin-left: 7rem;
-                display: flex;
-            }
-            .left{
-                width: 50%;
-                height: 100%;
-                
-            }
-            textarea{
-                background-color: transparent;
-                width: 93%;
-                color: var(--font-color);
-                border-radius: 8px;
-                border: 2px solid #9D9D9D;
-                font-size: 18px;
-                font-family: "DM Sans", sans-serif;
-            }
-            .right{
-                width: 50%;
-                height: 100%;
-                display: flex;
-                justify-content: center;
-            }
-            .leftTop{
-                margin-top: 10px;
-                font-family: "Poppins", sans-serif;
-                font-size: 18px;
-                color: var(--font-color);
-
-            }
-            .name{
-                width: 100%;
-                height: 6vw;
-                padding-top: 1.5rem;
-                /* background-color: red; */
-                display: flex;
-                flex-direction: column;
-                gap: 0.5rem;
-                font-family: "DM Sans", sans-serif;
-            }
-            form p{
-                font-size: 24px;
-                font-weight: 600;
-                color: var(--font-color);
-                font-family: "DM Sans", sans-serif;
-            }
-            .name div{
-                display: flex;
-                gap: 4rem;
-            }
-            input[type= "text"], input[type= "number"]{
-                width: 40%;
-                height: 2.2vw;
-                padding: 0.2rem 0rem 0.2rem 1rem;
-                background-color: transparent;
-                border: 2px solid #9D9D9D;
-                color: var(--font-color);
-                border-radius: 5px;
-                font-size: 18px;
-                font-family: "DM Sans", sans-serif;
-            }
-            .address{
-                width: 100%;
-                height: 14vw;
-                display: flex;
-                flex-direction: column;
-                gap: 1.5rem;
-
-            }
-            .addressTop{
-                display: flex;
-                flex-direction: column;
-                gap: 0.5rem;
-                font-family: "DM Sans", sans-serif;
-            }
-            .areaPin{
-                display: flex;
-                gap: 4rem;
-            }
-
-            .areaContact{
-                            width: 100%;
-                            height: 6vw;
-                            display: flex;
-                        }
-                        .areaContactleft{
-                            width: 50%;
-                            display: flex;
-                            flex-direction: column;
-                            gap: 0.5rem;
-                        }
-                        .areaContactRight{
-                            width: 50%;
-                            display: flex;
-                            flex-direction: column;
-                            gap: 0.5rem;
-                        }
-                        .areaContact input[type= "text"] , .areaContact input[type= "number"]{
-                            width: 80%;
-                            height: 2.2vw;
-                            padding: 0.2rem 0rem 0.2rem 1rem;
-                            background-color: transparent;
-                            border: 2px solid #9D9D9D;
-                            color: var(--font-color);
-                            border-radius: 5px;
-                            font-size: 18px;
-                            font-family: "DM Sans", sans-serif;
-                        }
-
-
-                        .emailPass{
-                            width: 100%;
-                            height: 6vw;
-                            display: flex;
-                        }
-                        .emailPassleft{
-                            width: 50%;
-                            display: flex;
-                            flex-direction: column;
-                            gap: 0.5rem;
-                        }
-                        .emailPassRight{
-                            width: 50%;
-                            display: flex;
-                            flex-direction: column;
-                            gap: 0.5rem;
-                        }
-                        .emailPass input[type = "password"] , input[type="email"]{
-                            width: 80%;
-                            height: 2.2vw;
-                            padding: 0.2rem 0rem 0.2rem 1rem;
-                            background-color: transparent;
-                            border: 2px solid #9D9D9D;
-                            color: var(--font-color);
-                            border-radius: 5px;
-                            font-size: 18px;
-                            font-family: "DM Sans", sans-serif;
-                        }
-
-                        .profile{
-                        width: 90%;
-                        height: 90%; 
-                        margin-top: 2rem;
-                        display: flex;
-                        flex-direction: column;
-                        gap: 4rem;
-                        align-items: center;
-                    }
-                    #img{
-                        margin-top: 0rem;
-                        height: 34px;
-                        width: 37px;
-                        padding-left: 5px;
-                    }
-                    .profile div{
-                        display: flex;
-                        gap: 2rem;
-                        
-
-                    }
-                    .profileleft{
-                        width: 230px;
-                        height: 50px;
-                        border: 2px solid #9D9D9D;
-                            border-radius: 5px;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                    }
-                    
-                    .profile input[type="submit"]{
-                        width: 157px;
-                        height: 53px;
-                        background-color: #FFB219;
-                        font-size: 18px;
-                        border: none;
-                        color: var(--font-color);
-                        font-weight: 600;
-                        border-radius: 8px;
-                        font-family: "DM Sans", sans-serif;
-                    }
-                    .profileleft p{
-                         font-size: 22px;
-                         font-weight: 600;
-                         color: var(--font-color);
-                         font-family: "DM Sans", sans-serif;
-                         margin-right: 10px;
- 
-                    }
-
-</style>
-
-        
-
-
-  
-
-        <div class="top">
-            <h1>Edit Profile</h1>
-        </div>
-        <div class="bottom">
-            <div class="left">
-                <div class="leftTop">
-                    <p>Here you can edit public information about yourself. <br/>
-                        The changes will be displayed for other users instantly.</p>
-                </div>
-                <form  action="profile/updateProfile" enctype="multipart/form-data" method="post">
-
-                    <div class="name">
-                        <p>Name</p>
-                        <div>
-                           
-                            <input type="text" name="firstName" placeholder="First Name" value="<%= user.firstName ? user.firstName  : '' %>" > 
-                            <input type="text" name="lastName" placeholder="Last Name" value="<%= user.lastName ? user.lastName  : '' %>" > 
-                        </div>
-                    </div>
-                    <div class="address">
-
-                        <div class="addressTop">
-                            <p>Address</p>
-                            <textarea rows="4" cols="90" placeholder="Flat / House No / Building Name" name="address" disabled > <%= user.buildingNumber %>/<%= user.roomNumber %> NCH COLONY KANJURMARG WEST </textarea>
- 
-                        </div>
-                        <div class="areaPin">
-                            <input type="text" name="area" placeholder="Area" value="Colaba" disabled >
-                            <input type="number" name="pincode" placeholder="Pincode" value="400001" disabled >
-                        </div>
-                        
-
-                        
-                    </div>
-
-                    <style>
-                        
-
-                    </style>
-                    <div class="areaContact">
-
-                        <div class="areaContactleft">
-                            <p>Username</p>
-                            <input type="text" name="work_area" placeholder="Username" value="<%= user.username %>" >
-
-                        </div>
-                        <div class="areaContactRight">
-                            <p>Contact No</p>
-                            <input type="number" name="mobileNumber" placeholder="Mobile Number" value="<%= user.mobileNumber ? user.mobileNumber  : '' %>" >
-
-                        </div>
-
-                    </div>
-                    <div class="emailPass">
-
-                        <div class="emailPassleft">
-                            <p>Email-ID</p>
-                            <input type="email" name="email" placeholder="worker@gmail.com" value="<%= user.email %>">
-
-                        </div>
-                        
-
-                    </div>
-
-                
-
             </div>
+           
+            <div class="cline"></div>
 
-            <style></style>
-            <div class="right">
+            <div class="cbtm">
 
-               
-                
-                <div class="profile">
+                <div class="cbtmleft">
+
+                    <form action="profile/updateProfile" enctype="multipart/form-data" method="post">
+
+                        <div class="name">
+                            <p>Full Name</p>
+                            <div>
+                                
+                                <input type="text" name="firstName" placeholder="First Name" value="<%= user.firstName ? user.firstName  : '' %>"> 
+                                <input type="text" name="lastName" placeholder="Last Name" value="<%= user.lastName ? user.lastName  : '' %>" > 
+                            </div>
+                        </div>
+                        <div class="address">
+
+                            
+                                <p>Address</p>
+                                <textarea rows="4" cols="90" placeholder="Flat / House No / Building Name" name="address" disabled> <%= user.buildingNumber %>/<%= user.roomNumber %> NCH COLONY KANJURMARG WEST  </textarea>
+     
+                            
+                            
+                        </div>
+
+                        <div class="contact">
+                           <div class="email">
+                                <p>Email</p>
+                                <input type="email" name="email" placeholder="Email" value="<%= user.email %>" > 
+                           </div>
+
+                           <div class="mob">
+                                <p>Contact Us</p>
+                                <input type="number" name="mobileNumber" placeholder="Mob No" value="<%= user.mobileNumber ? user.mobileNumber  : '' %>" > 
+                           </div>
+
+                        </div>
+
+                        <div class="submit">
+                            <input type="submit" value="Save" name = "save">
+                        </div>
+                        
+                        
+
+
+
+                    
+
+                </div>
+                <div class="cbtmright">
+
                     <% if(user.profilePicture == "default.png"){ %>
 
-                        <img src="/images/Profile.svg" alt="" id = "logoImg" height="400px">
+                        <img src="/images/Profile.svg" id="profileImage">
                          
 
 
                     <% }else{ %>
 
-                        <img src="/userUpload/profile_image/<%= user.profilePicture %>" alt="" id = "logoImg" height="400px">
+                        <img src="/userUpload/profile_image/<%= user.profilePicture %>" id="profileImage">
 
 
                    <% } %>
-                    
-                    
-                    <div>
-                        <style>
-                            input[type="file"]{
-                                color:var(--font-color);
-                                font-size:18px ; 
-                            }
-                        </style>
-                        <div class="profileleft">
-                            <!-- <img src="/file-add.svg" alt="" height="30px" id="img"> -->
-                            <input type="file" name="profile_image" onchange="changeLogo(event)" >
-                            
 
-                        </div>
-                        <input type="submit" value="Save changes" name = "save">
+                    <div class="upload">
+                        
+                        <img src="/images/file-add.svg" alt="">
+                        <label for="file"  id="fileLabel">Upload New</label>
+                        <input type="file" id="file" name="profile_image" accept="image/*">
+                        
                     </div>
-                </div>
 
                 </form>
+
+                </div>
+
             </div>
+            
+
+            
+            
         </div>
 
+        <script>
+            var toggle = document.getElementById('toggle');
+            var close = document.getElementById('close');
+            var nav = document.querySelector('.nav');
+            var content = document.querySelector('.content');
+            var preview = document.querySelector('.preview');
+            var previewContent = document.querySelectorAll('#previewContent');
 
+            toggle.addEventListener('click', function () {
+                nav.classList.add('nav-active');
+                content.classList.add('blur');
+            });
 
-        <!-- Adding Profile Image and name and other values of worker to db  -->
+            close.addEventListener('click', function () {
+                nav.classList.remove('nav-active');
+                content.classList.remove('blur');
+            });
 
-        <!-- Adding Profile Image and name of user to db  -->
+            previewContent.forEach(function(element) {
+                element.addEventListener('click', function () {
+                    preview.classList.add('preview-active');
+                });
+            });
 
-
-   
-
-
-            
-
-            
-        
-    </div>
-
-
-
-
-    <!-- JS code starting from here  -->
-
-
-    <script>
-   
-        function changeLogo(event) {
-            const fileInput = event.target;
-            const logoImg = document.getElementById("logoImg");
-
-            if (fileInput.files && fileInput.files[0]) {
-                const reader = new FileReader();
-
-                reader.onload = function (e) {
-                    logoImg.src = e.target.result;
-                };
-
-                reader.readAsDataURL(fileInput.files[0]);
+            const toggleNav = () => {
+                let mode = 'dark';
+                var a = document.querySelector(".dark");
+                if (document.body.classList.contains('light-mode')) {
+                    document.body.classList.remove("light-mode");
+                    a.innerHTML = "Light Mode";
+                } else {
+                    document.body.classList.add("light-mode");
+                    a.innerHTML = "Dark Mode";
+                    mode = 'light';
+                }
+                // Store the mode in session storage
+                sessionStorage.setItem('mode', mode);
             }
-        }
 
+            // Function to apply mode when page loads
+            const applyMode = () => {
+                let mode = sessionStorage.getItem('mode');
+                if (mode === 'light') {
+                    document.body.classList.add("light-mode");
+                    document.querySelector(".dark").innerHTML = "Dark Mode";
+                } else {
+                    document.body.classList.remove("light-mode");
+                    document.querySelector(".dark").innerHTML = "Light Mode";
+                }
+            }
 
+            // Apply mode when page loads
+            applyMode();
 
+            function changeLogo(event) {
+                const fileInput = event.target;
+                const logoImg = document.getElementById("profileImage");
 
+                if (fileInput.files && fileInput.files[0]) {
+                    const reader = new FileReader();
 
-    
-   
-</script>
+                    reader.onload = function (e) {
+                        logoImg.src = e.target.result;
+                    };
 
+                    reader.readAsDataURL(fileInput.files[0]);
+                }
+            }
+
+            document.getElementById('file').addEventListener('change', function(event) {
+            var fileName = event.target.files[0].name;
+            var fileLabel = document.getElementById('fileLabel');
+            fileLabel.textContent = fileName;
+            changeLogo(event);
+            });
+        </script>
+    </div>
 </body>
 </html>

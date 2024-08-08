@@ -24,8 +24,6 @@ const updateProfile = async (req, res) => {
     // Get the path to the current profile picture
     const currentProfilePicturePath = path.join(__dirname, '..', 'public/userUpload/profile_image', req.user.profilePicture);
 
-    console.log(currentProfilePicturePath)
-
     fs.unlink(currentProfilePicturePath,(err)=>{
         if(err) console.error("Error Deleting");
         

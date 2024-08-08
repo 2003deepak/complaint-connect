@@ -22,7 +22,7 @@ const userSchema = mongoose.Schema({
     default: null 
   },
   mobileNumber: { 
-    type: Number, 
+    type: String, 
     default: null 
   },
   buildingNumber: { 
