@@ -6,7 +6,6 @@
     <title>Document</title>
     
     <link rel="stylesheet" href="/stylesheets/user/closedComplaint.css">
-    <link rel="stylesheet" href="/stylesheets/navLeft.css">
 
     <!-- Dm Sans  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,6 +64,7 @@
                                     <th>Closed Time</th>
                                     <th>Worker Assigned</th>
                                     <th>Rating</th>
+                                    <th>Actions</th>
                                 
                             </tr>
                         </thead>
@@ -81,6 +81,9 @@
                                     <td><%= complaint.approvedByUserAt.toLocaleDateString('en-GB') %></td>
                                     <td><%= complaint.assignedWorker.username %></td>
                                     <td><%= complaint.rating %></td>
+                                    <td>
+                                        <a type="button" class="btn" href="/user/closedComplaint/<%= complaint._id %>">View Complaint</a>
+                                    </td>
                                 </tr>
                             <% }) 
                             } else { %>

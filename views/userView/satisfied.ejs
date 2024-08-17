@@ -1,313 +1,274 @@
-<%- include('../partials/navLeft') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 
-<div class="content">
-    <style>
-        :root {
-            --background-color: #242424; 
-            --nav-background-color : #161717; 
-            --icon-color:#8C8C8C;
-            --preview-background-color:#161717;
-            --heading-color:white ; 
-            --font-color:white;
-            --boxes-bg-color: #0B0b0f;
-            --box-count-color: #242424;
-        }
+    <link rel="stylesheet" href="/stylesheets/user/satisfied.css">
 
-        .light-mode {
-            --background-color: #E3E3EA;
-            --nav-background-color: #FFFFFF;
-            --icon-color:#000000;
-            --preview-background-color:#FFFFFF;
-            --heading-color:black;
-            --font-color:black;
-            --boxes-bg-color:white;
-            --box-count-color:#E3E3EA;
-        }
+    <!-- Dm Sans  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            display: flex;
-        }
+    <!-- Poppins  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Biryani&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 
-        .nav:hover + .content {
-            margin-left: 250px;
-                        
-        }
+    <!-- Biryani  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Biryani&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        .content {
-            width: calc(100vw - 80px);
-            background-color: var(--background-color);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-left: 80px;
-            transition: margin-left 0.3s;
-        }
 
-        .box {
-            width: 50vw;
-            height: 70vh;
-            background-color: #363638;
-            border-radius: 25px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    <!-- Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
-        .box2 {
-            width: 60%;
-            height: 70%;
-            background-color: #121417;
-            border-radius: 25px;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            align-items: center;
-            padding-top: 2rem;
-        }
+   <!-- Overpass  -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-        .issatisfied {
-            width: 70%;
-            height: 70%;
-            border-radius: 25px;
-            display: flex;
-            flex-direction: column;
-            gap: 1.3rem;
-            align-items: center;
-            font-family: "Overpass", sans-serif;
-            padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-        }
-        .issatisfied form{
-            width: 100%;
-            height: 70%;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            justify-content: center;
-            align-items: center;
-        }
-        .text {
-            background-color: #D9D9D9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        h2 {
-            font-family: "Overpass", sans-serif;
-            font-size: 28px;
-            color: white;
-        }
+   <!-- Include jQuery library -->
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-        .issatisfied p, .notSatisfied p {
-            font-size: 18px;
-            color: #959494;
-            margin-left: 1.5rem;
-        }
+    
+   
+</head>
+<body>
 
-        .notSatisfied {
-            display: none;
-            width: 80%;
-            height: 70%;
-            border-radius: 25px;
-            display: flex;
-            flex-direction: column;
-            font-family: "Overpass", sans-serif;
-            padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-        }
+    <div class="main">
 
-        .notSatisfied form{
-            width: 100%;
-            height: 35vh;
-            display: flex;
-            flex-direction: column;
-            gap: 0.2rem;
-            align-items: center;
-        }
 
-        select {
-            width: 60%;
-            height: 10%;
-            border: 1px solid white;
-            background-color: transparent;
-            color: white;
-            padding: 0.5rem 1rem 0.5rem 1rem;
-            font-family: "Overpass", sans-serif;
-            font-size: 20px;
-            border-radius: 10px;
-            font-weight: bold;
-        }
-        select option {
-            color: black;
-        }
+        <!-- Nav bar Starts for here -->
+        <%- include('../partials/navLeft') %>
+      
 
-        textarea {
-            background: transparent;
-            resize: none;
-            border: 1px solid white;
-            font-family: "Overpass", sans-serif;
-            font-size: 18px;
-            padding: 1rem;
-            height: 22vh;
-            width: 95%;
-            color: white;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-        }
+        <div class="content">
 
-        .star-rating {
-            display: flex;
-            gap: 0.2rem;
-            flex-direction: row-reverse;
-            justify-content: center;
-        }
+            <i class="fa-solid fa-bars" id="toggle"></i>
 
-        .star {
-            font-size: 4rem;
-            color: #ddd;
-            cursor: pointer;
-            position: relative;
-        }
+            <div class="cinfo">
 
-        .star::before {
-            content: '★';
-            position: absolute;
-            left: 0;
-            color: gold;
-            opacity: 0;
-        }
+                <h1>User Name</h1>
 
-        .star:hover ~ .star::before,
-        .star:hover::before,
-        .star.selected ~ .star::before,
-        .star.selected::before {
-            opacity: 1;
-        }
+            </div>
 
-        .star::after {
-            content: '☆';
-        }
+            <div class="cbtm">
 
-        input[type="submit"] {
-            width: 100%;
-            height: 100%;
-            padding: 0.8rem 0.8rem 0.8rem 0.8rem;
-            font-size: 20px;
-            background-color: #D9D9D9;
-            border: none;
-            color: black;
-            border-radius: 10px;
-        }
-    </style>
+                <div class="center">
 
-    <div class="box">
-        <div class="box2">
-            <select name="satisfied" id="dd">
-                <option value="satisfied">Satisfied</option>
-                <option value="not satisfied">Not Satisfied</option>
-            </select>
+                    <div class="boxCenter">
+
+
+                        <select name="satisfied" id="dd">
+                            <option value="satisfied">Satisfied</option>
+                            <option value="not satisfied">Not Satisfied</option>
+                        </select>
+    
+                        <div class="satisfied">
+
+                            <div class="text">
+
+                                <h2>Hey Drop some Rating!</h2>
+                                <p>Your feedback helps us make better future decession for you.</p>
+
+                            </div>
+                            <div class="issatisfied">
+
+                                <form action="/user/endComplaint/<%= id %>" method="post">
+                                    <div class="star-rating">
+                                        <span class="star" data-value="1">&#9733;</span>
+                                        <span class="star" data-value="2">&#9733;</span>
+                                        <span class="star" data-value="3">&#9733;</span>
+                                        <span class="star" data-value="4">&#9733;</span>
+                                        <span class="star" data-value="5">&#9733;</span>
+                                    </div>
+
+                                    <input type="hidden" name="rating" id="rating" value="0">
+                                    <div class="submit"> 
+                                        <input type="submit" value="Close Complaint">
+                                    </div>
+                                </form>
+                            </div>
+
+                            
+                        </div>
+                        <div class="notSatisfied">
+
+                            <div class="text">
+
+                                <h2>Cause</h2>
+
+                            </div>
+                            <div class="issatisfied">
+
+                                <form action="/user/relodgeComplaint/<%= id %>" method="post">
+
+                                    <textarea name="cause" rows="6" cols="50" placeholder="Please describe the cause of your complaint"></textarea>
+                                    <div class="submit"> 
+                                        <input type="submit" value="Re-Lodge Complaint">
+                                    </div>
+                                </form>
+                                
+                            </div>
+
+                            
+                        </div>
+    
+                      
+
+                    </div>
+
+                    
+
+
+
+                </div>
+
+
+            </div>
             
-            <div class="issatisfied">
-                <h2>Hey Drop some Rating!</h2>
-                <p>Your feedback helps us make better future decession for you.</p>
-                <form action="/user/endComplaint/<%= id %>" method="post">
-                    <div class="star-rating">
-                        <span class="star" data-value="5"></span>
-                        <span class="star" data-value="4"></span>
-                        <span class="star" data-value="3"></span>
-                        <span class="star" data-value="2"></span>
-                        <span class="star" data-value="1"></span>
-                    </div>
-                    <input type="hidden" name="rating" id="rating" value="0">
-                    <div>
-                        <input type="submit" value="Close Complaint">
-                    </div>
-                </form>
-            </div>
 
-            <div class="notSatisfied">
-                <p>Cause : </p>
-                    
-                <form action="/user/relodgeComplaint/<%= id %>" method="post">
-                    
-
-                    <textarea name="cause" rows="4" cols="50" placeholder="Please describe the cause of your complaint"></textarea>
-                    <div>
-                        <input type="submit" value="Close Complaint">
-                    </div>
-                </form>
-            </div>
+            
+            
         </div>
-    </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const stars = document.querySelectorAll('.star');
-            const selectElement = document.getElementById('dd');
-            const satisfiedDiv = document.querySelector('.issatisfied');
-            const notSatisfiedDiv = document.querySelector('.notSatisfied');
-            const ratingInput = document.getElementById('rating');
+        <script>
+            var toggle = document.getElementById('toggle');
+            var close = document.getElementById('close');
+            var nav = document.querySelector('.nav');
+            var content = document.querySelector('.content');
+            var preview = document.querySelector('.preview');
+            var previewContent = document.querySelectorAll('#previewContent');
 
-            // Set initial visibility based on the default selection
-            updateVisibility(selectElement.value);
-
-            // Add event listener for the select element
-            selectElement.addEventListener('change', (event) => {
-                updateVisibility(event.target.value);
+            toggle.addEventListener('click', function () {
+                nav.classList.add('nav-active');
+                content.classList.add('blur');
             });
 
-            stars.forEach(star => {
-                star.addEventListener('click', setRating);
-                star.addEventListener('mouseover', addHoverEffect);
-                star.addEventListener('mouseleave', removeHoverEffect);
+            close.addEventListener('click', function () {
+                nav.classList.remove('nav-active');
+                content.classList.remove('blur');
             });
 
-            function setRating(e) {
-                const selectedValue = parseInt(e.target.getAttribute('data-value'));
-                stars.forEach(star => {
-                    const value = parseInt(star.getAttribute('data-value'));
-                    if (value <= selectedValue) {
-                        star.classList.add('selected');
-                    } else {
-                        star.classList.remove('selected');
-                    }
+            previewContent.forEach(function(element) {
+                element.addEventListener('click', function () {
+                    preview.classList.add('preview-active');
                 });
-                ratingInput.value = selectedValue;
-                
-            }
+            });
 
-            function addHoverEffect(e) {
-                const hoverValue = parseInt(e.target.getAttribute('data-value'));
-                stars.forEach(star => {
-                    const value = parseInt(star.getAttribute('data-value'));
-                    if (value <= hoverValue) {
-                        star.classList.add('hover');
-                    } else {
-                        star.classList.remove('hover');
-                    }
-                });
-            }
-
-            function removeHoverEffect() {
-                stars.forEach(star => {
-                    star.classList.remove('hover');
-                });
-            }
-
-            function updateVisibility(selectedValue) {
-                if (selectedValue === 'satisfied') {
-                    satisfiedDiv.style.display = 'flex';
-                    notSatisfiedDiv.style.display = 'none';
+            const toggleNav = () => {
+                let mode = 'dark';
+                var a = document.querySelector(".dark");
+                if (document.body.classList.contains('light-mode')) {
+                    document.body.classList.remove("light-mode");
+                    a.innerHTML = "Light Mode";
                 } else {
-                    satisfiedDiv.style.display = 'none';
-                    notSatisfiedDiv.style.display = 'flex';
+                    document.body.classList.add("light-mode");
+                    a.innerHTML = "Dark Mode";
+                    mode = 'light';
+                }
+                // Store the mode in session storage
+                sessionStorage.setItem('mode', mode);
+            }
+
+            // Function to apply mode when page loads
+            const applyMode = () => {
+                let mode = sessionStorage.getItem('mode');
+                if (mode === 'light') {
+                    document.body.classList.add("light-mode");
+                    document.querySelector(".dark").innerHTML = "Dark Mode";
+                } else {
+                    document.body.classList.remove("light-mode");
+                    document.querySelector(".dark").innerHTML = "Light Mode";
                 }
             }
+
+            // Apply mode when page loads
+            applyMode();
+
+
+            document.addEventListener('DOMContentLoaded', () => {
+    const stars = document.querySelectorAll('.star');
+    const selectElement = document.getElementById('dd');
+    const satisfiedDiv = document.querySelector('.satisfied');
+    const notSatisfiedDiv = document.querySelector('.notSatisfied');
+    const ratingInput = document.getElementById('rating');
+
+
+    
+    console.log("Current value " + ratingInput.value)
+    // Set initial visibility based on the default selection
+    updateVisibility(selectElement.value);
+
+    // Add event listener for the select element
+    selectElement.addEventListener('change', (event) => {
+        updateVisibility(event.target.value);
+    });
+
+    stars.forEach(star => {
+        star.addEventListener('click', setRating);
+        star.addEventListener('mouseover', addHoverEffect);
+        star.addEventListener('mouseleave', removeHoverEffect);
+    });
+
+    function setRating(e) {
+        const selectedValue = parseInt(e.target.getAttribute('data-value'));
+        ratingInput.value = selectedValue;
+        updateStars(selectedValue);
+    }
+
+    function addHoverEffect(e) {
+        const hoverValue = parseInt(e.target.getAttribute('data-value'));
+        updateStars(hoverValue, true);
+    }
+
+    function removeHoverEffect() {
+        const selectedValue = parseInt(ratingInput.value);
+        updateStars(selectedValue);
+    }
+
+    function updateStars(value, isHover = false) {
+        stars.forEach(star => {
+            const starValue = parseInt(star.getAttribute('data-value'));
+            if (starValue <= value) {
+                star.classList.add(isHover ? 'hover' : 'selected');
+                if (!isHover) star.classList.remove('hover');
+            } else {
+                star.classList.remove('selected');
+                if (!isHover) star.classList.remove('hover');
+            }
         });
-    </script>
+    }
+
+    function updateVisibility(selectedValue) {
+        if (selectedValue === 'satisfied') {
+            satisfiedDiv.style.display = 'flex';
+            notSatisfiedDiv.style.display = 'none';
+        } else {
+            satisfiedDiv.style.display = 'none';
+            notSatisfiedDiv.style.display = 'flex';
+        }
+    }
+
+    console.log("After Chnage  value " + ratingInput.value)
+
+
+});
+
+
+
+
+
+
+         
+        </script>
+    </div>
 </body>
 </html>

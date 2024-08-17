@@ -1,86 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Lilita+One&family=Montserrat:wght@500&family=Poppins:wght@500&display=swap');
-
-:root {
-    --background-color: #202122; 
-    --font-color : #ffffff; 
-    --h1-font-color: #E0E0E0; 
-    --typing-font-color : #E0E0E0; 
-    --h1-color : black ; 
-    --main-color : white ; 
-    
-    
-
-   
-}
-
-.light-mode {
-    --background-color: white;
-    --font-color : #000000; 
-    --h1-font-color: #000000; 
-    --typing-font-color : #000000;
-    --h1-color : white ;
-    --main-color : black ;  
-    
-    
-    
-    
-    
-    
-  }
-
-html{
-    scroll-behavior: smooth;
-}
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    font-family: 'Noto Sans', sans-serif;
-    
-}
-body{
-    background-color: var(--background-color);
-}
-
-.main{
-    width: 100vw;
-    height: 100vh;     
-}
 
 .nav{
-    width: 100vw;
+    width: 100%;
     height: 100px;
-    padding: 0vw 5vw;
+    background-color: transparent;
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #dadada ; 
-    
+    border-bottom: 2px solid white;
 }
-.nav2{
+.nav i{
+    display: none;
+}
+.nav img{
+    width: 20%;
+    padding-top: 2rem;
+}
+.rlinks{
+    width: 40%;
+    height: 100%;
     display: flex;
-    gap: 3vw;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
 }
-.nav h2{
-    font-size: 2vw;
-    font-weight: 800;
-}
-.nav2 a{
+.rlinks a{
     text-decoration: none;
     font-size: 1vw;
     font-weight: 700;
-    color: var(--font-color);
+    color: white
 }
-.nav2 i{
+.rlinks i{
     font-size: 1.4vw ;
     font-weight: 900;
     display: none;
 }
-.topbtn{
-    height: 2vw;
-    width: 6vw;
-    margin-top: -0.5vw;
+.rlinks button{
+    height: 2.2vw;
+    width: 7vw;
     padding: 0vw 0.2vw;
     cursor: pointer;
     font-size: 1vw;
@@ -88,7 +45,89 @@ body{
     border: none;
     font-weight: 700;
     border-radius: 5px;
+    
 }
-.topbtn a{
+#btn{
     color: black;
 }
+
+/* Mobile View */
+@media (max-width: 500px) {
+
+   
+    .nav{
+        padding: 1rem 1rem;
+        height: 80px;
+    }
+    .nav i{
+        display: flex;
+        font-size: 5vw;
+    }
+    .nav .rlinks{
+        display: none;
+    }
+    .nav img{
+        width: 70%;
+    }
+   
+}
+
+
+/* Tablet */
+@media (max-width: 768px) and (min-width: 500px) {
+
+    
+    .nav {
+        width: 100%;
+        height: 100px;
+        background-color: transparent;
+        padding: 1rem 2rem;
+    
+    }
+
+    .nav i{
+        display: flex;
+        font-size: 3vw;
+    }
+    .nav .rlinks{
+        display: none;
+    }
+    .nav img{
+        width: 40%;
+    }
+    
+}
+
+/* Tablet To Laptop */
+@media (min-width: 768px) and (max-width: 992px) {
+
+   
+    .nav {
+        padding: 1rem 1rem;
+    }
+    .nav img {
+        width: 30%;
+        padding-top: 2rem;
+    }
+    .rlinks {
+        width: 70%;
+        height: 100%;
+        display: flex;
+        justify-content: end;
+        gap: 3rem;
+    }
+    .rlinks a {
+        font-size: 1.7vw;
+       
+    }
+    .rlinks button {
+        height: 4.2vw;
+        width: 10vw;
+    
+    }
+     
+   
+}
+
+
+

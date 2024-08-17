@@ -1,93 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chelsea+Market&family=Great+Vibes&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Lilita+One&family=Montserrat:wght@500&family=Poppins:wght@500&display=swap');
-       
-body{
+*{
     margin: 0;
     padding: 0;
-    width: 100vw;
-    height: 100vh;
-    background-image: url("../images/Marble\ 5.svg");
-    background-color: rgb(24, 23, 23);
-    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif;
 }
-     
+html,body{
+    width: 100%;
+    height: 100vh;
+}
+
+.main{
+    width: 100%;
+    min-height: 100vh;
+    background-image: url("Marble\ 5.svg");
+    background-color: rgb(24, 23, 23);
+}
+.nav{
+    width: 100%;
+    height: 100px;
+    background-color: transparent;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid white;
+}
+.nav i{
+    display: none;
+}
+.nav img{
+    width: 20%;
+    padding-top: 2rem;
+}
+.rlinks{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+.rlinks a{
+    text-decoration: none;
+    font-size: 1vw;
+    font-weight: 700;
+    color: white
+}
+.rlinks i{
+    font-size: 1.4vw ;
+    font-weight: 900;
+    display: none;
+}
+.rlinks button{
+    height: 2.2vw;
+    width: 7vw;
+    padding: 0vw 0.2vw;
+    cursor: pointer;
+    font-size: 1vw;
+    background-color: #FFB219;
+    border: none;
+    font-weight: 700;
+    border-radius: 5px;
+    
+}
+#btn{
+    color: black;
+}
 
 .content{
     width: 100%;
-    height: calc(98vh - 100px);
+    height: calc(100% - 100px);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding-top: 3rem;
     gap: 3rem;
+    padding-top: 2rem;
+    align-items: center;
+}
+.center{
+    width: 60%;
+    max-height: 70%;
+    background-color: #2A2A2D;
+    border-radius: 12px;
+    padding: 2rem 4rem;
+    display: flex;
+}
+.center h1{
+    font-size: 2vw;
 }
 
-.heading{
+.center .left{
+    width: 50%;
+    height: 100%;
     display: flex;
-    width: 80%;
+    flex-direction: column;
+    gap: 2rem;
+}
+.right{
+    width: 50%;
+    height: 100%;
+    display: flex;
     justify-content: center;
-    font-family: "Noto Sans", sans-serif;
-    font-size: 38px;
-    font-weight: 600;
-    margin-top: -20px;
+    align-items: center;
+}
+.right img{
+    width: 70%;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    height: 100%;
+}
+form input[type="text"] , form input[type="password"]{
+    width: 90% ; 
+    height: 50.85px;
+    padding-left: 1rem;
+    border-radius: 10px;
+    border: none;
+    background-color: #B4B4B4;
+    font-size: 17px;
+    color: rgb(7, 7, 7);
+}
+
+form input[type="submit"]{
+    width: 90% ; 
+    height: 60.85px;
+    background-color: #232429;
+    border: none;
+    font-size: 23px;
+    color: #FFB219;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.left h1{
+    font-size: 2.5vw;
     color: white;
 }
-
 span{
     color: #FFB219;
 }
-.box{
-    width: 1205px;
-    height: 80%;
-    /* background-image : url("../images/Rectangle.svg"); */
-    background-color: #2a2a2d;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    border-radius: 15px;
-    
-   
-    
-}
-
-.innerBox{
-    width: 60%;
-    height: 95%;
-    margin-left: 1rem;
-    display: flex;
-    padding-top: 1.2rem;
-    flex-direction: column;
-    gap: 1.7rem;
-}
-.innerBox .top{
-    display: flex;
-    flex-direction: column;
-    font-family: "Plus Jakarta Sans", sans-serif;
+.heading p{
     color: white;
-}
-.logo{
-    width: 50%;
-    height: 95%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 2vw;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 600;
 }
 
-.innerBox .top{
-    display: flex;
-    flex-direction: column;
-    font-family: "Plus Jakarta Sans", sans-serif;
-    color: white;
-    padding-left: 5rem;
-    width: 25vw;
+.msg{
+    width: 100%;
+    display: none;
 }
-
 .toggle{
-    width: 50%;
+    width: 100%;
     display: flex;
     gap: 2rem;
     height: 3vw;
-    padding-left: 5rem;
+
 }
 
 .toggle button{
@@ -100,29 +170,9 @@ span{
     border-radius: 8px;
 }
 
-
-.innerBox form{
-    display: flex;
-    flex-direction: column;
-    font-family: "Inter", sans-serif;
-    gap: 1rem;
-    padding-left: 5rem;
-}
-
-form input[type="text"] , form input[type="password"]{
-    width: 448.94px ; 
-    height: 60.85px;
-    padding-left: 1rem;
-    border-radius: 10px;
-    border: none;
-    background-color: #B4B4B4;
-    font-size: 17px;
-    color: black;
-}
-
 form .forgot{
     display: flex;
-    width: 77%;
+    width: 90%;
     justify-content: space-between;
     margin-top: 1rem;
     color: rgb(255, 255, 255);
@@ -134,17 +184,290 @@ form .forgot{
     color: rgb(255, 255, 255);
     cursor: pointer;
 }
-form input[type="submit"]{
-    width: 448.94px ; 
-    height: 60.85px;
-    background-color: #232429;
-    border: none;
-    font-size: 23px;
-    color: #FFB219;
-    border-radius: 10px;
-    margin-top: 2rem;
+
+/* Mobile View */
+@media (max-width: 500px) {
+
+    .content {
+        width: 100%;
+        min-height: 100vh; 
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: normal;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    
+    .nav{
+        padding: 1rem 1rem;
+        height: 80px;
+    }
+    .nav i{
+        display: flex;
+        font-size: 5vw;
+    }
+    .nav .rlinks{
+        display: none;
+    }
+    .nav img{
+        width: 70%;
+    }
+    .heading p {
+       
+        font-size: 5vw;
+
+    }
+    .center {
+        width: 90%;
+        min-height: 70%;
+        padding: 2rem 1rem;
+    }
+    .right{
+        display: none;
+    }
+    .center .left {
+        width: 100%;
+        height: 100%;
+        gap: 2rem;
+        align-items: center;
+    }
+    .left h1 {
+        font-size: 7vw;
+        color: white;
+    }
+    form {
+        height: 100%;
+        width: 100%;
+        align-items: center;
+    }
+    .toggle {
+        width: 100%;
+        height: 10vw;
+        justify-content: center;
+    }
+    .username , .password{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    form .forgot{
+        width: 100%;
+    }
+    label{
+        font-size: 3.5vw;
+    }
+    .forgot a{
+        font-size: 3.5vw;
+    }
+    .submit{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    form input[type="submit"] {
+        width: 45%;
+        height: 13vw;
+    }
+    form input[type="text"], form input[type="password"] {
+        width: 90%;
+        height: 50.85px;
+        font-size: 4vw;
+    }
+    .toggle button {
+        width: 25%;
+        height: 8vw;
+        border: none;
+        font-size: 3vw;
+        font-weight: 600;
+        background-color: #fdfdfc;
+        border-radius: 8px;
+    }
+    
+
+
+
+
 }
-label{
-    font-size: 18px;
-    margin-left: 0.5rem;
+
+
+/* Tablet */
+@media (max-width: 768px) and (min-width: 500px) {
+
+    .content {
+        width: 100%;
+        min-height: 100vh; 
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: normal;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    .nav {
+        width: 100%;
+        height: 100px;
+        background-color: transparent;
+        padding: 1rem 2rem;
+    
+    }
+
+    .nav i{
+        display: flex;
+        font-size: 3vw;
+    }
+    .nav .rlinks{
+        display: none;
+    }
+    .nav img{
+        width: 40%;
+    }
+    .center {
+        width: 90%;
+        min-height: 70%;
+        padding: 1rem 1.25rem;
+        display: flex;
+        margin-top: 1rem;
+    }
+    .right{
+        display: none;
+    }
+
+        .center .left {
+            width: 100%;
+            height: 100%;
+            gap: 2rem;
+            align-items: center;
+        }
+        .heading p {
+            font-size: 3vw;
+        }
+        .left h1 {
+            font-size: 5vw;
+        }
+        form {
+            gap: 1.75rem;
+            height: 100%;
+            width: 100%;
+            align-items: center;
+        }
+        .toggle {
+            width: 100%;
+            height: 7vw;
+            justify-content: center;
+        }
+        .username , .password{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        form .forgot{
+            width: 90%;
+        }
+        label{
+            font-size: 2.5vw;
+        }
+        .forgot a{
+            font-size: 2.5vw;
+        }
+        .submit{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        form input[type="submit"] {
+            width: 40%;
+            height: 8vw;
+        }
+        form input[type="text"], form input[type="password"] {
+            width: 90%;
+            height: 50.85px;
+            font-size: 2.5vw;
+        }
+        .toggle button {
+            width: 20%;
+            height: 6vw;
+            border: none;
+            font-size: 2.5vw;
+            font-weight: 600;
+            background-color: #fdfdfc;
+            border-radius: 8px;
+        }
+
+   
 }
+
+/* Tablet To Laptop */
+@media (min-width: 768px) and (max-width: 992px) {
+
+    .content {
+        width: 100%;
+        min-height : 100vh;
+        padding: 2rem 1rem;
+        justify-content: normal;
+    }
+    .nav {
+        padding: 1rem 1rem;
+    }
+    .nav img {
+        width: 30%;
+        padding-top: 2rem;
+    }
+    .rlinks {
+        width: 70%;
+        height: 100%;
+        display: flex;
+        justify-content: end;
+        gap: 3rem;
+    }
+    .rlinks a {
+        font-size: 1.7vw;
+       
+    }
+    .rlinks button {
+        height: 4.2vw;
+        width: 10vw;
+    
+    }
+    .center .left {
+        width: 60%;
+        height: 100%;
+    }
+    .right{
+        width: 40%;
+    }
+    .right img {
+        width: 90%;
+    }
+    .center {
+        width: 95%;
+        height: 70%;
+        padding: 2rem 1rem;
+        margin-top: 0rem;
+        gap: 0rem;
+    }
+    .heading p {
+        color: white;
+        font-size: 2.5vw;
+        font-family: "Noto Sans", sans-serif;
+        font-weight: 600;
+    }
+    .left h1 {
+        font-size: 3.5vw;
+        color: white;
+    }
+    .toggle {
+        width: 100%;
+        gap: 2rem;
+        height: 5vw;
+    }
+   
+    
+
+   
+   
+}
+
+
+

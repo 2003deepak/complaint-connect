@@ -8,7 +8,6 @@ const workerModel = require('../../models/worker');
 const userModel = require('../../models/user');
 const complaintModel = require('../../models/complaint');
 const sendOTP = require("../../utils/sendOTP");
-let generateOTP = require('../../utils/generateOTP');
 
 const takeAction = async (req, res) => {
     let { id } = req.params;
@@ -19,7 +18,7 @@ const takeAction = async (req, res) => {
             return res.status(404).send('Complaint not found');
         }
 
-        let otp = generateOTP();
+        let otp = Math.floor(1000 + Math.random() * 9000);
 
         let msg = `
         <html>

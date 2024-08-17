@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="/stylesheets/worker/initialVisit.css">
+    <link rel="stylesheet" href="/stylesheets/complaintData.css">
 
     <!-- Dm Sans  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,56 +41,86 @@
 <body>
 
     <div class="main">
-       
-        <!-- Nav bar Starts for here -->
-        <%- include('../partials/navLeft') %>
 
-        
+        <!-- Navbar is included -->
+        <%- include('./partials/navLeft') %>
+       
+
         <div class="content">
 
             <i class="fa-solid fa-bars" id="toggle"></i>
 
             <div class="cinfo">
 
-                <h1>Worker Name</h1>
-
+                <h1>Complaint : C1234</h1>
+                <p>The door of the emergency exit has .....</p>
+                
             </div>
+           
+            <div class="cline"></div>
 
             <div class="cbtm">
 
-                <form id="otpForm" onsubmit="handleSubmit(event)" action="/worker/takeAction/initialVisitDone/<%= id %>" method="post">
+                <div class="cbtmleft">
 
-                    <div class="dropdown">
-                        <select id="action" name="action">
-                            <option value="initial_visit" selected>Initial Visit Done </option>
-                            
-                        </select>
-
-                    </div>
-                    <div class="verification">
-                        
-                        <p>A verification code has been sent to the user email ID <br> <b><%= email %></b>
-    
-                    </div>
-                    <div class="otp">
-                        <input type="number" id="otp1" name="otp" oninput="enforceMaxLength(this)" class="otp-input" required />
-                        <input type="number" id="otp2" name="otp" oninput="enforceMaxLength(this)" class="otp-input" required />
-                        <input type="number" id="otp3" name="otp" oninput="enforceMaxLength(this)" class="otp-input" required />
-                        <input type="number" id="otp4" name="otp" oninput="enforceMaxLength(this)" class="otp-input" required />
-                    
-                        <input type="hidden" name="finalOTP" value="">
-                    </div>
-                    <div class="submit">
-                        <input type="submit" id="submitOtp" name="save" value="Continue">
-                    </div>
                    
-                    <div class="resend">
-                            <a href="/worker/takeAction/initialVisitDone/<%= id %>">Not Recieved ? <span>Resend</span></a>
-                    </div>
-    
-                        
+
+                        <div class="btmdiv">
+                            <img src="/images/icons8-history-90 1.svg" alt="">
+                            <h2>Complaint Type : </h2>
+                            <p><%= complaint.complaintType %></p>
+                        </div>
+                        <div class="btmdiv">
+                            <img src="/images/icons8-pen-100 1.svg" alt="">
+                            <h2>Subject : </h2>
+                            <p><%= complaint.subject %></p>
+                        </div>
+                        <div class="btmdiv">
+                            <img src="/images/icons8-date-96 1.svg" alt="" >
+                            <h2>Registration Date : </h2>
+                            <p><%= complaint.createdAt.toLocaleDateString('en-GB') %></p>
+                        </div>
+                        <div class="btmdiv">
+                            <img src="/images/icons8-tick-96 1.svg" alt="">
+                            <h2>Resolved Date : </h2>
+                            <p><%=  complaint.resolvedAt ? complaint.resolvedAt.toLocaleDateString('en-GB') : "No Status";   %></p>
+                        </div>
+                        <div class="btmdiv">
+                            <img src="/images/icons8-worker-100 1.svg" alt="">
+                            <h2>Worker Assigned : </h2>
+                            <p><%= complaint.assignedWorker? complaint.assignedWorker.username : "No Worker Assigned" %></p>
+
+                            
+
+                        </div>
+                        <div class="btmdiv">
+                           
+                            <img src="/images/icons8-writing-90 1.svg" alt="">
+                            <h2>Description :  </h2>
+                            <p>Lorem taque fugiat minus</p>
+                            
+                        </div>
+                   
+                    
+
                 </div>
-            </form>
+                <div class="cbtmright">
+
+                    <img src="/userUpload/closed_complaint/<%= complaint.complaintImage %>" id="img">
+
+                    <div class="submit">
+                        <button id = "complaint">Complaint Image</button>
+                       
+                        <button id = "complaintWorker" >Resolved Image</button>
+                        
+                       
+                        
+                       
+                    </div>
+
+                    
+
+                </div>
 
             </div>
             
@@ -153,80 +183,36 @@
             // Apply mode when page loads
             applyMode();
 
+            function changeLogo(event) {
+                const fileInput = event.target;
+                const logoImg = document.getElementById("profileImage");
 
-            function enforceMaxLength(element) {
-            if (element.value.length > 1) {
-                element.value = element.value.slice(0, 1);
+                if (fileInput.files && fileInput.files[0]) {
+                    const reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        logoImg.src = e.target.result;
+                    };
+
+                    reader.readAsDataURL(fileInput.files[0]);
+                }
             }
-        }
 
-        function moveToNextInput(currentInput, nextInputId) {
-            if (currentInput.value.length === 1) {
-                document.getElementById(nextInputId).focus();
-            }
-        }
+           
+            document.getElementById("complaintWorker").addEventListener("click", function(){
 
-        function moveToPreviousInput(currentInput, prevInputId) {
-            if (currentInput.value.length === 0) {
-                document.getElementById(prevInputId).focus();
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            var otpInputs = document.querySelectorAll('.otp-input');
-
-            otpInputs.forEach(function (input, index) {
-                input.addEventListener('input', function () {
-                    enforceMaxLength(input);
-
-                    if (index < otpInputs.length - 1) {
-                        moveToNextInput(input, otpInputs[index + 1].id);
-                    }
-
-                    // Add active class to the next input for hover effect
-                    if (input.value.length === 1 && index < otpInputs.length - 1) {
-                        otpInputs[index + 1].classList.add('active');
-                    }
-                });
-
-                input.addEventListener('keydown', function (event) {
-                    if (event.key === 'Backspace' && index > 0) {
-                        moveToPreviousInput(input, otpInputs[index - 1].id);
-                        otpInputs[index].classList.remove('active');
-                    }
-                });
-
-                input.addEventListener('focus', function () {
-                    input.classList.add('active');
-                });
-
-                input.addEventListener('blur', function () {
-                    input.classList.remove('active');
-                });
-            });
-        });
-
-        function handleSubmit(event) {
-            event.preventDefault(); // Prevent the default form submission
-
-            // Get all OTP input fields
-            var otpInputs = document.querySelectorAll('.otp-input');
-
-            // Combine the values from each input field
-            var combinedOtp = '';
-            otpInputs.forEach(function (input) {
-                combinedOtp += input.value;
+                var img = document.getElementById("img");
+                img.src = "/userUpload/closed_complaint/<%= complaint.resolvedImage %>";
+    
+        
             });
 
-            // Save the combined OTP in the hidden input field
-            document.querySelector('input[name="finalOTP"][type="hidden"]').value = combinedOtp;
+             document.getElementById("complaint").addEventListener("click", function(){
 
-            event.target.submit();
-        }
-
-
-
-
+                    var img = document.getElementById("img");
+                    img.src = "/userUpload/closed_complaint/<%= complaint.complaintImage %>";
+        
+            });
         </script>
     </div>
 </body>

@@ -1,126 +1,121 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Lilita+One&family=Montserrat:wght@500&family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chelsea+Market&family=Great+Vibes&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-body{
+*{
     margin: 0;
     padding: 0;
-    width: 100vw;
-    height: 100vh;
-    background-image: url("../images/Marble\ 5.svg");
-    background-color: rgb(24, 23, 23);
-    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif;
 }
-
-
-.content {
+html,body{
     width: 100%;
-    height: calc(98vh - 100px);
+    height: 100vh;
+}
+
+.main{
+    width: 100%;
+    min-height: 100vh; /* Use min-height for better flexibility */
+    background-image: url("Marble\ 5.svg");
+    background-color: rgb(24, 23, 23);
+}
+.nav{
+    width: 100%;
+    height: 100px;
+    background-color: transparent;
+    padding: 1rem 2rem;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    padding-top: 1rem;
-    justify-content: center;
-    gap: 1rem;
+    border-bottom: 2px solid white;
 }
-
-.heading{
+.nav i{
+    display: none;
+}
+.nav img{
+    width: 20%;
+    padding-top: 2rem;
+}
+.rlinks{
+    width: 40%;
+    height: 100%;
     display: flex;
-    width: 80%;
     justify-content: center;
-    font-family: "Noto Sans", sans-serif;
-    font-size: 38px;
-    font-weight: 600;
-    margin-top: -20px;
-    color: white;
+    align-items: center;
+    gap: 3rem;
 }
-
-span{
-    color: #FFB219;
+.rlinks a{
+    text-decoration: none;
+    font-size: 1vw;
+    font-weight: 700;
+    color: white
 }
-.box{
-    width: 1205px;
-    height: 85%;
-    background-color: #2a2a2d;
-    border-radius: 8px;
-    display: flex;
-    border-radius: 15px;
+.rlinks i{
+    font-size: 1.4vw ;
+    font-weight: 900;
+    display: none;
+}
+.rlinks button{
+    height: 2.2vw;
+    width: 7vw;
+    padding: 0vw 0.2vw;
+    cursor: pointer;
+    font-size: 1vw;
+    background-color: #FFB219;
+    border: none;
+    font-weight: 700;
+    border-radius: 5px;
     
 }
+#btn{
+    color: black;
+}
 
+.content{
 
-.innerBox{
+    width: 100%;
+    padding-top: 4rem;
+    flex-direction: column;
+    gap: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%; /* Ensure the content fills available space */
+}
+.center{
     width: 60%;
-    height: 95%;
-    margin-left: 1rem;
-    padding-top: 1.2rem;
+    height: 80%;
+    background-color: #2A2A2D;
+    border-radius: 12px;
+    padding: 2rem 4rem;
+    display: flex;
+}
+.center h1{
+    font-size: 2vw;
+}
+
+.center .left{
+    width: 50%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     gap: 2rem;
 }
-.innerBox .top{
-    display: flex;
-    flex-direction: column;
-    font-family: "Plus Jakarta Sans", sans-serif;
-    color: white;
-}
-.logo{
+.right{
     width: 50%;
-    height: 95%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.innerBox .top{
-    display: flex;
-    flex-direction: column;
-    font-family: "Plus Jakarta Sans", sans-serif;
-    color: white;
-    padding-left: 5rem;
-    width: 25vw;
-}
-
-.boxtop{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
-    padding-top: 1rem;
-    visibility: hidden;
+    min-height: 100%;
 }
-
-.toggle{
-    width: 50%;
-    display: flex;
-    gap: 2rem;
-    height: 3vw;
-    padding-left: 5rem;
+.right img{
+    width: 70%;
 }
-
-.toggle button{
-    width: 121px;
-    height: 40px;
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-    background-color: #fdfdfc;
-    border-radius: 8px;
-}
-
-.boxbottom{
-    display: flex;
-    height: 92%;
-}
-
-.innerBox form{
+form{
     display: flex;
     flex-direction: column;
-    font-family: "Inter", sans-serif;
     gap: 1.5rem;
-    padding-left: 5rem;
 }
-
 form input[type="text"] , form input[type="password"] , form input[type="email"]{
-    width: 448.94px ; 
+    width: 85% ; 
     height: 50.85px;
     padding-left: 1rem;
     border-radius: 10px;
@@ -131,7 +126,7 @@ form input[type="text"] , form input[type="password"] , form input[type="email"]
 }
 
 select{
-    width: 465.94px ; 
+    width: 85% ; 
     height: 50.85px;
     padding-left: 1rem;
     border-radius: 10px;
@@ -140,23 +135,16 @@ select{
     background-color: #B4B4B4;
 
 }
-
-form .forgot{
+.upload{
     display: flex;
-    width: 77%;
-    justify-content: space-between;
-    margin-top: 1rem;
-    color: rgb(255, 255, 255);
+    gap: 1rem;
 }
-
-.forgot a{
-    text-decoration: none;
-    font-size: 17px;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
+.upload p{
+    color: white;
+    font-size: 0.75vw;
 }
 form input[type="submit"]{
-    width: 448.94px ; 
+    width: 85% ; 
     height: 60.85px;
     background-color: #232429;
     border: none;
@@ -165,30 +153,252 @@ form input[type="submit"]{
     border-radius: 10px;
     cursor: pointer;
 }
-label{
-    font-size: 18px;
-    margin-left: 0.5rem;
-}
-
-.form-group{
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-.form-group p{
-    color: white;
-    font-size: 18px;
-}
-input[type="file"]{
-    color: white;
-    font-size: 16px;
-}
-#learn{
-    font-size: 20px;
+.left h1{
+    font-size: 2.75vw;
     color: white;
 }
-
-a{
+span{
+    color: #FFB219;
+}
+.content>p{
+    color: white;
+    font-size: 1vw;
+}
+#test{
     text-decoration: none;
+    color:#FFB219;
 }
+
+/* Mobile View */
+@media (max-width: 500px) {
+
+
+    .content {
+        width: 100%;
+        min-height: 100vh; 
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: normal;
+        padding-top: 0rem;
+        padding-bottom: 2rem;
+    }
+    .nav{
+        padding: 1rem 1rem;
+        height: 80px;
+    }
+    .nav i{
+        display: flex;
+        font-size: 5vw;
+    }
+    .nav .rlinks{
+        display: none;
+    }
+    .nav img{
+        width: 70%;
+    }
+    .center {
+        width: 90%;
+        height: 70%;
+        padding: 1rem 1.25rem;
+        display: flex;
+        margin-top: 3rem;
+    }
+    .right{
+        display: none;
+    }
+
+        .center .left {
+            width: 100%;
+            height: 100%;
+            gap: 2rem;
+            align-items: center;
+        }
+        .left h1 {
+            font-size: 6.25vw;
+        }
+        form{
+            gap: 2rem;
+            width: 100%;
+        }
+        form input[type="text"], form input[type="password"], form input[type="email"] {
+            width: 100%;
+            height: 50.85px;
+            padding-left: 1rem;
+            border-radius: 10px;
+            font-size: 4vw;
+        }
+        select {
+            width: 100%;
+            height: 50.85px;
+            font-size: 3.5vw;
+        }
+        .submit{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        form input[type="submit"] {
+            width: 50%;
+            height: 11vw;
+            font-size: 5vw
+        }
+        .content>p {
+            font-size: 4vw;
+        }
+
+
+}
+
+
+/* Tablet */
+@media (max-width: 768px) and (min-width: 500px) {
+
+    .content {
+        width: 100%;
+        min-height: 100vh; 
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: normal;
+        padding-top: 0rem;
+    }
+    .nav {
+        width: 100%;
+        height: 100px;
+        background-color: transparent;
+        padding: 1rem 2rem;
+    
+    }
+
+    .nav i{
+        display: flex;
+        font-size: 3vw;
+    }
+    .nav .rlinks{
+        display: none;
+    }
+    .nav img{
+        width: 40%;
+    }
+    .center {
+        width: 90%;
+        height: 70%;
+        padding: 1rem 1.25rem;
+        display: flex;
+        margin-top: 3rem;
+    }
+    .right{
+        display: none;
+    }
+
+        .center .left {
+            width: 100%;
+            height: 100%;
+            gap: 2rem;
+            align-items: center;
+        }
+        .left h1 {
+            font-size: 5vw;
+            color: white;
+        }
+        form {
+            gap: 2rem;
+            padding: 0rem 2rem;
+            width: 100%;
+        }
+        form input[type="text"], form input[type="password"], form input[type="email"] {
+            width: 100%;
+            height: 50.85px;
+            font-size: 17px;
+        }
+        select {
+            width: 100%;
+            height: 50.85px;
+            font-size: 17px;
+        }
+        .submit{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        form input[type="submit"] {
+            width: 35%;
+            height: 8vw;
+            font-size: 3.5vw;
+        }
+        .content>p {
+            font-size: 2.3vw;
+        }
+   
+
+   
+}
+
+/* Tablet To Laptop */
+@media (min-width: 768px) and (max-width: 992px) {
+
+
+    .content {
+        width: 100%;
+        min-height : 100vh;
+        padding: 0rem 1rem;
+        justify-content: normal;
+    }
+    .nav {
+        padding: 1rem 1rem;
+    }
+    .nav img {
+        width: 30%;
+        padding-top: 2rem;
+    }
+    .rlinks {
+        width: 70%;
+        height: 100%;
+        display: flex;
+        justify-content: end;
+        gap: 3rem;
+    }
+    .rlinks a {
+        font-size: 1.7vw;
+       
+    }
+    .rlinks button {
+        height: 4.2vw;
+        width: 10vw;
+    
+    }
+    .center .left {
+        width: 60%;
+        height: 100%;
+    }
+    .right{
+        width: 40%;
+    }
+    .center {
+        width: 95%;
+        height: 80%;
+        padding: 2rem 1rem;
+        margin-top: 2rem;
+        gap: 0rem;
+    }
+    .content>p {
+        color: white;
+        font-size: 2vw;
+    }
+    .right img {
+        width: 90%;
+    }
+    .left h1 {
+        font-size: 3.75vw;
+        color: white;
+    }
+
+    
+
+   
+   
+}
+
+
+

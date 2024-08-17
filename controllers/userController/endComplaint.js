@@ -12,6 +12,9 @@ const endComplaint = async (req, res) => {
         let complaintID = req.params.id;
         let rating = req.body.rating;
 
+
+       
+
         let complaint = await complaintModel.findOne({ _id: complaintID });
 
         if (!complaint) {

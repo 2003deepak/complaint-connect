@@ -14,9 +14,10 @@ const worker = require('../../models/worker');
 
 const initialVisitDone = async (req, res) => {
    
-    let {otp} = req.body 
+    let {finalOTP} = req.body 
     let complaintId = req.params.id
-    if(otp == Number(req.cookies["initialVisitOTP"])){
+   
+    if(finalOTP == (req.cookies["initialVisitOTP"])){
 
         
         let worker_action = await workerActionModel.findOneAndUpdate({complaintId : complaintId},{actionTaken : true})
@@ -28,9 +29,6 @@ const initialVisitDone = async (req, res) => {
         res.send("Failed OTP")
     }
 
-    
-
-    
 }
 
 module.exports = initialVisitDone;

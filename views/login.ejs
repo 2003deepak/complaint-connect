@@ -1,75 +1,115 @@
-<%- include('./partials/navTop') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 
+    <link rel="stylesheet" href="/stylesheets/login.css">
 
-        <!-- CSS File Import -->
-        <link rel="stylesheet" href="stylesheets/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
 
+    <div class="main">
+
+         <!-- Nav bar Starts for here -->
+         <%- include('./partials/navTop') %>
+          
+         
         <div class="content">
+
 
             <div class="heading">
                 <p>You are <span>just</span> a Step <span>away.</span></p>
-
-                
-
             </div>
 
-            <div class="box">
+            <div class="center">
 
-                <div class="innerBox">
-
-                    <div class="top">
-                        <h1 style="font-size: 48px;" id="heading">Login <span>now</span></h1>
-                    </div>
-                    <div class="toggle">
-                        <button id="user" style="background-color: #FF9F00;">User</button>
-                        <button id="worker">Worker</button>
-                        
-                    </div>
-
-                    <form class="form"  action="/user/login" method="POST"  >
-
-                    
-
-                        <input type="text" name="username" id="username" placeholder="Username" value="<%= credentials.username %>" required>
-
-                        <input type="password" id="password" placeholder="Password" name = "password" value="<%= credentials.password %>"  required>
+                <div class="left">
 
 
-                        <div class="forgot">
-    
-                            <div>
-                                <input  type="checkbox" name="rememberme" id="flexCheckDefault">
-                                <label > Remember for 7 days </label>
-    
+                    <h1>Login <span>Now</span></h1>
+
+                    <form action="/user/login" method="POST" class="form">
+
+
+                            <div class="msg">
+                                <p>Error Msg</p>
                             </div>
-                            
-                            <a href="../html/forgot.html">Forgot Password ?</a>
 
+                            <div class="toggle">
+                                <button id="user" style="background-color: #FF9F00;">User</button>
+                                <button id="worker">Worker</button>
+                                
+                            </div>
+
+                           
+                            <div class="username">
+                                <input type="text" placeholder="Enter The Username" class="text" name="username" id = 'username' autocomplete="off">
+                            </div>
+
+                            <div class="password">
+                                <input type="password" placeholder="Enter Your Password" class="text" name="password" id = 'password' autocomplete="off">
+                            </div>
+
+                            <div class="forgot">
     
-                        </div>
-                    
-                    <input type="submit" name = "save" value="Continue" id="btn">    
+                                <div>
+                                    <input  type="checkbox" name="rememberme" id="flexCheckDefault">
+                                    <label > Remember Me </label>
+        
+                                </div>
+                                
+                                <a href="../html/forgot.html">Forgot Password ?</a>
+    
+        
+                            </div>
 
-                </form>
+                           
+
+                            <div class="submit">
+
+                                <input type= "submit" value = "Sign Up " name = "save">
+
+                            </div>
+
+
+
+
+
+
+
+                    </form>
+
+
 
 
                 </div>
-                <div class="logo">
+                <div class="right">
 
-                    <img src="../images/Artboard 2@4x 1.svg" alt="" width="400px" >
+
+                    <img src="/images/Artboard 2@4x 1.svg" alt="">
+
+
+
+
+
 
                 </div>
 
-                
 
             </div>
 
 
-            
-        </div>
 
 
-   <script src="javascripts/loginBtnToggle.js"></script>
+          </div>
+
+        <script src="javascripts/loginBtnToggle.js"></script>
+
+
+    </div>
     
 </body>
 </html>

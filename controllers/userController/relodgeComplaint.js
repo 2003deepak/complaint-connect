@@ -10,8 +10,9 @@ const { devNull } = require('os');
 
 const relodgeComplaint = async (req, res) => {
     
-    const cause = req.body.cause;      // Quality Issue                           
-    const complaintID = req.params.id;  // 669d942828fe802ea7097f1a
+    const cause = req.body.cause;                        
+    const complaintID = req.params.id;  
+    
 
     const priority = await priorityComplaintModel.create({
         complaintId: complaintID,

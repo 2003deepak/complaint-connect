@@ -1,77 +1,118 @@
-<%- include('./partials/navTop') %>
-
-
-        <!-- CSS File Import -->
-        <link rel="stylesheet" href="stylesheets/signup.css">
-
-        <div class="content">
-
-            <div class="box">
-
-                
-
-                    <div class="innerBox">
-
-                        <div class="top">
-                            <h1 style="font-size: 48px;" id="heading">Sign Up <span>now</span></h1>
-                        </div>
-
-                    <form class="form"  action="/signup" method="post" onsubmit="return validate(event)" enctype="multipart/form-data" >
-
-                        <input type="text" placeholder="Enter The Username" class="text" name="username" id = 'username' autocomplete="off">
-
-                        <input type="password" placeholder="Enter Your Password" class="text" name="password" id = 'password' autocomplete="off">
-
-
-                        <input type="email" placeholder="Enter Your Email Id" class="text" name="email" id = 'emailID' autocomplete="off">
-                
-
-                    
-                <select name = "buildingNumber" class= "dropdown">
-                    <option value = "null">Please Select Your Building Number</option>
-                    <option value = "210">210</option>
-                    <option value = "110">110</option>
-                    <option value = "179">179</option>
-                </select>
-
-                <select name = "roomNumber" class= "dropdown">
-                    <option value = "null">Please Select Your Room Number</option>
-                    <option value = "1">1</option>
-                    <option value = "2">2</option>
-                    <option value = "3">3</option>
-                    <option value = "4">4</option>
-                    <option value = "5">5</option>
-                </select>
-                <div class="form-group">
-                    <p>Upload Allotment Letter : </p>
-                   
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="allotment" accept="application/pdf">
-                  </div>
-
-        
-        
-                  <input type= "submit" value = "Sign Up " name = "save" class="signupbtn">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     
+    <link rel="stylesheet" href="/stylesheets/signup.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <div class="main">
+
+
+        <!-- Nav bar Starts for here -->
+        <%- include('./partials/navTop') %>
+
+          <div class="content">
+
+            <div class="center">
+
+                <div class="left">
+
+                    <h1>Sign Up <span>Now</span></h1>
+
+                    <form class="form"  action="/user/signup" method="post" onsubmit="return validate(event)" enctype="multipart/form-data">
+
+                        
+                            <div class="username">
+                                <input type="text" placeholder="Enter The Username" class="text" name="username" id = 'username' autocomplete="off">
+                            </div>
+
+                            <div class="password">
+                                <input type="password" placeholder="Enter Your Password" class="text" name="password" id = 'password' autocomplete="off">
+                            </div>
+
+                            <div class="email">
+                                <input type="email" placeholder="Enter Your Email Id" class="text" name="email" id = 'emailID' autocomplete="off">
+                            </div>
+
+                            <div class="building">
+
+                                <select name = "buildingNumber" class= "dropdown">
+                                    <option value = "null">Please Select Your Building Number</option>
+                                    <option value = "210">210</option>
+                                    <option value = "110">110</option>
+                                    <option value = "179">179</option>
+                                </select>
+
+
+                            </div>
+
+                            <div class="room">
+
+                                <select name = "roomNumber" class= "dropdown">
+                                    <option value = "null">Please Select Your Room Number</option>
+                                    <option value = "1">1</option>
+                                    <option value = "2">2</option>
+                                    <option value = "3">3</option>
+                                    <option value = "4">4</option>
+                                    <option value = "5">5</option>
+                                </select>
+
+                            </div>
+
+                            <div class="upload">
+                                <p>Allotment Letter : </p>
+                                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="allotment" accept="application/pdf">
+                              </div>
+
+                            <div class="submit">
+
+                                <input type= "submit" value = "Sign Up " name = "save">
+
+                            </div>
+
+
+
+
+
+
+
                     </form>
-    
-    
-                    </div>
-                    <div class="logo">
-    
-                        <img src="../images/Artboard 2@4x 1.svg" alt="" width="400px" >
-    
-                    </div>
+
+
+
+
+                </div>
+                <div class="right">
+
+
+                    <img src="/images/Artboard 2@4x 1.svg" alt="">
+
+
+
+
+
+
+                </div>
+
 
             </div>
-            <p id = "learn"><b>Do You Have an Account ? </b><a href="../php/login.php" id="test" style="color:#FFB219;"><b>Login</a></b></p>
-
-              
+            <p><b>Do You Have an Account ? </b><a href="/login" id="test"><b>Login</a></b></p>
 
 
-            
-        </div>
 
-        <script src="javascripts/validateEmail.js"></script>
+          </div>
 
+          <script src="javascripts/validateEmail.js"></script>
+
+
+
+    </div>
+    
 </body>
 </html>

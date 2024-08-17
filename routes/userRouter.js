@@ -48,9 +48,21 @@ router.get('/dashboard',isLoggedIn,async(req,res)=>{
 
 
 router.get('/complaintData/:id', async (req, res)=> {
+
+    
+        let complaint = await complaintModel.findOne({ _id: req.params.id}).populate("assignedWorker");
+        await res.render('complaintData', { complaint });
+    
+});
+
+router.get('/closedComplaint/:id', async (req, res)=> {
+
+    
+        let complaint = await closedComplaintModel.findOne({ _id: req.params.id}).populate("assignedWorker");
+        await res.render('closedComplaint', { complaint });
    
-    let complaint = await complaintModel.findOne({ _id: req.params.id}).populate("assignedWorker");
-    await res.render('complaintData', { complaint });
+   
+   
 });
 
 router.get('/profile',isLoggedIn,async(req,res)=>{
