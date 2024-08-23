@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const {generateToken , generateTokenForOther} = require('../../utils/generateToken');
-const swal = require('sweetalert');
 
 const router = express.Router();
 const userModel = require('../../models/user');

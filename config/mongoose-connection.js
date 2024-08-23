@@ -1,12 +1,11 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 
-mongoose.connect(`mongodb://127.0.0.1:27017/ComplaintConnect`).then(()=>{
-   
-}).catch((err) =>{
+mongoose.connect(process.env.MONGO_URL).then(() => {
+        console.log('Connected to DB');
+    })
+    .catch((err) => {
+        console.log('Error connecting to DB:', err);
+    });
 
-    console.log(err);
-
- });
-
-
-module.exports = mongoose.connection ; 
+module.exports = mongoose.connection;
