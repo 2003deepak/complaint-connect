@@ -148,16 +148,18 @@ span{
     font-weight: 600;
 }
 
-.msg{
-    width: 100%;
-    display: none;
-}
 .toggle{
     width: 100%;
     display: flex;
     gap: 2rem;
     height: 3vw;
 
+}
+
+.msg{
+    width: 100%;
+    font-size: 1vw;
+    color: red;
 }
 
 .toggle button{
@@ -283,7 +285,13 @@ form .forgot{
         background-color: #fdfdfc;
         border-radius: 8px;
     }
-    
+    .msg {
+        width: 100%;
+        font-size: 3.5vw;
+        color: red;
+        display: flex;
+        justify-content: center;
+    }
 
 
 
@@ -394,6 +402,13 @@ form .forgot{
             background-color: #fdfdfc;
             border-radius: 8px;
         }
+        .msg {
+            width: 100%;
+            font-size: 2.5vw;
+            color: red;
+            display: flex;
+            justify-content: center;
+        }
 
    
 }
@@ -461,6 +476,11 @@ form .forgot{
         width: 100%;
         gap: 2rem;
         height: 5vw;
+    }
+    .msg {
+        width: 100%;
+        font-size: 1.5vw;
+        color: red;
     }
    
     

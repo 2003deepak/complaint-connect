@@ -12,6 +12,8 @@ const workerModel = require('../../models/worker');
 const isLoggedIn = async (req, res, next) => {
 
     if(!req.cookies.token){
+
+        req.flash("error","You must be logged in first.");
         res.redirect("/login");
     }else{
         const data = jwt.verify(req.cookies.token , process.env.JWT_KEY);

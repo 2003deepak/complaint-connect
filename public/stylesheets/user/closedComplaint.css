@@ -1,5 +1,5 @@
 :root {
-    --background-color: #242424; 
+    --background-color: #444449; 
     --nav-background-color : #161717; 
     --icon-color:#8C8C8C;
     --preview-background-color:#161717;
@@ -187,7 +187,8 @@ p{
 }
 
 .cbtm{
-    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
     height: 95%;
     gap: 1rem;
 }
@@ -217,11 +218,6 @@ tbody tr:hover {
 .btn {
     font-family: 'Poppins', sans-serif;
 }
-.no-complaints {
-    text-align: center;
-    vertical-align: middle;
-    height: 100px; /* Adjust height as needed */
-}
 
 
 
@@ -241,7 +237,6 @@ tbody tr:hover {
         min-height: 100vh; /* Ensures it occupies the full viewport height */
         margin-left: 0;
         background-color: var(--background-color);
-        overflow-x: scroll;
         padding: 1rem 1rem;
         display: flex;
         flex-direction: column;
@@ -279,11 +274,12 @@ tbody tr:hover {
         top: 0;
     }
     .cbtm {
-        width: 100vw;
         height: auto;
         flex-direction: column-reverse;
         padding : 3rem 1rem;
+    
     }
+   
     table th{
         font-size: 3.5vw;
         white-space: nowrap;
@@ -296,7 +292,35 @@ tbody tr:hover {
     }
     table td {
         padding-left:1rem; /* Adjust the padding value as needed */
-      }
+        z-index: 2;
+    }
+
+      /* Make the first column sticky, including header */
+      th:nth-child(2), td:nth-child(2) {
+        position: -webkit-sticky; /* For Safari */
+        position: sticky;
+        left: -18px;
+        z-index: 10; /* Higher z-index for the sticky first column */
+    }
+    td:nth-child(2) {
+        position: -webkit-sticky; /* For Safari */
+        position: sticky;
+        left: -18px;
+        z-index: 10; /* Higher z-index for the sticky first column */
+        background-color: #0B0B0F;
+    }
+
+    .table-wrapper::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .table-wrapper::-webkit-scrollbar-thumb {
+        background-color: #888;
+    }
+
+    .table-wrapper::-webkit-scrollbar-thumb:hover {
+        background-color: #555;
+    }
     
 }
 
@@ -316,7 +340,6 @@ tbody tr:hover {
         min-height: 100vh; /* Ensures it occupies the full viewport height */
         margin-left: 0;
         background-color: var(--background-color);
-        overflow-x: scroll;
         padding: 1rem 1rem;
         display: flex;
         flex-direction: column;
@@ -351,12 +374,11 @@ tbody tr:hover {
         right: -30px;
         top: 0;
     }
-    
     .cbtm {
-        width: 100vw;
         height: auto;
         flex-direction: column-reverse;
         padding : 3rem 1rem;
+    
     }
     table th{
         font-size: 2vw;
@@ -370,6 +392,32 @@ tbody tr:hover {
     }
     table td {
         padding-left:1rem; /* Adjust the padding value as needed */
+    }
+    
+    th:nth-child(2), td:nth-child(2) {
+        position: -webkit-sticky; /* For Safari */
+        position: sticky;
+        left: -18px;
+        z-index: 10; /* Higher z-index for the sticky first column */
+    }
+    td:nth-child(2) {
+        position: -webkit-sticky; /* For Safari */
+        position: sticky;
+        left: -18px;
+        z-index: 10; /* Higher z-index for the sticky first column */
+        background-color: #0B0B0F;
+    }
+
+    .table-wrapper::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .table-wrapper::-webkit-scrollbar-thumb {
+        background-color: #888;
+    }
+
+    .table-wrapper::-webkit-scrollbar-thumb:hover {
+        background-color: #555;
     }
    
     
@@ -435,12 +483,11 @@ tbody tr:hover {
     .cinfo p {
         font-size: 16px;
     }
-
     .cbtm {
-        width: 100vw;
         height: auto;
         flex-direction: column-reverse;
         padding : 3rem 1rem;
+    
     }
     table th{
         font-size: 1.75vw;
@@ -454,6 +501,32 @@ tbody tr:hover {
     }
     table td {
         padding-left:1rem; /* Adjust the padding value as needed */
+    }
+
+    th:nth-child(2), td:nth-child(2) {
+        position: -webkit-sticky; /* For Safari */
+        position: sticky;
+        left: -18px;
+        z-index: 10; /* Higher z-index for the sticky first column */
+    }
+    td:nth-child(2) {
+        position: -webkit-sticky; /* For Safari */
+        position: sticky;
+        left: -18px;
+        z-index: 10; /* Higher z-index for the sticky first column */
+        background-color: #0B0B0F;
+    }
+
+    .table-wrapper::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .table-wrapper::-webkit-scrollbar-thumb {
+        background-color: #888;
+    }
+
+    .table-wrapper::-webkit-scrollbar-thumb:hover {
+        background-color: #555;
     }
    
    

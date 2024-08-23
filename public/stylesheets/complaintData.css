@@ -40,9 +40,9 @@ html,body{
     min-height: 100%;
 }
 
-.main{
+.main {
     width: 100%;
-    min-height: 100%;
+    min-height: 100%; /* Ensures it occupies at least the full viewport height */
     background-color: var(--background-color);
     display: flex;
 }
@@ -184,7 +184,8 @@ html,body{
 }
 .cbtm{
     width: 100%;
-    height: 85%;
+    min-height: 85%;
+    height: auto;
     display: flex;
     gap: 1rem;
     align-items: center;
@@ -253,6 +254,65 @@ button{
 }
 
 
+/* Integrated Code from the file assign Worker File */
+
+select{
+    width: 40%;
+    padding: 0.5rem;
+    border: 1px solid black;
+    font-size: 16px;
+    border-radius: 5px;
+}
+.btmdivWorker form{
+    background-color: pink;
+    width: 100%;
+}
+.btmdivWorker{
+    height: 8%;
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+form{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.btmdivWorker p {
+    font-size: 18px;
+}
+
+.btmdivWorker img{
+    width: 3%;
+} 
+input[type="submit"]{
+    background-color: #FFB219;
+    color: black;
+    width: 20%;
+    height: 50%;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+
+}
+
+
+/* Inegrated for star rating in Closed Complaint  */
+
+.star {
+    font-size: 3vw;
+    color: #ddd;
+    cursor: pointer;
+    position: relative;
+    color: #f0a500;
+}
+
+
 /* Mobile View */
 @media (max-width: 500px) {
 
@@ -274,6 +334,7 @@ button{
         flex-direction: column;
         gap: 1rem;
         align-items: center;
+        padding-bottom: 2rem;
     }
     
     .nav {
@@ -347,7 +408,7 @@ button{
     .cbtmleft {
         width: 100%;
         height: auto; /* Adjusts based on content */
-        padding: 2rem 1rem;
+        padding: 0rem 1rem;
     }
     .submit {
         justify-content: center;
@@ -363,14 +424,25 @@ button{
     .cbtmright>img {
         width: 96%;
     }
-    .btmdiv img {
+    .btmdiv img , .btmdivWorker img {
         display: none;
     }
-    .btmdiv h2 {
+    .btmdiv h2 , .btmdivWorker h2 {
         font-size: 4vw;
     }
-    .btmdiv p {
+    .btmdiv p,.btmdivWorker p {
         font-size: 4vw;
+    }
+    select{
+        width: 50%;
+    }
+
+    .star {
+        font-size: 7vw;
+        color: #ddd;
+        cursor: pointer;
+        position: relative;
+        color: #f0a500;
     }
     
 }
@@ -396,6 +468,7 @@ button{
         flex-direction: column;
         gap: 1rem;
         align-items: center;
+        padding-bottom: 4rem;
     }
     .nav{
         transform: translateX(-20rem);
@@ -455,7 +528,7 @@ button{
     .cbtmleft {
         width: 100%;
         height: auto;
-        padding: 4rem 2rem;
+        padding: 0rem 2rem;
         gap: 3rem;
     }
     .submit {
@@ -471,16 +544,27 @@ button{
     .cbtmright>img {
         width: 80%;
     }
-    .btmdiv img {
+   
+    .btmdiv img , .btmdivWorker img {
         display: none;
     }
-    .btmdiv h2 {
+    .btmdiv h2 , .btmdivWorker h2 {
         font-size: 3.2vw;
     }
-    .btmdiv p {
+    .btmdiv p,.btmdivWorker p {
         font-size: 3vw;
     }
+    select{
+        width: 50%;
+    }
    
+    .star {
+        font-size: 7vw;
+        color: #ddd;
+        cursor: pointer;
+        position: relative;
+        color: #f0a500;
+    }
 }
 
 /* Tablet To Laptop */

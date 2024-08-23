@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/stylesheets/user/dashboard.css">
+    
 
     <!-- Dm Sans  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,7 +54,7 @@
             <i class="fa-solid fa-bars" id="toggle"></i>
 
             <div class="cinfo">
-                <h1>Worker</h1>
+                <h1>Deepak Yadav</h1>
                 <p>Lorem ipsum </p>
             </div>
 
@@ -88,23 +89,21 @@
             <div class="cline"></div>
             <div class="cbtm">
 
+                <div class="newComplaint">
 
-                <div class="data">
+                    <div class="text">
 
-                    <div class="newComplaint">
-
-                        <div class="text">
+                        <div class = "textcircle" style="background-color: #FF5858;"></div>
     
-                            <div class = "textcircle" style="background-color: #FF5858;"></div>
-        
-                            <p>New Request</p>
-                            <div class="dd">
-                                <i class="fa-solid fa-caret-down"></i>
-                            </div>
-                            
-                            
-        
+                        <p>New Request</p>
+                        <div class="dd">
+                            <i class="fa-solid fa-caret-down"></i>
                         </div>
+                        
+                        
+    
+                    </div>
+
 
                         <% if(newComplaint.length > 0) {
 
@@ -114,177 +113,169 @@
 
                                     <div class="left" >
                                         <div class = "textcircle" style="background-color: #FF5858;"></div>
-        
+
                                     </div>
                                     <div class="middle">
                                         <p>Complaint ID: <%= complaint.complaintId.complaintId %> </p>
                                         <p>Complaint Type: <%= complaint.complaintId.complaintType %> </p>
                                         <p>Subject: <%= complaint.complaintId.subject %> </p>
-        
+
                                     </div>
                                     <div class="view-details" >
-        
+
                                         <i class="fa-solid fa-greater-than fa-fade" data-complaint-id="<%= complaint.complaintId.complaintId %>" style="color: #ffbc39;" id="previewContent" ></i>
-        
-        
-        
+
+
+
                                     </div>
-        
+
                                 </div>
-    
+
                                 
-    
+
                             <% }); %>
-    
+
                         <% } else { %>
-    
+
                             <!-- Display a blank area if there are no new complaints -->
                             <div class="blank-area"></div>
-    
+
                         <% } %>  
-    
-                        
-                        
-    
-                    </div>
-                    <div class="pendingComplaint">
 
-                        <div class="text">
-                            <div class = "textcircle" style="background-color: #F4DD0E;"></div>
-                            <p>In Progress</p>
+                </div>
 
-                            <div class="dd">
-                                <i class="fa-solid fa-caret-down"></i>
-                            </div>
-                            
-                            
+                <div class="pendingComplaint">
+
+                    <div class="text">
+                        <div class = "textcircle" style="background-color: #F4DD0E;"></div>
+                        <p>In Progress</p>
+
+                        <div class="dd">
+                            <i class="fa-solid fa-caret-down"></i>
                         </div>
+                        
+                        
+                    </div>
 
-                        <% if (pendingComplaint.length > 0) { %>
+                    <% if (pendingComplaint.length > 0) { %>
 
-                            <% pendingComplaint.forEach((complaint) => { 
-                                let priorityStyle = (complaint.isPriority) ? 'border: 1.5px solid red; animation: blink 1s infinite;' : '';
-                            %>
+                        <% pendingComplaint.forEach((complaint) => { 
+                            let priorityStyle = (complaint.isPriority) ? 'border: 1.5px solid red; animation: blink 1s infinite;' : '';
+                        %>
+
+                        <div class="complaintData" >
+
+                            <div class="left" >
+                                <div class = "textcircle" style="background-color: #F4DD0E;"></div>
+
+                            </div>
+                            <div class="middle">
+                                <p>Complaint ID: <%= complaint.complaintId.complaintId %> </p>
+                                <p>Complaint Type: <%= complaint.complaintId.complaintType %> </p>
+                                <p>Subject: <%= complaint.complaintId.subject %> </p>
+
+                            </div>
+                            <div class="view-details" >
+
+                                <i class="fa-solid fa-greater-than fa-fade" data-complaint-id="<%= complaint.complaintId.complaintId %>"  style="color: #ffbc39;" id="previewContent"></i>
+
+
+
+                            </div>
+
+                        </div>
+                    
+                        
+                    
+                        <% }); %>
+                    
+                    <% } else { %>
+                    
+                        <!-- Display a blank area if there are no new complaints -->
+                        <div class="blank-area"></div>
+                    
+                    <% } %>
+
+                    
+
+                    
+                    
+
+                </div>
+
+
+                <div class="completeComplaint">
+
+                    <div class="text">
+                        <div class = "textcircle" style="background-color: #05FF00;"></div>
+                        <p>Completed</p>
+
+                        <div class="dd">
+                            <i class="fa-solid fa-caret-down"></i>
+                        </div>
+                        
+                        
+                    </div>
+
+                    <% if(completedComplaint.length > 0) {
+
+                        completedComplaint.forEach((complaint) => { %>
 
                             <div class="complaintData" >
 
                                 <div class="left" >
-                                    <div class = "textcircle" style="background-color: #F4DD0E;"></div>
+                                    <div class = "textcircle" style="background-color: #05FF00;"></div>
     
                                 </div>
                                 <div class="middle">
                                     <p>Complaint ID: <%= complaint.complaintId.complaintId %> </p>
                                     <p>Complaint Type: <%= complaint.complaintId.complaintType %> </p>
                                     <p>Subject: <%= complaint.complaintId.subject %> </p>
-    
                                 </div>
                                 <div class="view-details" >
     
-                                    <i class="fa-solid fa-greater-than fa-fade" data-complaint-id="<%= complaint.complaintId.complaintId %>"  style="color: #ffbc39;" id="previewContent"></i>
+                                    <i class="fa-solid fa-greater-than fa-fade" data-complaint-id="<%= complaint.complaintId.complaintId %>" style="color: #ffbc39;" id="previewContent" ></i>
     
     
     
                                 </div>
     
                             </div>
-                        
+
                             
-                        
-                            <% }); %>
-                        
-                        <% } else { %>
-                        
-                            <!-- Display a blank area if there are no new complaints -->
-                            <div class="blank-area"></div>
-                        
-                        <% } %>
+            
 
-                        
-    
-                        
-                        
-    
-                    </div>
-                    <div class="completeComplaint">
 
-                        <div class="text">
-                            <div class = "textcircle" style="background-color: #05FF00;"></div>
-                            <p>Completed</p>
-
-                            <div class="dd">
-                                <i class="fa-solid fa-caret-down"></i>
-                            </div>
                             
-                            
-                        </div>
 
-                        <% if(completedComplaint.length > 0) {
+                        <% }); %>
 
-                            completedComplaint.forEach((complaint) => { %>
+                    <% } else { %>
 
-                                <div class="complaintData" >
-
-                                    <div class="left" >
-                                        <div class = "textcircle" style="background-color: #05FF00;"></div>
-        
-                                    </div>
-                                    <div class="middle">
-                                        <p>Complaint ID: <%= complaint.complaintId.complaintId %> </p>
-                                        <p>Complaint Type: <%= complaint.complaintId.complaintType %> </p>
-                                        <p>Subject: <%= complaint.complaintId.subject %> </p>
-        
-                                    </div>
-                                    <div class="view-details" >
-        
-                                        <i class="fa-solid fa-greater-than fa-fade" data-complaint-id="<%= complaint.complaintId.complaintId %>" style="color: #ffbc39;" id="previewContent" ></i>
-        
-        
-        
-                                    </div>
-        
-                                </div>
-    
-                                
-                
-    
-    
-                                
-    
-                            <% }); %>
-    
-                        <% } else { %>
-    
-                            <!-- Display a blank area if there are no new complaints -->
-                            <div class="blank-area"></div>
-                            
-                        <% } %>   
-    
+                        <!-- Display a blank area if there are no new complaints -->
+                        <div class="blank-area"></div>
                         
-                        
+                    <% } %>   
 
-                    </div>
                     
                     
-    
-    
+
                 </div>
 
 
 
+
+                
+
+
             </div>
-
-
-
-
-
-
+          
         </div>
         <div class="preview">
 
 
 
         </div>
-
 
 
         <script src="/javascripts/lightToggle.js"></script>

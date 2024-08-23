@@ -50,3 +50,29 @@ previewContent.forEach(function (element) {
     preview.classList.add("preview-active");
   });
 });
+
+
+var toggle = document.getElementById("toggle");
+var closepreview = document.getElementById("closePreview");
+var main = document.querySelector(".main");
+var nav = document.querySelector(".nav");
+var content = document.querySelector(".content");
+var preview = document.querySelector(".preview");
+var previewContents = document.querySelectorAll("#previewContent");
+
+            previewContents.forEach(function(previewContent) {
+                previewContent.addEventListener("click", function() {
+                    preview.classList.add("preview-active");
+                    nav.classList.add("preview-active-content");
+                    content.classList.add("preview-active-content");
+                    
+                    
+                });
+            });
+
+            closePreview.addEventListener("click", function () {
+                nav.classList.remove("preview-active-content");
+                content.classList.remove("preview-active-content");
+                preview.classList.remove("preview-active");
+                
+            });

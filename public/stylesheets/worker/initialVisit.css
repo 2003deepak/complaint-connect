@@ -193,7 +193,7 @@ html,body{
 }
 form{
     width: 50%;
-    height: 70%;
+    height: 75%;
     background-color: var(--form-bgColor);
     margin-top: 5rem;
     display: flex;
@@ -202,10 +202,16 @@ form{
     padding-top: 4rem;
     gap: 3rem;
 }
-.dropdown,.verification,.submit,.resend{
+.dropdown,.submit,.resend{
     width: 70%;
     display: flex;
     justify-content: center;
+}
+.verification{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    gap: 1rem;
 }
 .otp{
     width: 70%;
@@ -269,6 +275,19 @@ input[type="submit"]{
     transition: 0.25s;
     
 }
+
+.msg{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+}
+.msg p{
+    font-size: 1vw;
+    color: red;
+}
+
+
 
 
 /* Mobile View */
@@ -445,7 +464,7 @@ input[type="submit"]{
     form{
 
         width: 85%;
-        height: 75%;
+        height: 80%;
         padding-top: 2rem;
         gap: 3rem;
     }

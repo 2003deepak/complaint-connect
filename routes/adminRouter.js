@@ -51,8 +51,9 @@ router.get('/complaintData/:id', async (req, res)=> {
 router.get('/closed/complaintData/:id', async (req, res)=> {
    
     let complaint = await closedComplaintModel.findOne({ _id: req.params.id}).populate("assignedWorker");
-    
-    await res.render('adminView/closedComplaintData.ejs', { complaint});
+
+    await res.render('closedComplaint', { complaint });
+
 });
 
 router.get("/approveComplaint" ,isLoggedIn,async(req, res) =>{

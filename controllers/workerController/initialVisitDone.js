@@ -26,7 +26,10 @@ const initialVisitDone = async (req, res) => {
         res.redirect('/worker/dashboard')
 
     }else{
-        res.send("Failed OTP")
+
+        let complaint = await complaintModel.findOne({_id : complaintId}).populate("user");
+        res.render("workerView/initialVisit", { id : complaintId , email : complaint.user.email , error : "OTP is Incorrect" });
+    
     }
 
 }

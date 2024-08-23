@@ -17,7 +17,9 @@ const loginAuth = async (req, res) => {
     let worker = await workerModel.findOne({ username: username });
 
     if (!worker) {
-        return res.render("userView/login");
+
+        req.flash("error","Invalid Username or Password");
+        return res.redirect("/login");
     }
 
     let match = await bcrypt.compare(password, worker.password);
@@ -39,6 +41,7 @@ const loginAuth = async (req, res) => {
        
     } else {
         return res.send("Invalid username or password");
+        return res.redirect("/login");
     }
 }
 

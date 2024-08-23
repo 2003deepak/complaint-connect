@@ -18,7 +18,6 @@ const loginAuth = async (req, res) => {
         let token = generateTokenForOther("admin");
         res.cookie('token', token);
 
-
         return res.redirect("/admin/dashboard")
     }
 
@@ -35,6 +34,7 @@ const loginAuth = async (req, res) => {
     let user = await userModel.findOne({ username: username });
 
     if (!user) {
+        req.flash("error","Invalid Username or Password");
         return res.redirect("/login");
     }
 
@@ -58,11 +58,13 @@ const loginAuth = async (req, res) => {
 
 
         }else{
-            return res.send("Permission not granted by admin.");
+            req.flash("error","Invalid Username or Password");
+            return res.redirect("/login");
         }
        
     } else {
-        return res.send("Invalid username or password");
+        req.flash("error","Invalid Username or Password");
+        return res.redirect("/login");
     }
 }
 

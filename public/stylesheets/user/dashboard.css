@@ -9,6 +9,8 @@
     --box-count-color: #242424;
     --i-count: #8C8C8C;
     --div-hover : #FF9F00;
+    --innerbox-bg-color: #0b0b0f;
+    --complaintData-bg-color : #161717;
     
 
    
@@ -25,6 +27,9 @@
     --box-count-color:#E3E3EA;
     --i-count: #000000;
     --div-hover : #000000;
+    --innerbox-bg-color: #E3E3EA;
+    --complaintData-bg-color : white;
+
     
     
   }
@@ -182,13 +187,15 @@ html,body{
     color: var(--font-color);
 }
 
-.ctop{
+
+.ctop {
     width: 85%;
-    height: 22%;
+    height: 27%;
     padding: 1rem;
     display: flex;
     gap: 1rem;
 }
+
 .cline{
     width: 57%;
     height: 10px;
@@ -224,8 +231,9 @@ html,body{
 }
 
 
-    .box .count{
-        width: 40%;
+
+    .box .count {
+        width: 55%;
         height: 70px;
         align-self: center;
         background-color: var(--box-count-color);
@@ -233,14 +241,13 @@ html,body{
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 40px;
+        font-size: 2.3vw;
     }
 
     .cbtm{
-        width: 56%;
+        width: 75vw;
         height: 100%;
         display: flex;
-        flex-direction: column;
         gap: 1rem;
     }
     .text{
@@ -253,29 +260,23 @@ html,body{
         position: relative;
 
     }
-    .text p{
-        font-size: 19px; 
+
+    .text p {
+        font-size: 1.1vw;
         color: var(--font-color);
     }
-
-    .data{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        gap: 1rem;
-        padding-left: 1rem;
-    }
-   .data .newComplaint , .data .pendingComplaint , .data .completeComplaint{
-        width: 33%;
+   .newComplaint , .pendingComplaint , .completeComplaint{
+        width: 22%;
         height: 100%;
         display: flex;
         flex-direction: column;
         gap: 1rem;
 
    }
-   .data .complaintData{
+   .complaintData{
         width: 100%;
-        height: 6.5vw;
+        min-height: 6.5vw;
+        height: auto;
         border-radius: 10px;
         padding: 0.75rem;
         display: flex;
@@ -286,14 +287,14 @@ html,body{
    }
 
    .complaintData .left{
-    width: 5%;
+    width: 3%;
     height: 100%;
     padding-left: 0.2rem;
 
 }
 
 .complaintData .middle{
-    width: 80%;
+    width: 95%;
     height: 100%;
     font-size: 16px;
     padding-top: 0.4rem;
@@ -302,8 +303,10 @@ html,body{
     flex-direction: column;
     gap:0.4rem;
     font-family: 'Poppins', sans-serif;
+    
 
 }
+
 .complaintData .view-details{
     width: 10%;
     height: 100%;
@@ -339,6 +342,11 @@ html,body{
 .preview{
 
     display: none;
+    
+}
+
+.preview-active-content{
+    filter: blur(10px);
 }
 
 .preview-active{
@@ -350,6 +358,13 @@ html,body{
     right: 0rem;
     z-index: 999;
     background-color: var(--nav-background-color);
+}
+.preview i{
+    font-size: 1.3vw;
+    color: white;
+    position: absolute;
+    left: -2.5rem;
+    top: 10px;
 }
 
 
@@ -369,7 +384,7 @@ html,body{
         width: 100%;
         min-height : 100%;
         margin-left: 0px; /* Initial margin-left to match the nav width */
-        background-color: #242424;
+        background-color: var(--background-color);
         padding: 1rem 1rem;
         align-items: center;
     }
@@ -384,7 +399,13 @@ html,body{
         margin-left: 0rem;
     }
     .preview{
-        display: none;
+        width: 85%;
+    }
+    .preview i{
+        font-size: 5vw;
+        left: -2rem;
+        top: 10px;
+        
     }
     .nav-active {
         transform: translateX(0);
@@ -440,30 +461,26 @@ html,body{
      .cline {
         width: 100%;
         height: 5px;
-        background-color: #161717;
+        background-color: var(--boxes-bg-color);
     }
     .cbtm {
         width: 100%;
         height: 100%;
-    }
-    .data {
-        width: 100%;
-        height: 100%;
-        display: flex;
         flex-direction: column;
         gap: 1rem;
         align-items: center;
     }
-    .data .newComplaint, .data .pendingComplaint, .data .completeComplaint {
+    
+    .newComplaint,.pendingComplaint, .completeComplaint {
         width: 90%;
-        height: 6.5%;
+        height: 8%;
         overflow: hidden;
-        background-color: #161717;
+        background-color: var(--complaintData-bg-color);
         padding : 0.4rem 1rem;
         display: flex;
         align-items: center;
     }
-    .data .newComplaint:hover , .data .pendingComplaint:hover , .data .completeComplaint:hover {
+    .newComplaint:hover , .pendingComplaint:hover , .completeComplaint:hover {
         height: auto;
         display: flex;
         flex-direction: column;
@@ -487,11 +504,13 @@ html,body{
     .dd i{
         color: #fff;
     }
-    .data .complaintData {
+    .complaintData {
         width: 90%;
         height: 25vw;
         padding: 0.5rem;
         gap: 0.5rem;
+        background-color: var(--innerbox-bg-color);
+
     }
     .text p {
         font-size: 3.7vw;
@@ -529,7 +548,7 @@ html,body{
         width: 100%;
         min-height : 100%;
         margin-left: 0px; /* Initial margin-left to match the nav width */
-        background-color: #242424;
+        background-color: var(--background-color);
         padding: 1rem 1rem;
         align-items: center;
     }
@@ -544,7 +563,13 @@ html,body{
         margin-left: 0rem;
     }
     .preview{
-        display: none;
+        width: 85%;
+    }
+    .preview i{
+        font-size: 3.5vw;
+        left: -3rem;
+        top: 10px;
+        
     }
     .nav-active {
         transform: translateX(0);
@@ -562,13 +587,13 @@ html,body{
         top: 0;
     }
     .cinfo {
-        padding: 1rem;
+        padding: 0rem;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
     .cinfo h1{
-        font-size: 6vw;
+        font-size: 5vw;
     
      }
      .cinfo p{
@@ -610,27 +635,23 @@ html,body{
     .cbtm {
         width: 100%;
         height: 100%;
-    }
-    .data {
-        width: 100%;
-        height: 100%;
         display: flex;
-        gap: 1rem;
         flex-direction: column;
         align-items: center;
+        gap: 1rem;
     }
-
-    .data .newComplaint, .data .pendingComplaint, .data .completeComplaint {
+    
+    .newComplaint, .pendingComplaint,.completeComplaint {
         width: 85%;
-        height: 6.5%;
+        height: 9%;
         overflow: hidden;
-        background-color: #161717;
+        background-color: var(--complaintData-bg-color);
         padding : 0.4rem 1rem;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    .data .newComplaint:hover , .data .pendingComplaint:hover , .data .completeComplaint:hover {
+    .newComplaint:hover , .pendingComplaint:hover , .completeComplaint:hover {
         height: auto;
         display: flex;
         flex-direction: column;
@@ -639,11 +660,14 @@ html,body{
 
        
     }
+    .text p {
+        font-size: 2.5vw;
+    }
    
     .dd{
         display: flex;
-         width: 30px;
-         height: 30px;
+         width: 22px;
+         height: 22px;
          background: black;
          border-radius: 50%;
          justify-content: center;
@@ -656,18 +680,18 @@ html,body{
         color: #fff;
     }
 
-    .data .complaintData {
+    .complaintData {
         width: 75%;
         height: 22vw;
         padding: 0.5rem;
         gap: 0.5rem;
+        background-color: var(--innerbox-bg-color);
         
     }
     .complaintData .middle {
-        font-size: 2.6vw;
+        font-size: 2.2vw;
         padding-top: 1rem;
     }
-    
 
 
 
@@ -687,7 +711,7 @@ html,body{
         width: 100%;
         min-height : 100%;
         margin-left: 0px; /* Initial margin-left to match the nav width */
-        background-color: #242424;
+        background-color: var(--background-color);
         padding: 1rem 1rem;
         align-items: center;
     }
@@ -702,7 +726,13 @@ html,body{
         margin-left: 0rem;
     }
     .preview{
-        display: none;
+        width: 55%;
+    }
+    .preview i{
+        font-size: 2.5vw;
+        left: -3rem;
+        top: 10px;
+        
     }
     .nav-active {
         transform: translateX(0);
@@ -772,14 +802,23 @@ html,body{
         width: 98%;
         height: 100%;
     }
-    .data .complaintData {
+    .complaintData {
         width: 100%;
-        height: 14vw;
+        min-height: 7vw;
+        height: auto;
     }
     .complaintData .middle {
         width: 100%;
         height: 100%;
-        font-size: 1.8vw;
+        font-size: 1.5vw;
+    }
+    .newComplaint, .pendingComplaint, .completeComplaint {
+        width: 33%;
+        gap: 1rem;
+    }
+    .text p {
+        font-size: 2vw;
+        color: var(--font-color);
     }
 
 

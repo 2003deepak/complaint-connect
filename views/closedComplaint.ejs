@@ -94,6 +94,19 @@
 
                         </div>
                         <div class="btmdiv">
+                            <img src="/images/icons8-worker-100 1.svg" alt="">
+                            <h2>Rating : </h2>
+                            
+                            <% for (let i = 1; i <= 5; i++) { %>
+                                <span class="star <%= i <= Number(complaint.rating) ? 'filled' : '' %>">&#9733;</span>
+                            <% } %>
+                            
+                            
+
+                            
+
+                        </div>
+                        <div class="btmdiv">
                            
                             <img src="/images/icons8-writing-90 1.svg" alt="">
                             <h2>Description :  </h2>

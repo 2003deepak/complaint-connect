@@ -9,6 +9,9 @@ const sendOTP = require('../utils/sendOTP');
 const generateOTP = require('../utils/generateOTP');
 const router = express.Router();
 
+
+
+
 router.get('/', (req, res)=> {
 
     
@@ -26,7 +29,8 @@ router.get('/forgot', (req, res)=> {
 
 router.get('/login', (req, res)=> {
     const credentials = req.cookies.credentials || false;
-    res.render('login', { credentials });
+    let error = req.flash("error");
+    res.render('login', { credentials,error});
 });
 
 router.post("/getComplaintDetails", async (req, res) => {

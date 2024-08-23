@@ -34,15 +34,17 @@
                     <form action="/user/login" method="POST" class="form">
 
 
-                            <div class="msg">
-                                <p>Error Msg</p>
-                            </div>
-
                             <div class="toggle">
                                 <button id="user" style="background-color: #FF9F00;">User</button>
                                 <button id="worker">Worker</button>
                                 
                             </div>
+
+                            <% if(error.length>0){ %>
+                                <div class="msg">
+                                    <p><%= error %></p>
+                                </div>
+                            <% } %>
 
                            
                             <div class="username">
@@ -70,7 +72,7 @@
 
                             <div class="submit">
 
-                                <input type= "submit" value = "Sign Up " name = "save">
+                                <input type= "submit" value = "Login" name = "save">
 
                             </div>
 
