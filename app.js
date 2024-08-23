@@ -37,6 +37,7 @@ app.use(
 app.use(flash());
 
 // Setting EJS as View Engine 
+app.set('views', path.join(__dirname, 'views'));
 app.set("view engine", "ejs");
 
 // Routes
@@ -47,6 +48,6 @@ app.use("/admin", adminRouter);
 app.use("/user", userRouter);
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+app.listen(3000, () => {
     console.log('Server is running on port 3000');
 });
