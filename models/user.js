@@ -39,7 +39,6 @@ const userSchema = mongoose.Schema({
   },
   profilePicture: {
     type: String,
-    default: "default.png"
   },
   isAllowed: { 
     type : Boolean,

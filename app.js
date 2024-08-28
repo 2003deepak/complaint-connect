@@ -5,11 +5,21 @@ const path = require('path');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');    
 const expressSession = require('express-session');
-const flash = require('connect-flash');                              
+const flash = require('connect-flash');     
+const cors = require("cors");                         
 const db = require('./config/mongoose-connection');
 const upload = require('./config/multer-config');
 const setRoleBasedOnRoute = require('./utils/setRoleBasedRoute');
 const app = express();
+
+const corsOptions = {
+    origin: ["http://localhost:3000", "https://frontend-roan-five-41.vercel.app/"], 
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+    optionsSuccessStatus: 204,
+  };
+
+  app.use(cors());
 
 // Routes Import 
 const indexRouter = require('./routes/indexRouter');

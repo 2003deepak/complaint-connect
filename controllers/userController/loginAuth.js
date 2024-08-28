@@ -57,7 +57,7 @@ const loginAuth = async (req, res) => {
 
 
         }else{
-            req.flash("error","Invalid Username or Password");
+            req.flash("error","Not Approved By Admin");
             return res.redirect("/login");
         }
        

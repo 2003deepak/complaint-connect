@@ -76,7 +76,7 @@
                                         <td><%= user.buildingNumber %></td>
                                         <td><%= user.roomNumber %></td>
                                         <td>
-                                            <a href="/userUpload/allotment_letter/<%= user.allotmentLetter %>" target="_blank">
+                                            <a href="<%= user.allotmentLetter.toString('base64') %>" target="_blank">
                                                 <img src="/images/Filetype Icon.svg" alt="" height="28px">
                                             </a>
                                         </td>
