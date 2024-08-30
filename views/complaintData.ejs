@@ -114,14 +114,9 @@
                    
                     <!-- <img id="img" src="<%= complaint.complaintImage %>" alt="Complaint Image"> -->
 
-                    <img id="img" src="https://drive.google.com/uc?export=view&id=1L5sTk7RIy4SLo8oc33vxqUFzvFmhGm-0" alt="Complaint Image">
+                    <img id="img" src="<%= complaint.complaintImage %>" alt="Complaint Image">
 
-                    
-
-
-                    <a href="<%= complaint.complaintImage %>">View</a>
-                    
-
+                  
 
                     <div class="submit">
                         <button id = "complaint">Complaint Image</button>
@@ -217,7 +212,7 @@
             document.getElementById("complaintWorker").addEventListener("click", function(){
 
                 var img = document.getElementById("img");
-                img.src = "/userUpload/resolved_complaint/<%= complaint.resolvedImage %>";
+                img.src = "<%= complaint.resolvedImage %>";
     
         
             });
@@ -225,7 +220,7 @@
              document.getElementById("complaint").addEventListener("click", function(){
 
                     var img = document.getElementById("img");
-                    img.src = "/userUpload/complaint_image/<%= complaint.complaintImage %>";
+                    img.src = "<%= complaint.complaintImage %>";
         
             });
         </script>

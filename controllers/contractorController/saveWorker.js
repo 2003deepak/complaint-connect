@@ -6,6 +6,7 @@ const path = require('path');
 const router = express.Router();
 const workerModel = require('../../models/worker');
 const sendOTP = require("../../utils/sendOTP")
+const imagekit = require('../../config/imageKit');
 
 
 const saveWorker  = async(req, res)=> {
@@ -13,6 +14,15 @@ const saveWorker  = async(req, res)=> {
     let {username,email,password,workArea} = req.body;
 
     try{
+
+        const file = req.file;
+            
+        // Upload file to ImageKit
+        const result = await imagekit.upload({
+            file: file.buffer,
+            fileName: file.originalname,
+            folder: "/workerAadhar",
+            });
 
         let workerExist = await workerModel.findOne({email : email});
         if(workerExist){
@@ -27,7 +37,7 @@ const saveWorker  = async(req, res)=> {
                         username: username,
                         password: hash,
                         email: email,
-                        aadhar_card : req.file.filename,
+                        aadhar_card : result.url,
                         work_area : workArea,
                        
                     })

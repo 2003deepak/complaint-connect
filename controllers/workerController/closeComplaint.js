@@ -12,7 +12,7 @@ const complaintModel = require('../../models/complaint');
 const sendOTP = require("../../utils/sendOTP");
 let generateOTP = require('../../utils/generateOTP');
 const worker = require('../../models/worker');
-const { send } = require('process');
+const imagekit = require('../../config/imageKit');
 
 const closeComplaint = async (req, res) => {
    
@@ -23,21 +23,31 @@ const closeComplaint = async (req, res) => {
         { path: 'complaintId' }
     ]);
 
-    // await res.send(worker_action)
 
     if(worker_action.complaintId.resolvedImage){
 
-        let old_image = path.join(__dirname, '../../public/userUpload/resolved_complaint', worker_action.complaintId.resolvedImage)
-        fs.unlinkSync(old_image , (err)=>{
-            if(err) console.log('Error deleting old image:', err);
-            
-        });
+        try {
+            const response = await imagekit.deleteFile(worker_action.complaintId.resolvedImage);
+            console.log('File deleted successfully:', response);
+        } catch (error) {
+            console.error('Error deleting file:', error);
+        }
+
     } 
+
+    const file = req.file;
+
+    // Upload file to ImageKit
+    const result = await imagekit.upload({
+        file: file.buffer,
+        fileName: file.originalname,
+        folder: "/resolvedComplaint",
+        });
 
     worker_action.completed = true;
     await worker_action.save();
 
-    let complaint = await complaintModel.findOneAndUpdate({ _id: req.params.id }, {resolvedAt: Date.now(), resolvedImage: req.file.filename }).populate("user");
+    let complaint = await complaintModel.findOneAndUpdate({ _id: req.params.id }, {resolvedAt: Date.now(), resolvedImage: result.url }).populate("user");
 
     let msg = `
         <html>

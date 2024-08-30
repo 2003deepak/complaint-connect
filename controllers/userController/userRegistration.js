@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 const router = express.Router();
 const userModel = require('../../models/user');
-const drive = require('../../config/gApi');
+const imagekit = require('../../config/imageKit');
 
 
 const registerUser  = async(req, res)=> {
@@ -16,32 +16,15 @@ const registerUser  = async(req, res)=> {
     try{
 
         
-        const file = req.file;
-    
-        // Congiruation of gdrive 
-
-        const response = await drive.files.create({
-            requestBody: {
-                name: file.originalname,
-                mimeType: file.mimetype,
-            },
-                media: {
-                mimeType: file.mimetype,
-                body: fs.createReadStream(path.join(__dirname, '../../public/userUpload', file.filename)),
-            },
-        });
-    
-            // Make the file public
-            await drive.permissions.create({
-                fileId: response.data.id,
-                requestBody: {
-                    role: 'reader',
-                    type: 'anyone',
-                },
+            const file = req.file;
+            
+            // Upload file to ImageKit
+            const result = await imagekit.upload({
+            file: file.buffer,
+            fileName: file.originalname,
+            folder: "/allotmentLetter",
             });
-    
-            // Get the public URL
-            const publicUrl = `https://drive.google.com/uc?id=${response.data.id}`;
+        
     
             let userExist = await userModel.findOne({email : email});
 
@@ -59,14 +42,9 @@ const registerUser  = async(req, res)=> {
                             email: email,
                             buildingNumber: buildingNumber, 
                             roomNumber: roomNumber, 
-                            allotmentLetter: publicUrl,
+                            allotmentLetter: result.url,
                         
                         })
-
-                        
-                        // Clean up the temporary file
-                        await fs.unlinkSync(path.join(__dirname, '../../public/userUpload', file.filename));
-                    
                         
                         await res.redirect("/login");
                     });

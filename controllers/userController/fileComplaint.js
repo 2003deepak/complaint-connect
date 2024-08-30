@@ -8,8 +8,8 @@ const router = express.Router();
 const complaintModel = require('../../models/complaint');
 const userModel = require('../../models/user');
 const user = require('../../models/user');
-const drive = require('../../config/gApi'); 
 const fs = require('fs')
+const imagekit = require('../../config/imageKit');
 
 const fileComplaint  = async(req, res)=> {
 
@@ -28,57 +28,33 @@ const fileComplaint  = async(req, res)=> {
 
     }
 
-    try{
+    const file = req.file;
 
-            const file = req.file;
+    // Upload file to ImageKit
+    const result = await imagekit.upload({
+        file: file.buffer,
+        fileName: file.originalname,
+        folder: "/complaintImage",
+        });
+
+    console.log(result)
+
+    // let complaint = await complaintModel.create({
+
+    //     user : req.user._id ,
+    //     complaintId: generateComplaintId(),
+    //     complaintType: complaint_group,
+    //     subject: subject,
+    //     description: desc,
+    //     complaintImage: result.url,
+
+    // })
+
     
-            // Congiruation of gdrive 
+    // await res.redirect('/user/dashboard')
 
-            const response = await drive.files.create({
-                requestBody: {
-                    name: file.originalname,
-                    mimeType: file.mimetype,
-                },
-                    media: {
-                    mimeType: file.mimetype,
-                    body: fs.createReadStream(path.join(__dirname, '../../public/userUpload', file.filename)),
-                },
-            });
-    
-            // Make the file public
-            await drive.permissions.create({
-                fileId: response.data.id,
-                requestBody: {
-                    role: 'reader',
-                    type: 'anyone',
-                },
-            });
-    
-            // Get the public URL
-            const publicUrl = `https://drive.google.com/uc?id=${response.data.id}`;
+           
 
-
-            let complaint = await complaintModel.create({
-
-                user : req.user._id ,
-                complaintId: generateComplaintId(),
-                complaintType: complaint_group,
-                subject: subject,
-                description: desc,
-                complaintImage: publicUrl,
-
-            })
-            
-            // Clean up the temporary file
-            await fs.unlinkSync(path.join(__dirname, '../../public/userUpload', file.filename));
-            
-            await res.redirect('/user/dashboard')
-
-
-
-    }catch(error){
-        console.log("GDrive Error: " + error);
-    }
 
 }
 
