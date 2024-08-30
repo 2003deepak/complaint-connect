@@ -37,21 +37,21 @@ const fileComplaint  = async(req, res)=> {
         folder: "/complaintImage",
         });
 
-    console.log(result)
+    // console.log(result)
 
-    // let complaint = await complaintModel.create({
+    let complaint = await complaintModel.create({
 
-    //     user : req.user._id ,
-    //     complaintId: generateComplaintId(),
-    //     complaintType: complaint_group,
-    //     subject: subject,
-    //     description: desc,
-    //     complaintImage: result.url,
+        user : req.user._id ,
+        complaintId: generateComplaintId(),
+        complaintType: complaint_group,
+        subject: subject,
+        description: desc,
+        complaintImage: result.url,
 
-    // })
+    })
 
     
-    // await res.redirect('/user/dashboard')
+    await res.redirect('/user/dashboard')
 
            
 
