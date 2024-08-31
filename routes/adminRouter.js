@@ -9,30 +9,57 @@ const {acceptComplaint, rejectComplaint} = require('../controllers/adminControll
 const router = express.Router();
 
 
-router.get("/dashboard" ,isLoggedIn,async(req, res) =>{
 
-    let newComplaint = await complaintModel.find({
-        resolvedAt: null,
-        updatedAt: null,
-        isApproved: true
-    });
+router.use( async(req, res, next) => {
 
-    let pendingComplaint = await complaintModel.find({
-        resolvedAt: null,
-        updatedAt: { $ne: null }, // Not equal to null
-        isApproved: true
-    });
-
-    let completedComplaint = await complaintModel.find({
-        resolvedAt: { $ne: null },
-        updatedAt: { $ne: null }, // Not equal to null
-        isApproved: true
-    });
+    // Count new users and unapproved complaints
+    let newUserCount= await userModel.countDocuments({ isAllowed: false });
+    let newComplaintCount = await complaintModel.countDocuments({ isApproved: false });
 
 
+    // Set global variables
+    res.locals.newUser = newUserCount;
+    res.locals.newComplaintForDashboard= newComplaintCount;
 
-    res.render("adminView/adminDashboard" , {newComplaint,pendingComplaint,completedComplaint});
-})
+    // Call the next middleware or route handler
+    next();
+});
+
+router.get("/dashboard", isLoggedIn, async (req, res) => {
+    try {
+        // Fetch complaints with different statuses
+        let newComplaint = await complaintModel.find({
+            resolvedAt: null,
+            updatedAt: null,
+            isApproved: true
+        });
+
+        let pendingComplaint = await complaintModel.find({
+            resolvedAt: null,
+            updatedAt: { $ne: null },
+            isApproved: true
+        });
+
+        let completedComplaint = await complaintModel.find({
+            resolvedAt: { $ne: null },
+            updatedAt: { $ne: null },
+            isApproved: true
+        });
+
+    
+
+        // Render the dashboard view with data
+        res.render("adminView/adminDashboard", {
+            newComplaint,
+            pendingComplaint,
+            completedComplaint,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
 
 router.get("/editUser" ,isLoggedIn,async(req, res) =>{
 
@@ -41,14 +68,14 @@ router.get("/editUser" ,isLoggedIn,async(req, res) =>{
     res.render("adminView/editUser" , {users});
 })
 
-router.get('/complaintData/:id', async (req, res)=> {
+router.get('/complaintData/:id', isLoggedIn , async (req, res)=> {
    
     let complaint = await complaintModel.findOne({ _id: req.params.id}).populate("assignedWorker");
     
     await res.render('complaintData', { complaint});
 });
 
-router.get('/closed/complaintData/:id', async (req, res)=> {
+router.get('/closed/complaintData/:id', isLoggedIn , async (req, res)=> {
    
     let complaint = await closedComplaintModel.findOne({ _id: req.params.id}).populate("assignedWorker");
 

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-    <link rel="stylesheet" href="/stylesheets/user/complaintHistory.css">
+    
+    <link rel="stylesheet" href="/stylesheets/user/closedComplaint.css">
 
     <!-- Dm Sans  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,16 +36,15 @@
 
    <!-- Include jQuery library -->
    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    
+
 </head>
 <body>
 
     <div class="main">
 
-        <!-- Nav bar Starts for here -->
+        <!-- Navbar is included -->
         <%- include('../partials/navLeft') %>
-       
-
+        
         <div class="content">
 
             <i class="fa-solid fa-bars" id="toggle"></i>
@@ -56,13 +55,16 @@
                     <table>
                         <thead>
                             <tr>
+                               
                                 <th>Complaint ID</th>
                                 <th>Regd Date</th>
                                 <th>Last Updation</th>
                                 <th>Actions</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
+
                             <% if (complaint && complaint.length > 0) { 
                                 complaint.forEach((complaint) => { %>
                                 <tr>
@@ -80,11 +82,9 @@
                             <% }) 
                             } else { %>
                             <tr>
-                                <td colspan="4" class="text-center">No Complaints Registered</td>
+                                <td colspan="4" class="no-complaints">No Complaints Registered</td>
                             </tr>
                             <% } %>
-
-
                             
                         </tbody>
                     </table>

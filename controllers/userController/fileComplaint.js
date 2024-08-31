@@ -46,7 +46,7 @@ const fileComplaint  = async(req, res)=> {
         complaintType: complaint_group,
         subject: subject,
         description: desc,
-        complaintImage: result.url,
+        complaintImage: [result.url , result.fileId],
 
     })
 

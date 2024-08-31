@@ -8,6 +8,25 @@ const isLoggedIn = require("../controllers/userController/isLoggedIn")
 const assignToComplaint = require("../controllers/contractorController/assignToComplaint")
 const router = express.Router();
 
+
+router.use(async (req, res, next) => {
+    try {
+        // Count new users and unapproved complaints
+        let complaintCount = await complaintModel.countDocuments();
+
+        // Set global variables
+        res.locals.pendingComplaintCount = complaintCount;
+        
+        next();
+    } catch (error) {
+        console.error("Error in router.use:", error);
+        next(error); // Pass the error to the Express error handler
+    }
+});
+
+
+
+
 router.get('/dashboard', async (req, res)=> {
 
     let newComplaint = await complaintModel.find({
@@ -28,8 +47,7 @@ router.get('/dashboard', async (req, res)=> {
         isApproved: true
     });
 
-
-
+   
     res.render("contractorView/contractorDashboard" , {newComplaint,pendingComplaint,completedComplaint});
 });
 

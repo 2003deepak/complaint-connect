@@ -13,6 +13,7 @@ const sendOTP = require("../../utils/sendOTP");
 let generateOTP = require('../../utils/generateOTP');
 const worker = require('../../models/worker');
 const imagekit = require('../../config/imageKit');
+const deleteFileFromIKit = require('../../utils/deleteFileFromIKit');
 
 const closeComplaint = async (req, res) => {
    
@@ -26,13 +27,8 @@ const closeComplaint = async (req, res) => {
 
     if(worker_action.complaintId.resolvedImage){
 
-        try {
-            const response = await imagekit.deleteFile(worker_action.complaintId.resolvedImage);
-            console.log('File deleted successfully:', response);
-        } catch (error) {
-            console.error('Error deleting file:', error);
-        }
-
+        const currentComplaintImage = worker_action.complaintId.resolvedImage[1] ;
+        deleteFileFromIKit(currentComplaintImage);
     } 
 
     const file = req.file;
@@ -47,7 +43,7 @@ const closeComplaint = async (req, res) => {
     worker_action.completed = true;
     await worker_action.save();
 
-    let complaint = await complaintModel.findOneAndUpdate({ _id: req.params.id }, {resolvedAt: Date.now(), resolvedImage: result.url }).populate("user");
+    let complaint = await complaintModel.findOneAndUpdate({ _id: req.params.id }, {resolvedAt: Date.now(), resolvedImage: [result.url , result.fileId ]}).populate("user");
 
     let msg = `
         <html>

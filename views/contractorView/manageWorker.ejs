@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="/stylesheets/user/complaintHistory.css">
-    <link rel="stylesheet" href="/stylesheets/navLeft.css">
+    <link rel="stylesheet" href="/stylesheets/user/closedComplaint.css">
+    
 
     <!-- Dm Sans  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -71,7 +71,7 @@
                                 <tr>
                                     <td><%= worker.username %></td>
                                     <td><%= worker.email %></td>
-                                    <td><a href="/userUpload/aadhar_card/<%= worker.aadhar_card %>" target = "_blank"><img src="/images/Filetype Icon.svg"  alt="" height="28px"></a></td>
+                                    <td><a href="<%= worker.aadhar_card[0] %>" target = "_blank"><img src="/images/Filetype Icon.svg"  alt="" height="28px"></a></td>
                                     <td><%= worker.work_area %></td>
                                     <td><a type="button" class="btn btn-danger" href="/contractor/manageWorker/deleteWorker/<%= worker._id %>">Delete</a></td>
                                     

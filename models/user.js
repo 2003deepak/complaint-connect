@@ -34,11 +34,12 @@ const userSchema = mongoose.Schema({
     default: null 
   },
   allotmentLetter: { 
-    type: String, 
-    default: null 
+    type: [String], 
+    maxLength : 2 
   },
   profilePicture: {
-    type: String,
+    type: [String], 
+    default: ["default.png"] // Default value is a single-element array
   },
   isAllowed: { 
     type : Boolean,

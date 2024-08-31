@@ -1,150 +1,199 @@
-
-        <div class="nav">
-
-            <div class="ntop">
-
-                <div class="close">
-                    <i class="fa-solid fa-xmark" id="close" style="color: #ffffff;"></i>
-                </div>
-
-                <div class="logo">
-                    <p>D</p>
-                </div>
-
-
-
-
-            </div>
-            <div class="nmid">
-
-                <% if(role == 'user'){ %>
-
-
-                    <div>
-                        <i class="fa-solid fa-house"></i>
-                        <a href="/user/dashboard">Home</a>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-user" ></i>
-                        <a href="/user/profile">Profile</a>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-house"></i>
-                        <a href="/user/complaint">File Complaint</a>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-clock"></i>
-                        <a href="/user/complaintHistory">Complaint History</a>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-key"></i>
-                        <a href="/user/updatePassword">Update Password</a>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-xmark"></i>
-                        <a href="/user/closedComplaint">Closed Complaint</a>
-                    </div>
-        
-                
-                
-                
-                
-                
-                
-                <% }else if(role == "admin"){ %>
+<link rel="stylesheet" href="/stylesheets/navLeft.css">
     
-    
-    
-                    <div>
-                        <i class="fa-solid fa-house"></i>
-                        <a href="/admin/dashboard">Home</a>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-house" ></i>
-                        <a href="/admin/editUser">Edit User</a>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-house" ></i>
-                        <a href="/admin/approveComplaint">Approve Complaint</a>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-house" ></i>
-                        <a href="/admin/closedComplaint">Closed Complaint</a>
-                    </div>
-    
-    
-                <% }else if(role == "worker"){ %>
-    
-                    <div>
-                        <i class="fa-solid fa-house"></i>
-                        <a href="/worker/dashboard">Home</a>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-key"></i>
-                        <a href="/worker/updatePassword">Update Password</a>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-house"></i>
-                        <a href="/worker/newComplaint">New Complaints</a>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-clock"></i>
-                        <a href="/worker/pendingComplaint">Pending Complaints</a>
-                    </div>
-    
-    
-    
-    
-                <% }else if(role == "contractor"){ %>
-    
-    
-                    <div>
-                        <i class="fa-solid fa-house"></i>
-                        <a href="/contractor/dashboard">Home</a>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-user" ></i>
-                        <a href="/contractor/pendingComplaint">Pending </a>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-clock"></i>
-                        <a href="closedComplaint.php">Closed Complaints</a>
-                    </div>
-                    
-                    <div>
-                        <i class="fa-solid fa-plus"></i>
-                        <a href="/contractor/addworker">Add Workers</a>
-                    </div>
-                    <div>
-                    <i class="fa-solid fa-list-check"></i>
-                        <a href="/contractor/manageWorker">Manage Workers</a>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                <% } %>
-                
+    <div class="nav">
 
+        <div class="ntop">
 
+            <div class="close">
+                <i class="fa-solid fa-xmark" id="close" style="color: #ffffff;"></i>
             </div>
 
-            <div class="nbtm">
-
-                <div onclick="toggleNav()">
-                    <i class="fa-solid fa-moon" ></i>
-                    <a href="#" class="dark">Light Mode</a>
-                </div>
-                <div>
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                    <a href="/logout">Log Out</a>
-                </div>
-
+            <div class="logo">
+                <p>D</p>
             </div>
+
+
 
 
         </div>
+        <div class="nmid">
+
+            <% if(role == 'user'){ %>
+
+
+                <div class="nmiddiv">
+                    <i class="fa-solid fa-house"></i>
+                    <a href="/user/dashboard">Home</a>
+                </div>
+                <div class="nmiddiv">
+                    <i class="fa-solid fa-user" ></i>
+                    <a href="/user/profile">Profile</a>
+                </div>
+                <div class="nmiddiv">
+                    <i class="fa-solid fa-house"></i>
+                    <a href="/user/complaint">File Complaint</a>
+                </div>
+                <div class="nmiddiv">
+                    <i class="fa-solid fa-clock"></i>
+                    <a href="/user/complaintHistory">Complaint History</a>
+                </div>
+                <div class="nmiddiv">
+                    <i class="fa-solid fa-key"></i>
+                    <a href="/user/updatePassword">Update Password</a>
+                </div>
+                <div class="nmiddiv">
+                    <i class="fa-solid fa-xmark"></i>
+                    <a href="/user/closedComplaint">Closed Complaint</a>
+                </div>
+    
+            
+            
+            
+            
+            
+            
+            <% }else if(role == "admin"){ %>
+
+
+
+                <div class="nmiddiv">
+                    <i class="fa-solid fa-house"></i>
+                    <a href="/admin/dashboard">Home</a>
+                    
+                </div>
+                <div class="nmiddiv">
+                    
+                    
+                    <% let NewUser = typeof newUser === "undefined" ? 0 : newUser; %>
+                    <% if ((NewUser) > 0) { %>
+                        <div class="circleBox">
+                            <p><%= NewUser %></p>
+                        </div>
+                    <% } %>
+                    
+                    
+                    <i class="fa-solid fa-house" ></i>
+                    <a href="/admin/editUser">Edit User</a>
+                    
+                </div>
+                <div class="nmiddiv">
+
+                    <% let NewComplaintForDashboard = typeof newComplaintForDashboard === "undefined" ? 0 : newComplaintForDashboard; %>
+                    <% if((NewComplaintForDashboard) > 0) { %>
+
+                        <div class="circleBox">
+                            <p><%= NewComplaintForDashboard %></p>
+                        </div>
+
+
+                    <% } %>
+                    
+                    
+                    <i class="fa-solid fa-house" ></i>
+                    <a href="/admin/approveComplaint">Approve Complaint</a>
+                </div>
+                <div class="nmiddiv">
+                    <i class="fa-solid fa-house" ></i>
+                    <a href="/admin/closedComplaint">Closed Complaint</a>
+                </div>
+
+
+            <% }else if(role == "worker"){ %>
+
+                <div class="nmiddiv">
+                    <i class="fa-solid fa-house"></i>
+                    <a href="/worker/dashboard">Home</a>
+                </div>
+                <div class="nmiddiv">
+                    <i class="fa-solid fa-key"></i>
+                    <a href="/worker/updatePassword">Update Password</a>
+                </div>
+                <div class="nmiddiv">
+
+                    <% let NewComplaintCountW = typeof newComplaintCountW === "undefined" ? 0 : newComplaintCountW; %>
+                    <% if ((NewComplaintCountW) > 0) { %>
+                        <div class="circleBox">
+                            <p><%= NewComplaintCountW %></p>
+                        </div>
+                    <% } %>
+
+                    <i class="fa-solid fa-house"></i>
+                    <a href="/worker/newComplaint">New Complaints</a>
+                </div>
+                <div class="nmiddiv">
+                    <% let PendingComplaintCountW = typeof pendingComplaintCountW === "undefined" ? 0 : pendingComplaintCountW; %>
+                    
+                    <% if ((PendingComplaintCountW) > 0) { %>
+                        <div class="circleBox">
+                            <p><%= PendingComplaintCountW %></p>
+                        </div>
+                    <% } %>
+                    
+                    <i class="fa-solid fa-clock"></i>
+                    <a href="/worker/pendingComplaint">Pending Complaints</a>
+                </div>
+
+
+
+
+            <% }else if(role == "contractor"){ %>
+
+
+                <div class="nmiddiv">
+                    <i class="fa-solid fa-house"></i>
+                    <a href="/contractor/dashboard">Home</a>
+                </div>
+                <div class="nmiddiv">
+
+                    
+                    <% let PendingComplaintCount = typeof pendingComplaintCount === "undefined" ? 0 : pendingComplaintCount; %>
+                    <% if ((PendingComplaintCount) > 0) { %>
+                        <div class="circleBox">
+                            <p><%= PendingComplaintCount %></p>
+                        </div>
+                    <% } %>
+                    
+                    
+                    <i class="fa-solid fa-user" ></i>
+                    <a href="/contractor/pendingComplaint">Pending </a>
+                </div>
+                <div class="nmiddiv">
+                    <i class="fa-solid fa-plus"></i>
+                    <a href="/contractor/addworker">Add Workers</a>
+                </div>
+                <div class="nmiddiv">
+                <i class="fa-solid fa-list-check"></i>
+                    <a href="/contractor/manageWorker">Manage Workers</a>
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                
+            <% } %>
+            
+
+
+        </div>
+
+        <div class="nbtm">
+
+            <div onclick="toggleNav()" class="nbtmdiv">
+                <i class="fa-solid fa-moon" ></i>
+                <a href="#" class="dark">Light Mode</a>
+            </div>
+            <div class="nbtmdiv">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <a href="/logout">Log Out</a>
+            </div>
+
+        </div>
+
+
+    </div>
+    
+</body>
+</html>

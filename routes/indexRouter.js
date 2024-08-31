@@ -93,7 +93,7 @@ router.post("/forgot/verify", async (req, res) => {
             <body>
                 <div class="container">
                     <div class="header">
-                        <h1>Initial Visit Verification</h1>
+                        <h1>OTP For Password Reset</h1>
                     </div>
                     <div class="content">
                         <p>Dear ${user.username},</p>

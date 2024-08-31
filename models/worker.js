@@ -8,7 +8,10 @@ const workerSchema = mongoose.Schema({
       username : String,
       password : String,
       email : String,
-      aadhar_card : String,
+      aadhar_card : {
+        type: [String], 
+        maxLength : 2 ,
+      },
       mobile_number : {
         type: Number,
         default: null

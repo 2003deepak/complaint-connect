@@ -65,7 +65,7 @@
 
                 <div class="cbtmleft">
 
-                    <form action="profile/updateProfile" enctype="multipart/form-data" method="post">
+                    <form action="profile/updateProfile"  onsubmit="return validateAndUpload(event)" enctype="multipart/form-data" method="post">
 
                         <div class="name">
                             <p>Full Name</p>
@@ -111,7 +111,7 @@
                 </div>
                 <div class="cbtmright">
 
-                    <% if(user.profilePicture == "default.png"){ %>
+                    <% if(user.profilePicture[0] == "default.png"){ %>
 
                         <img src="/images/Profile.svg" id="profileImage">
                          
@@ -119,7 +119,7 @@
 
                     <% }else{ %>
 
-                        <img src="/userUpload/profile_image/<%= user.profilePicture %>" id="profileImage">
+                        <img src="<%= user.profilePicture[0] %>" id="profileImage">
 
 
                    <% } %>
@@ -218,6 +218,42 @@
             fileLabel.textContent = fileName;
             changeLogo(event);
             });
+
+
+            async function validateAndUpload(event) {
+                const fileInput = document.getElementById('file');
+                const file = fileInput.files[0];
+
+                if (!file) {
+                    alert("Please select an image file for the complaint!");
+                    event.preventDefault();
+                    return false;
+                }
+
+                const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+                if (!allowedTypes.includes(file.type)) {
+                    alert("Only JPG and PNG image files are allowed!");
+                    event.preventDefault();
+                    return false;
+                }
+
+                const maxSize = 700 * 1024; // 700KB
+                if (file.size > maxSize) {
+                    alert("The image size should be less than 700KB!");
+                    event.preventDefault();
+                    return false;
+                }
+
+                return true; // Proceed with form submission
+            }
+
+
+
+
+
+
+
+
         </script>
     </div>
 </body>

@@ -10,8 +10,14 @@ const closedComplaintSchema = mongoose.Schema({
         complaintType: String,
         subject: String,
         description: String,
-        complaintImage: String,
-        resolvedImage: String,
+        complaintImage: {
+            type: [String], 
+            maxLength : 2 ,
+        },
+        resolvedImage: {
+            type: [String], 
+            maxLength : 2 ,
+        },
         createdAt: Date,
         resolvedAt: Date,
         approvedByUserAt: {

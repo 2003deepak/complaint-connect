@@ -7,6 +7,7 @@ const fs = require('fs');
 const router = express.Router();
 const userModel = require('../../models/user');
 const { profile } = require('console');
+const imagekit = require('../../config/imageKit');
 
 
 const updateProfile = async (req, res) => {
@@ -16,23 +17,35 @@ const updateProfile = async (req, res) => {
 
     let user = await userModel.findOne({username: req.user.username})
 
-   
-    
+    const file = req.file;
 
-   // Check if a new file is uploaded
-   if (req.file) {
-    // Get the path to the current profile picture
-    const currentProfilePicturePath = path.join(__dirname, '..', 'public/userUpload/profile_image', req.user.profilePicture);
+    // Check if a new file is uploaded
+    if (req.file) {
+        // Get the path to the current profile picture
+        const currentProfile = req.user.profilePicture[1];
 
-    fs.unlink(currentProfilePicturePath,(err)=>{
-        if(err) console.error("Error Deleting");
-        
-    }) 
+        // Proceed to delete the file using the retrieved fileId
+        imagekit.deleteFile(currentProfile, function(deleteError, deleteResult) {
+            if (deleteError) {
+                console.log("Error deleting file:", deleteError);
+            } else {
+                console.log("File deleted successfully:", deleteResult);
+            }
+        });
+
+    }
+
+    // Upload file to ImageKit
+    const result = await imagekit.upload({
+        file: file.buffer,
+        fileName: file.originalname,
+        folder: "/profileImage",
+        });
 
     // Update the user with the new profile picture
-    user.profilePicture = req.file.filename;
+    user.profilePicture = [result.url,result.fileId];
 
-}
+
 
     // Update other user fields
     user.firstName = firstName;

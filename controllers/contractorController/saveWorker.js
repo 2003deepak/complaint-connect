@@ -26,7 +26,7 @@ const saveWorker  = async(req, res)=> {
 
         let workerExist = await workerModel.findOne({email : email});
         if(workerExist){
-            console.log("User already exists")
+            console.log("Worker already exists")
         }else{
 
             bcrypt.genSalt(10, function(err, salt) {
@@ -37,7 +37,7 @@ const saveWorker  = async(req, res)=> {
                         username: username,
                         password: hash,
                         email: email,
-                        aadhar_card : result.url,
+                        aadhar_card : [result.url,result.fileId],
                         work_area : workArea,
                        
                     })

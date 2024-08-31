@@ -298,7 +298,7 @@
 
                     <div class="img">
                         
-                        <img id = "img" src="/userUpload/closed_complaint/<%= complaint.complaintImage %>"> 
+                        <img id = "img" src="<%= complaint.complaintImage[0] %>"> 
                     </div>
 
                     <div class="btn">
@@ -327,13 +327,13 @@
     
     document.getElementById("complaintWorker").addEventListener("click", function(){
        var img = document.getElementById("img");
-        img.src = "/userUpload/closed_complaint/<%= complaint.resolvedImage %>";
+        img.src = "<%= complaint.resolvedImage[0] %>";
     
         
     });
     document.getElementById("complaint").addEventListener("click", function(){
        var img = document.getElementById("img");
-        img.src = "/userUpload/closed_complaint/<%= complaint.complaintImage %>";
+        img.src = "<%= complaint.complaintImage[0] %>";
         
     });
 </script>

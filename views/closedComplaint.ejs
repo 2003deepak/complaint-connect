@@ -119,7 +119,7 @@
                 </div>
                 <div class="cbtmright">
 
-                    <img src="/userUpload/closed_complaint/<%= complaint.complaintImage %>" id="img">
+                    <img src="<%= complaint.complaintImage[0] %>" id="img">
 
                     <div class="submit">
                         <button id = "complaint">Complaint Image</button>
@@ -215,7 +215,7 @@
             document.getElementById("complaintWorker").addEventListener("click", function(){
 
                 var img = document.getElementById("img");
-                img.src = "/userUpload/closed_complaint/<%= complaint.resolvedImage %>";
+                img.src = "<%= complaint.resolvedImage[0] %>";
     
         
             });
@@ -223,7 +223,7 @@
              document.getElementById("complaint").addEventListener("click", function(){
 
                     var img = document.getElementById("img");
-                    img.src = "/userUpload/closed_complaint/<%= complaint.complaintImage %>";
+                    img.src = "<%= complaint.complaintImage[0] %>";
         
             });
         </script>

@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-    <link rel="stylesheet" href="/stylesheets/user/complaintHistory.css">
-    <link rel="stylesheet" href="/stylesheets/navLeft.css">
+    
+    <link rel="stylesheet" href="/stylesheets/user/closedComplaint.css">
 
     <!-- Dm Sans  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,16 +36,15 @@
 
    <!-- Include jQuery library -->
    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    
+
 </head>
 <body>
 
     <div class="main">
 
-        <!-- Nav bar Starts for here -->
+        <!-- Navbar is included -->
         <%- include('../partials/navLeft') %>
-       
-
+        
         <div class="content">
 
             <i class="fa-solid fa-bars" id="toggle"></i>
@@ -57,6 +55,7 @@
                     <table>
                         <thead>
                             <tr>
+                               
                                 <th>Username</th>
                                 <th>Email ID</th>
                                 <th>Building No</th>
@@ -68,7 +67,7 @@
                         </thead>
                         <tbody>
 
-                            <% if (users && users.length > 0) { %>
+                             <% if (users && users.length > 0) { %>
                                 <% users.forEach((user) => { %>
                                     <tr>
                                         <td><%= user.username %></td>
@@ -76,7 +75,8 @@
                                         <td><%= user.buildingNumber %></td>
                                         <td><%= user.roomNumber %></td>
                                         <td>
-                                            <a href="<%= user.allotmentLetter.toString('base64') %>" target="_blank">
+                                           
+                                            <a href="<%= user.allotmentLetter[0] %>" target="_blank">
                                                 <img src="/images/Filetype Icon.svg" alt="" height="28px">
                                             </a>
                                         </td>
@@ -96,6 +96,7 @@
                                     <td colspan="6" class="no-complaints" >No Users Registered</td>
                                 </tr>
                             <% } %>
+
                             
                         </tbody>
                     </table>
@@ -168,3 +169,4 @@
     </div>
 </body>
 </html>
+

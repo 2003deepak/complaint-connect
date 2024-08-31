@@ -8,6 +8,7 @@ const router = express.Router();
 const userModel = require('../../models/user');
 const complaintModel = require('../../models/complaint');
 const sendOTP = require("../../utils/sendOTP");
+const deleteFileFromIKit = require('../../utils/deleteFileFromIKit');
 
 
 
@@ -31,18 +32,12 @@ const rejectComplaint = async (req, res) => {
 
     
     let complaints = await complaintModel.findOne({_id : id}).populate("user")
+    let deletedComplaint = deleteFileFromIKit(complaints.complaintImage[1]);
+
     
 
     let complaint = await complaintModel.findOneAndDelete({_id : id})
     
-
-   
-
-    fs.unlink("public/userUpload/complaint_image/" + complaints.complaintImage, (err) => {
-        if (err) {
-            console.log("Error deleting Complaint Image");
-        }
-    });
 
     let message = `
     <html>

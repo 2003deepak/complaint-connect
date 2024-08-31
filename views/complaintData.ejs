@@ -114,15 +114,25 @@
                    
                     <!-- <img id="img" src="<%= complaint.complaintImage %>" alt="Complaint Image"> -->
 
-                    <img id="img" src="<%= complaint.complaintImage %>" alt="Complaint Image">
+                    <img id="img" src="<%= complaint.complaintImage[0] %>" alt="Complaint Image">
 
                   
 
                     <div class="submit">
                         <button id = "complaint">Complaint Image</button>
-                        <% if(complaint.resolvedAt) { %>
-                            <button id = "complaintWorker" >Resolved Image</button>
                         
+                        <% if(complaint.resolvedAt) { %>
+                            <button id="complaintWorker">Resolved Image</button>
+                            <script>
+                                document.getElementById("complaintWorker").addEventListener("click", function() {
+                                    var img = document.getElementById("img");
+                                    <% if (complaint.resolvedImage && complaint.resolvedImage.length > 0) { %>
+                                        img.src = "<%= complaint.resolvedImage[0] %>";
+                                    <% } else { %>
+                                        img.src = ''; // Or set to a default image
+                                    <% } %>
+                                });
+                            </script>
                         <% } %>
                         
                        
@@ -208,19 +218,10 @@
                 }
             }
 
-           
-            document.getElementById("complaintWorker").addEventListener("click", function(){
-
-                var img = document.getElementById("img");
-                img.src = "<%= complaint.resolvedImage %>";
-    
-        
-            });
-
              document.getElementById("complaint").addEventListener("click", function(){
 
                     var img = document.getElementById("img");
-                    img.src = "<%= complaint.complaintImage %>";
+                    img.src = "<%= complaint.complaintImage[0] %>";
         
             });
         </script>

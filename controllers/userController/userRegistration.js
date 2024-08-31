@@ -42,7 +42,7 @@ const registerUser  = async(req, res)=> {
                             email: email,
                             buildingNumber: buildingNumber, 
                             roomNumber: roomNumber, 
-                            allotmentLetter: result.url,
+                            allotmentLetter: [result.url,result.fileId],
                         
                         })
                         

@@ -9,10 +9,15 @@ const complaintSchema = mongoose.Schema({
         complaintType: String,
         subject: String,
         description: String,
-        complaintImage: String,
+        complaintImage: {
+            type: [String], 
+            maxLength : 2 ,
+            default : null
+        },
         resolvedImage: {
-            type: String,
-            default: null
+            type: [String], 
+            maxLength : 2 ,
+            default : null
         },
         createdAt: {
             type: Date,

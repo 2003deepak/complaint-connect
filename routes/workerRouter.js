@@ -11,6 +11,39 @@ const checkPassword = require("../controllers/workerController/checkPassword");
 const setNewPassword = require("../controllers/workerController/setNewPassword");
 const upload = require("../config/multer-config")
 
+router.use(isLoggedIn, async (req, res, next) => {
+    try {
+        // Count pending complaints assigned to the current user
+        let pComplaintCount = await workerActionModel.countDocuments({
+            workerAssigned: req.user._id,
+            actionTaken: true,
+            completed : false,
+            
+        });
+
+        
+
+        let nComplaintCount = await workerActionModel.countDocuments({
+            workerAssigned: req.user._id,
+            actionTaken: false,
+           
+        });
+
+        // Set global variable
+        res.locals.pendingComplaintCountW = pComplaintCount;
+        res.locals.newComplaintCountW = nComplaintCount;
+
+    
+        next();
+    } catch (error) {
+        console.error("Error in router.use:", error);
+        next(error); // Pass the error to the Express error handler
+    }
+});
+
+
+
+
 router.post('/login',loginAuth);
 
 router.get('/dashboard',isLoggedIn,async(req,res)=>{
