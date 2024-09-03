@@ -11,7 +11,7 @@ const workerModel = require('../../models/worker');
 const loginAuth = async (req, res) => {
     let { username, password, rememberme } = req.body;
 
-    
+   
 
     let worker = await workerModel.findOne({ username: username });
 
@@ -32,14 +32,15 @@ const loginAuth = async (req, res) => {
             if (rememberme == "on") {
                 res.cookie('credentials', {username : username , password:password}, { maxAge: 20000, httpOnly: true });
             }
-    
+
+            
             return res.redirect("/worker/dashboard");
 
 
 
        
     } else {
-        return res.send("Invalid username or password");
+        
         return res.redirect("/login");
     }
 }

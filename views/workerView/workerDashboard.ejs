@@ -51,6 +51,20 @@
 
         <div class="content">
 
+            <% if(success.length>0){ %>
+                <div id="successMessage" class="success-message">
+                    <%= success %>  
+                </div>
+            <% } %>
+
+           
+
+            <% if(error.length>0){ %>
+                <div id="failMessage" class="success-message" style="background-color: #dc3545;" >
+                    <%= error %>
+                </div>
+            <% } %>
+
             <i class="fa-solid fa-bars" id="toggle"></i>
 
             <div class="cinfo">
@@ -289,6 +303,22 @@
 
         <script src="/javascripts/lightToggle.js"></script>
         <script src="/javascripts/previewContent.js"></script> 
+
+        <script>
+            setTimeout(function() {
+                var successMessage = document.getElementById('successMessage');
+                var failMessage = document.getElementById('failMessage');
+
+                if (successMessage) {
+                    successMessage.style.display = 'none';
+                }
+
+                if (failMessage) {
+                    failMessage.style.display = 'none';
+                }
+
+            }, 2000);
+        </script>
 
 
 

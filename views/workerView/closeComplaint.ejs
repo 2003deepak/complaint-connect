@@ -76,7 +76,10 @@
                     </div>
                     
                     <div class="submit">
-                        <input type="submit" id="submitOtp" name="save" value="Continue">
+                        <button type="submit" id="submitOtp" name="save">
+                            <div class="loader"></div>
+                            <span id="btnText">Continue</span>
+                        </button>
                     </div>
                    
                 </div>
@@ -167,6 +170,18 @@
                     event.preventDefault();
                     return false;
                 }
+
+                const submitBtn = document.getElementById('submitOtp');
+                const loader = document.querySelector('.loader');
+                const btnText = document.getElementById('btnText');
+
+                // Disable the submit button and show the loading spinner with text
+                submitBtn.disabled = true;
+                btnText.innerHTML = 'Closing ...';
+                loader.style.display = 'inline-block';
+
+                // Proceed with the form submission
+                event.target.submit();
 
                 return true; // Proceed with form submission
             }

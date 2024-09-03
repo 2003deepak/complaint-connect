@@ -12,106 +12,82 @@
 <body>
 
     <div class="main">
-
-         <!-- Nav bar Starts for here -->
-         <%- include('./partials/navTop') %>
+        <!-- Nav bar Starts for here -->
+        <%- include('./partials/navTop') %>
           
-         
         <div class="content">
-
-
             <div class="heading">
                 <p>You are <span>just</span> a Step <span>away.</span></p>
             </div>
 
             <div class="center">
-
                 <div class="left">
-
-
                     <h1>Login <span>Now</span></h1>
 
-                    <form action="/user/login" method="POST" class="form">
+                    <form action="/user/login" method="POST" class="form" onsubmit="return validate(event)">
+                        <div class="toggle">
+                            <button id="user" style="background-color: #FF9F00;">User</button>
+                            <button id="worker">Worker</button>
+                        </div>
 
-
-                            <div class="toggle">
-                                <button id="user" style="background-color: #FF9F00;">User</button>
-                                <button id="worker">Worker</button>
-                                
+                        <% if(error.length>0){ %>
+                            <div class="msg">
+                                <p><%= error %></p>
                             </div>
+                        <% } %>
 
-                            <% if(error.length>0){ %>
-                                <div class="msg">
-                                    <p><%= error %></p>
-                                </div>
-                            <% } %>
+                        <div class="username">
+                            <input type="text" placeholder="Enter The Username" class="text" name="username" id="username" value="<%= credentials.username %>" autocomplete="off" required>
+                        </div>
 
-                           
-                            <div class="username">
-                                <input type="text" placeholder="Enter The Username" class="text" name="username" id = 'username' value="<%= credentials.username %>" autocomplete="off">
+                        <div class="password">
+                            <input type="password" placeholder="Enter Your Password" class="text" name="password" id="password" value="<%= credentials.password %>" autocomplete="off" required>
+                        </div>
+
+                        <div class="forgot">
+                            <div>
+                                <input type="checkbox" name="rememberme" id="flexCheckDefault">
+                                <label> Remember Me </label>
                             </div>
+                            <a href="/forgot">Forgot Password ?</a>
+                        </div>
 
-                            <div class="password">
-                                <input type="password" placeholder="Enter Your Password" class="text" name="password" id = 'password' value="<%= credentials.password %>" autocomplete="off">
-                            </div>
-
-                            <div class="forgot">
-    
-                                <div>
-                                    <input  type="checkbox" name="rememberme" id="flexCheckDefault">
-                                    <label > Remember Me </label>
-        
-                                </div>
-                                
-                                <a href="/forgot">Forgot Password ?</a>
-    
-        
-                            </div>
-
-                           
-
-                            <div class="submit">
-
-                                <input type= "submit" value = "Login" name = "save">
-
-                            </div>
-
-
-
-
-
-
-
+                        <div class="submit">
+                            <button type="submit" id="submitBtn" name="save">
+                                <div class="loader"></div>
+                                <span id="btnText">Login</span>
+                            </button>
+                        </div>
                     </form>
-
-
-
-
                 </div>
+
                 <div class="right">
-
-
                     <img src="/images/Artboard 2@4x 1.svg" alt="">
-
-
-
-
-
-
                 </div>
-
-
             </div>
+        </div>
 
-
-
-
-          </div>
-
-        <script src="javascripts/loginBtnToggle.js"></script>
-
-
+        
     </div>
-    
+
+    <script src="javascripts/loginBtnToggle.js"></script>
+
+    <script>
+        async function validate(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const submitBtn = document.getElementById('submitBtn');
+            const loader = document.querySelector('.loader');
+            const btnText = document.getElementById('btnText');
+
+            // Disable the submit button and show the loading spinner with text
+            submitBtn.disabled = true;
+            btnText.innerHTML = 'Login ...';
+            loader.style.display = 'inline-block';
+
+            // Proceed with the form submission
+            event.target.submit();
+        }
+    </script>
 </body>
 </html>

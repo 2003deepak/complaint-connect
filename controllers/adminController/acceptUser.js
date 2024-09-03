@@ -32,13 +32,15 @@ const acceptUser = async (req, res) => {
 
             sendOTP(user.email, "Permission Granted", message);
 
+            req.flash("success", "User Accepted!");
             await res.redirect('/admin/editUser');
         } else {
-            console.log("User not found");
+            req.flash("error", "Pls Try Again Later");
             await res.redirect('/admin/dashboard');
         }
     } catch (err) {
-        console.log(err);
+        
+        req.flash("error", "Pls Try Again Later");
         res.status(500).send("An error occurred");
     }
 };

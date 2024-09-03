@@ -55,7 +55,7 @@
 
             <div class="cinfo">
 
-                <h1>User Name</h1>
+                <h1><%= user.firstName ? user.firstName + " " + user.lastName : user.username %></h1>
 
             </div>
 
@@ -92,7 +92,11 @@
 
                                     <input type="hidden" name="rating" id="rating" value="0">
                                     <div class="submit"> 
-                                        <input type="submit" value="Close Complaint">
+                                        
+                                        <button type="submit" id="submitBtn">
+                                            <div class="loader" style="display: none;"></div>
+                                            <span id="btnText">Close Complaint</span>
+                                        </button>
                                     </div>
                                 </form>
                             </div>
@@ -112,7 +116,12 @@
 
                                     <textarea name="cause" rows="6" cols="50" placeholder="Please describe the cause of your complaint"></textarea>
                                     <div class="submit"> 
-                                        <input type="submit" value="Re-Lodge Complaint">
+                                        
+                                        <button type="submit" id="relodgeBtn">
+                                            <div class="loader" style="display: none;"></div>
+                                            <span id="relodgeBtnText">Re-Lodge Complaint</span>
+                                        </button>
+
                                     </div>
                                 </form>
                                 
@@ -140,135 +149,94 @@
         </div>
 
         <script>
-            var toggle = document.getElementById('toggle');
-            var close = document.getElementById('close');
-            var nav = document.querySelector('.nav');
-            var content = document.querySelector('.content');
-            var preview = document.querySelector('.preview');
-            var previewContent = document.querySelectorAll('#previewContent');
-
-            toggle.addEventListener('click', function () {
-                nav.classList.add('nav-active');
-                content.classList.add('blur');
-            });
-
-            close.addEventListener('click', function () {
-                nav.classList.remove('nav-active');
-                content.classList.remove('blur');
-            });
-
-            previewContent.forEach(function(element) {
-                element.addEventListener('click', function () {
-                    preview.classList.add('preview-active');
-                });
-            });
-
-            const toggleNav = () => {
-                let mode = 'dark';
-                var a = document.querySelector(".dark");
-                if (document.body.classList.contains('light-mode')) {
-                    document.body.classList.remove("light-mode");
-                    a.innerHTML = "Light Mode";
-                } else {
-                    document.body.classList.add("light-mode");
-                    a.innerHTML = "Dark Mode";
-                    mode = 'light';
-                }
-                // Store the mode in session storage
-                sessionStorage.setItem('mode', mode);
-            }
-
-            // Function to apply mode when page loads
-            const applyMode = () => {
-                let mode = sessionStorage.getItem('mode');
-                if (mode === 'light') {
-                    document.body.classList.add("light-mode");
-                    document.querySelector(".dark").innerHTML = "Dark Mode";
-                } else {
-                    document.body.classList.remove("light-mode");
-                    document.querySelector(".dark").innerHTML = "Light Mode";
-                }
-            }
-
-            // Apply mode when page loads
-            applyMode();
 
 
-            document.addEventListener('DOMContentLoaded', () => {
-    const stars = document.querySelectorAll('.star');
-    const selectElement = document.getElementById('dd');
-    const satisfiedDiv = document.querySelector('.satisfied');
-    const notSatisfiedDiv = document.querySelector('.notSatisfied');
-    const ratingInput = document.getElementById('rating');
-
-
+        document.addEventListener('DOMContentLoaded', () => {
+            const stars = document.querySelectorAll('.star');
+            const selectElement = document.getElementById('dd');
+            const satisfiedDiv = document.querySelector('.satisfied');
+            const notSatisfiedDiv = document.querySelector('.notSatisfied');
+            const ratingInput = document.getElementById('rating');
+            const closeForm = document.querySelector('form[action^="/user/endComplaint/"]');
+            const relodgeForm = document.querySelector('form[action^="/user/relodgeComplaint/"]');
     
-    console.log("Current value " + ratingInput.value)
-    // Set initial visibility based on the default selection
-    updateVisibility(selectElement.value);
-
-    // Add event listener for the select element
-    selectElement.addEventListener('change', (event) => {
-        updateVisibility(event.target.value);
-    });
-
-    stars.forEach(star => {
-        star.addEventListener('click', setRating);
-        star.addEventListener('mouseover', addHoverEffect);
-        star.addEventListener('mouseleave', removeHoverEffect);
-    });
-
-    function setRating(e) {
-        const selectedValue = parseInt(e.target.getAttribute('data-value'));
-        ratingInput.value = selectedValue;
-        updateStars(selectedValue);
-    }
-
-    function addHoverEffect(e) {
-        const hoverValue = parseInt(e.target.getAttribute('data-value'));
-        updateStars(hoverValue, true);
-    }
-
-    function removeHoverEffect() {
-        const selectedValue = parseInt(ratingInput.value);
-        updateStars(selectedValue);
-    }
-
-    function updateStars(value, isHover = false) {
-        stars.forEach(star => {
-            const starValue = parseInt(star.getAttribute('data-value'));
-            if (starValue <= value) {
-                star.classList.add(isHover ? 'hover' : 'selected');
-                if (!isHover) star.classList.remove('hover');
-            } else {
-                star.classList.remove('selected');
-                if (!isHover) star.classList.remove('hover');
+            // Set initial visibility based on the default selection
+            updateVisibility(selectElement.value);
+    
+            // Add event listener for the select element
+            selectElement.addEventListener('change', (event) => {
+                updateVisibility(event.target.value);
+            });
+    
+            stars.forEach(star => {
+                star.addEventListener('click', setRating);
+                star.addEventListener('mouseover', addHoverEffect);
+                star.addEventListener('mouseleave', removeHoverEffect);
+            });
+    
+            function setRating(e) {
+                const selectedValue = parseInt(e.target.getAttribute('data-value'));
+                ratingInput.value = selectedValue;
+                updateStars(selectedValue);
             }
+    
+            function addHoverEffect(e) {
+                const hoverValue = parseInt(e.target.getAttribute('data-value'));
+                updateStars(hoverValue, true);
+            }
+    
+            function removeHoverEffect() {
+                const selectedValue = parseInt(ratingInput.value);
+                updateStars(selectedValue);
+            }
+    
+            function updateStars(value, isHover = false) {
+                stars.forEach(star => {
+                    const starValue = parseInt(star.getAttribute('data-value'));
+                    if (starValue <= value) {
+                        star.classList.add(isHover ? 'hover' : 'selected');
+                        if (!isHover) star.classList.remove('hover');
+                    } else {
+                        star.classList.remove('selected');
+                        if (!isHover) star.classList.remove('hover');
+                    }
+                });
+            }
+    
+            function updateVisibility(selectedValue) {
+                if (selectedValue === 'satisfied') {
+                    satisfiedDiv.style.display = 'flex';
+                    notSatisfiedDiv.style.display = 'none';
+                } else {
+                    satisfiedDiv.style.display = 'none';
+                    notSatisfiedDiv.style.display = 'flex';
+                }
+            }
+    
+            function showLoadingEffect(buttonId , msg) {
+                const submitBtn = document.getElementById(buttonId);
+                const btnText = submitBtn.querySelector('span');
+                const loader = submitBtn.querySelector('.loader');
+    
+                // Disable the submit button and show the loading spinner with text
+                submitBtn.disabled = true;
+                btnText.innerHTML = msg;
+                loader.style.display = 'inline-block';
+            }
+    
+            // Apply loading effect when the form is submitted
+            closeForm.addEventListener('submit', (event) => {
+                showLoadingEffect('submitBtn','Closing...');
+            });
+    
+            relodgeForm.addEventListener('submit', (event) => {
+                showLoadingEffect('relodgeBtn' ,'Relodging...');
+            });
         });
-    }
+    </script>
 
-    function updateVisibility(selectedValue) {
-        if (selectedValue === 'satisfied') {
-            satisfiedDiv.style.display = 'flex';
-            notSatisfiedDiv.style.display = 'none';
-        } else {
-            satisfiedDiv.style.display = 'none';
-            notSatisfiedDiv.style.display = 'flex';
-        }
-    }
+        
 
-    console.log("After Chnage  value " + ratingInput.value)
-
-
-});
-
-
-
-
-
-
-         
-        </script>
     </div>
 </body>
 </html>

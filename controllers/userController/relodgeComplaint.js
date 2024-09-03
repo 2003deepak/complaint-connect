@@ -21,6 +21,8 @@ const relodgeComplaint = async (req, res) => {
 
     const complaint = await complaintModel.findOneAndUpdate({_id : complaintID}, { isPriority : true, resolvedAt: null } );
     const worker_action = await workerActionModel.findOneAndUpdate({complaintId : complaintID}, {completed : false})
+
+    req.flash("success", "Complaint Relodged!");
     await res.redirect("/user/dashboard")
 }
 

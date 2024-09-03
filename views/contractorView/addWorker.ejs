@@ -49,6 +49,20 @@
 
         <div class="content">
 
+            <% if(success.length>0){ %>
+                <div id="successMessage" class="success-message">
+                    <%= success %>
+                </div>
+            <% } %>
+
+           
+
+            <% if(error.length>0){ %>
+                <div id="failMessage" class="success-message" style="background-color: #dc3545;" >
+                    <%= error %>
+                </div>
+            <% } %>
+
             <i class="fa-solid fa-bars" id="toggle"></i>
 
             <div class="cinfo">
@@ -96,7 +110,10 @@
                         </div>
                    
                         <div class="submit">
-                            <input type="submit" value="Add Worker">
+                            <button type="submit" id="submitBtn" name="save">
+                                <div class="loader"></div>
+                                <span id="btnText">Add Worker</span>
+                            </button>
                         </div>
                         
                         
@@ -176,6 +193,12 @@
 
            
             async function validateAndUpload(event) {
+                const submitBtn = document.getElementById('submitBtn');
+                const loader = document.querySelector('.loader');
+                const btnText = document.getElementById('btnText');
+
+                event.preventDefault(); // Prevent default form submission
+
                 const fileInput = document.getElementById('aadharCardFile');
                 const file = fileInput.files[0];
 
@@ -198,8 +221,29 @@
                     return false;
                 }
 
-                return true; // Proceed with form submission
+                // Disable the submit button and show the loading spinner with text
+                submitBtn.disabled = true;
+                btnText.innerHTML = 'Adding ...';
+                loader.style.display = 'inline-block';
+
+                // Proceed with form submission
+                event.target.submit();
             }
+
+            setTimeout(function() {
+                var successMessage = document.getElementById('successMessage');
+                var failMessage = document.getElementById('failMessage');
+
+                if (successMessage) {
+                    successMessage.style.display = 'none';
+                }
+
+                if (failMessage) {
+                    failMessage.style.display = 'none';
+                }
+
+            }, 2000);
+
        
 
         </script>

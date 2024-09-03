@@ -1,5 +1,6 @@
 const express = require('express');
 const complaintModel = require('../models/complaint');
+const priorityComplaintModel = require('../models/priorityComplaint');                                  
 const workerModel = require('../models/worker');
 const saveWorker = require('../controllers/contractorController/saveWorker');
 const deleteWorker = require('../controllers/contractorController/deleteWorker');
@@ -12,7 +13,7 @@ const router = express.Router();
 router.use(async (req, res, next) => {
     try {
         // Count new users and unapproved complaints
-        let complaintCount = await complaintModel.countDocuments();
+        let complaintCount = await complaintModel.countDocuments({isApproved : true});
 
         // Set global variables
         res.locals.pendingComplaintCount = complaintCount;
@@ -54,29 +55,46 @@ router.get('/dashboard', async (req, res)=> {
 router.get('/complaintData/:id', async (req, res)=> {
    
     let complaint = await complaintModel.findOne({ _id: req.params.id}).populate("assignedWorker");
+   
+    if(complaint.isPriority){
+
+        let priority = await priorityComplaintModel.findOne({ complaintId:req.params.id})
+        console.log(priority)
+        res.render('complaintData', { complaint , desc : priority.description});                          
+    }
+
     res.render('complaintData', { complaint });
 });
 
 
 router.get('/addWorker', async (req, res)=> {
 
-    res.render("contractorView/addWorker");
+    let error = req.flash("error");
+    let success = req.flash("success");
+
+    res.render("contractorView/addWorker" , { error, success });
 });
 
 router.get("/manageWorker",isLoggedIn , async (req,res)=>{
 
     let workers = await workerModel.find();
-    await res.render("contractorView/manageWorker" , {workers})
+
+    let error = req.flash("error");
+    let success = req.flash("success");
+    await res.render("contractorView/manageWorker" , {workers,error,success})
 })
 
 router.get("/pendingComplaint",isLoggedIn , async (req,res)=>{
 
-    let complaints = await complaintModel.find().populate([
+    let complaints = await complaintModel.find({isApproved : true}).populate([
         { path: 'assignedWorker' },
         { path: 'user' }
     ]);
+
+    let error = req.flash("error");
+    let success = req.flash("success");
     
-    await res.render("contractorView/pendingComplaint" , {complaints} )
+    await res.render("contractorView/pendingComplaint" , {complaints,error,success} )
     
     
 })

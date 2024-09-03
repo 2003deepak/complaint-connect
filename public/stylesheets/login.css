@@ -124,7 +124,7 @@ form input[type="text"] , form input[type="password"]{
     color: rgb(7, 7, 7);
 }
 
-form input[type="submit"]{
+.submit button{
     width: 90% ; 
     height: 60.85px;
     background-color: #232429;
@@ -133,6 +133,10 @@ form input[type="submit"]{
     color: #FFB219;
     border-radius: 10px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
 .left h1{
     font-size: 2.5vw;
@@ -186,6 +190,21 @@ form .forgot{
     color: rgb(255, 255, 255);
     cursor: pointer;
 }
+
+.loader {
+    border: 5px solid #f3f3f3; /* Light grey */
+    border-top: 5px solid #FFB219;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    display: none;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 
 /* Mobile View */
 @media (max-width: 500px) {
@@ -267,7 +286,7 @@ form .forgot{
         display: flex;
         justify-content: center;
     }
-    form input[type="submit"] {
+    .submit button {
         width: 45%;
         height: 13vw;
     }
@@ -292,6 +311,7 @@ form .forgot{
         display: flex;
         justify-content: center;
     }
+
 
 
 
@@ -384,7 +404,7 @@ form .forgot{
             display: flex;
             justify-content: center;
         }
-        form input[type="submit"] {
+        .submit button {
             width: 40%;
             height: 8vw;
         }

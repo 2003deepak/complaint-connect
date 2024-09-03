@@ -102,9 +102,22 @@
                            
                             <img src="/images/icons8-writing-90 1.svg" alt="">
                             <h2>Description :  </h2>
-                            <p>Lorem taque fugiat minus</p>
+                            <p><%= complaint.description %></p>
                             
                         </div>
+                        <% 
+                        if(complaint.isPriority){ %>
+
+                            <div class="btmdiv">
+                           
+                                <img src="/images/icons8-writing-90 1.svg" alt="">
+                                <h2>Reason for Re-lodging:</h2>
+                                <p><%= desc %></p>
+                                
+                            </div>
+
+                        <% } %>
+                        
                    
                     
 

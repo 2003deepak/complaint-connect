@@ -91,7 +91,10 @@
                         <input type="hidden" name="finalOTP" value="">
                     </div>
                     <div class="submit">
-                        <input type="submit" id="submitOtp" name="save" value="Continue">
+                        <button type="submit" id="submitOtp" name="save">
+                            <div class="loader"></div>
+                            <span id="btnText">Verify</span>
+                        </button>
                     </div>
                    
                     <div class="resend">
@@ -231,8 +234,19 @@
             // Save the combined OTP in the hidden input field
             document.querySelector('input[name="finalOTP"][type="hidden"]').value = combinedOtp;
 
+            const submitBtn = document.getElementById('submitOtp');
+            const loader = document.querySelector('.loader');
+            const btnText = document.getElementById('btnText');
+
+            // Disable the submit button and show the loading spinner with text
+            submitBtn.disabled = true;
+            btnText.innerHTML = 'Login ...';
+            loader.style.display = 'inline-block';
+
+            // Proceed with the form submission
             event.target.submit();
         }
+        
 
 
 

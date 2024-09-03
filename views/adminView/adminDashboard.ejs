@@ -163,7 +163,8 @@
                             let priorityStyle = (complaint.isPriority) ? 'border: 1.5px solid red; animation: blink 1s infinite;' : '';
                         %>
 
-                        <div class="complaintData" >
+                       
+                        <div class="complaintData" style="<%= priorityStyle %>">
 
                             <div class="left" >
                                 <div class = "textcircle" style="background-color: #F4DD0E;"></div>
@@ -217,9 +218,14 @@
                         
                     </div>
 
-                    <% if(completedComplaint.length > 0) {
+                    <% if(completedComplaint.length > 0) { %>
 
-                        completedComplaint.forEach((complaint) => { %>
+                       
+                        <% completedComplaint.forEach((complaint) => { 
+                            let priorityStyle = complaint.isPriority ? 'animation: blink infinite 1.5s; border : 2px solid red' : '';
+                        %>
+
+                        
 
                             <div class="complaintData" >
 

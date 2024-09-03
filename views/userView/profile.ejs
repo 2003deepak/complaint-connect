@@ -50,6 +50,20 @@
 
         <div class="content">
 
+            <% if(success.length>0){ %>
+                <div id="successMessage" class="success-message">
+                    Profile Saved!
+                </div>
+            <% } %>
+
+           
+
+            <% if(error.length>0){ %>
+                <div id="failMessage" class="success-message" style="background-color: #dc3545;" >
+                    Profile Saving Failed!
+                </div>
+            <% } %>
+
             <i class="fa-solid fa-bars" id="toggle"></i>
 
             <div class="cinfo">
@@ -88,7 +102,7 @@
                         <div class="contact">
                            <div class="email">
                                 <p>Email</p>
-                                <input type="email" name="email" placeholder="Email" value="<%= user.email %>" > 
+                                <input type="email" name="email" placeholder="Email" value="<%= user.email %>" readonly> 
                            </div>
 
                            <div class="mob">
@@ -99,7 +113,10 @@
                         </div>
 
                         <div class="submit">
-                            <input type="submit" value="Save" name = "save">
+                            <button type="submit" id="submitBtn" name="save">
+                                <div class="loader"></div>
+                                <span id="btnText">Save</span>
+                            </button>
                         </div>
                         
                         
@@ -144,7 +161,8 @@
         </div>
 
         <script>
-            var toggle = document.getElementById('toggle');
+
+var toggle = document.getElementById('toggle');
             var close = document.getElementById('close');
             var nav = document.querySelector('.nav');
             var content = document.querySelector('.content');
@@ -178,11 +196,9 @@
                     a.innerHTML = "Dark Mode";
                     mode = 'light';
                 }
-                // Store the mode in session storage
                 sessionStorage.setItem('mode', mode);
             }
 
-            // Function to apply mode when page loads
             const applyMode = () => {
                 let mode = sessionStorage.getItem('mode');
                 if (mode === 'light') {
@@ -194,7 +210,6 @@
                 }
             }
 
-            // Apply mode when page loads
             applyMode();
 
             function changeLogo(event) {
@@ -213,40 +228,58 @@
             }
 
             document.getElementById('file').addEventListener('change', function(event) {
-            var fileName = event.target.files[0].name;
-            var fileLabel = document.getElementById('fileLabel');
-            fileLabel.textContent = fileName;
-            changeLogo(event);
+                var fileName = event.target.files[0].name;
+                var fileLabel = document.getElementById('fileLabel');
+                fileLabel.textContent = fileName;
+                changeLogo(event);
             });
 
-
             async function validateAndUpload(event) {
+                const submitBtn = document.getElementById('submitBtn');
+                const loader = document.querySelector('.loader');
+                const btnText = document.getElementById('btnText');
+
+                event.preventDefault(); // Prevent default form submission
+
                 const fileInput = document.getElementById('file');
                 const file = fileInput.files[0];
 
-                if (!file) {
-                    alert("Please select an image file for the complaint!");
-                    event.preventDefault();
-                    return false;
-                }
-
                 const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
-                if (!allowedTypes.includes(file.type)) {
+                if (file && !allowedTypes.includes(file.type)) {
                     alert("Only JPG and PNG image files are allowed!");
-                    event.preventDefault();
                     return false;
                 }
 
                 const maxSize = 700 * 1024; // 700KB
-                if (file.size > maxSize) {
+                if (file && file.size > maxSize) {
                     alert("The image size should be less than 700KB!");
-                    event.preventDefault();
                     return false;
                 }
 
-                return true; // Proceed with form submission
+                // Disable the submit button and show the loading spinner with text
+                submitBtn.disabled = true;
+                btnText.innerHTML = 'Saving...';
+                loader.style.display = 'inline-block';
+
+                // Proceed with form submission
+                event.target.submit();
             }
 
+
+            setTimeout(function() {
+                var successMessage = document.getElementById('successMessage');
+                var failMessage = document.getElementById('failMessage');
+
+                if (successMessage) {
+                    successMessage.style.display = 'none';
+                }
+
+                if (failMessage) {
+                    failMessage.style.display = 'none';
+                }
+
+            }, 2000);
+            
 
 
 

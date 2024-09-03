@@ -18,5 +18,3 @@ const deleteFileFromIKit = (id) =>{
 }
 
 module.exports = deleteFileFromIKit;
-
-

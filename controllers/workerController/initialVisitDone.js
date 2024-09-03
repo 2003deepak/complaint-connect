@@ -23,7 +23,8 @@ const initialVisitDone = async (req, res) => {
         let worker_action = await workerActionModel.findOneAndUpdate({complaintId : complaintId},{actionTaken : true})
         let complaint = await complaintModel.findOneAndUpdate({complaintId : complaintId},{updatedAt : Date.now()})
         res.clearCookie('initialVisitOTP');
-        res.redirect('/worker/dashboard')
+        req.flash("success", "Initial Visit Verified!");
+        res.redirect('/worker/newComplaint')
 
     }else{
 

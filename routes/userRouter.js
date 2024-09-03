@@ -5,6 +5,7 @@ const userRegistration = require('../controllers/userController/userRegistration
 const userModel = require('../models/user');
 const complaintModel = require('../models/complaint');
 const closedComplaintModel = require('../models/closedComplaint');
+const priorityComplaintModel = require('../models/priorityComplaint');
 const loginAuth = require('../controllers/userController/loginAuth');
 const isLoggedIn = require('../controllers/userController/isLoggedIn');
 const updateProfile = require('../controllers/userController/updateProfile');  
@@ -42,7 +43,10 @@ router.get('/dashboard',isLoggedIn,async(req,res)=>{
         isApproved: true
     });
 
-    await res.render("userView/userDashboard" , {newComplaint,pendingComplaint,completedComplaint,user : req.user});
+    let error = req.flash("error");
+    let success = req.flash("success");
+
+    await res.render("userView/userDashboard" , {newComplaint,pendingComplaint,completedComplaint,user : req.user , error,success});
 });
 
 
@@ -51,7 +55,13 @@ router.get('/complaintData/:id', async (req, res)=> {
 
     
         let complaint = await complaintModel.findOne({ _id: req.params.id}).populate("assignedWorker");
-        await res.render('complaintData', { complaint });
+
+        if(complaint.isPriority){
+
+            let priority = await priorityComplaintModel.findOne({ complaintId:req.params.id})
+            res.render('complaintData', { complaint , desc : priority.description});                          
+        }
+        res.render('complaintData', { complaint });
     
 });
 
@@ -67,12 +77,16 @@ router.get('/closedComplaint/:id', async (req, res)=> {
 
 router.get('/profile',isLoggedIn,async(req,res)=>{
 
-    res.render("userView/profile" ,{user : req.user})
+    let error = req.flash("error");
+    let success = req.flash("success");
+    res.render("userView/profile" ,{user : req.user , error , success})
 
 });
 
 router.get('/complaint',isLoggedIn,async(req,res)=>{
-    res.render("userView/complaint" ,{user : req.user})
+    let error = req.flash("error");
+    let success = req.flash("success");
+    res.render("userView/complaint" ,{user : req.user , error , success})
 })
 
 router.get('/complaintHistory',isLoggedIn,async(req,res)=>{
@@ -107,8 +121,9 @@ router.get('/closedComplaint',isLoggedIn,async(req,res)=>{
 
 router.get('/review/:id',isLoggedIn,async(req,res)=>{
 
+
    
-    res.render("userView/satisfied" , {id : req.params.id});
+    res.render("userView/satisfied" , {id : req.params.id , user : req.user});
     
 
 })

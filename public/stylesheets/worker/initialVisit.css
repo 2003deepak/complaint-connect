@@ -131,7 +131,7 @@ form{
     color: var(--font-color) ;
 }
 span{
-    color: #FFB219;
+    color: #F2B219;
 }
 .resend a{
     text-decoration: none;
@@ -152,7 +152,7 @@ select option {
     background-color: #30b309; /* Background color of the dropdown options */
 }
 
-input[type="submit"]{
+.submit button{
     background-color: #FFB219;
     padding: 1rem;
     color: black;
@@ -163,6 +163,10 @@ input[type="submit"]{
     font-size: 18px;
     font-weight: 600;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
 
 }
 .otp-input {
@@ -175,6 +179,10 @@ input[type="submit"]{
     font-size: 24px;
     color: #fff;
 
+
+}
+#btnText{
+    color: #000000;
 
 }
 .otp-input.active {
@@ -193,6 +201,21 @@ input[type="submit"]{
     font-size: 1vw;
     color: red;
 }
+
+.loader {
+    border: 5px solid #f3f3f3; /* Light grey */
+    border-top: 5px solid #000000;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    display: none;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 
 
 

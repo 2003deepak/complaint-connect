@@ -143,7 +143,8 @@ select{
     color: white;
     font-size: 0.75vw;
 }
-form input[type="submit"]{
+
+form button{
     width: 85% ; 
     height: 60.85px;
     background-color: #232429;
@@ -152,7 +153,25 @@ form input[type="submit"]{
     color: #FFB219;
     border-radius: 10px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
+.loader {
+    border: 5px solid #f3f3f3; /* Light grey */
+    border-top: 5px solid #FFB219;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    display: none;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 .left h1{
     font-size: 2.75vw;
     color: white;
@@ -238,7 +257,7 @@ span{
             display: flex;
             justify-content: center;
         }
-        form input[type="submit"] {
+        form button {
             width: 50%;
             height: 11vw;
             font-size: 5vw
@@ -322,7 +341,7 @@ span{
             display: flex;
             justify-content: center;
         }
-        form input[type="submit"] {
+        form button {
             width: 35%;
             height: 8vw;
             font-size: 3.5vw;

@@ -24,6 +24,7 @@ const fileComplaint  = async(req, res)=> {
 
     if(complaintExist){
         console.log("Complaint already exists")
+        req.flash("error","Complaint already exists");
         return res.redirect('/user/complaint')
 
     }
@@ -37,23 +38,31 @@ const fileComplaint  = async(req, res)=> {
         folder: "/complaintImage",
         });
 
-    // console.log(result)
 
-    let complaint = await complaintModel.create({
+        try{
 
-        user : req.user._id ,
-        complaintId: generateComplaintId(),
-        complaintType: complaint_group,
-        subject: subject,
-        description: desc,
-        complaintImage: [result.url , result.fileId],
+            let complaint = await complaintModel.create({
 
-    })
+                user : req.user._id ,
+                complaintId: generateComplaintId(),
+                complaintType: complaint_group,
+                subject: subject,
+                description: desc,
+                complaintImage: [result.url , result.fileId],
+        
+            })
 
-    
-    await res.redirect('/user/dashboard')
+            req.flash("success","Complaint filed successfully!");
+            await res.redirect('/user/complaint')
 
-           
+
+
+        }catch(error){
+
+            req.flash("error","Complaint filed failed!");
+            return res.redirect('/user/complaint')
+
+        }
 
 
 }

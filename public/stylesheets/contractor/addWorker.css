@@ -158,7 +158,7 @@ input[type="text"],input[type="password"],input[type="email"],select{
 
 
 }
-input[type="submit"]{
+.submit button{
     background-color: #FFB219;
     color: black;
     width: 35%;
@@ -167,8 +167,41 @@ input[type="submit"]{
     border-radius: 5px;
     font-size: 18px;
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 
 }
+.success-message {
+    background-color: #28a745; /* Bootstrap success green */
+    color: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    font-weight: 500;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+.loader {
+    border: 5px solid #f3f3f3; /* Light grey */
+    border-top: 5px solid #000000;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    display: none;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 
 /* Mobile View */
 @media (max-width: 500px) {
@@ -261,7 +294,7 @@ input[type="submit"]{
 
     }
     
-    input[type="submit"] {
+    .submit button {
         width: 35%;
         height: 10vw;
         font-size: 3.8vw;
@@ -356,7 +389,7 @@ input[type="submit"]{
 
     }
     
-    input[type="submit"] {
+    .submit button {
         width: 35%;
         height: 6vw;
         font-size: 3vw;
@@ -451,7 +484,7 @@ input[type="submit"]{
 
     }
     
-    input[type="submit"] {
+    .submit button {
         width: 35%;
         height: 5vw;
         font-size: 2vw;

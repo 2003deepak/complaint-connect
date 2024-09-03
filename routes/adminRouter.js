@@ -3,6 +3,7 @@ const complaintModel = require('../models/complaint');
 const isLoggedIn = require('../controllers/userController/isLoggedIn');
 const userModel = require('../models/user');
 const closedComplaintModel = require('../models/closedComplaint');
+const priorityComplaintModel = require('../models/priorityComplaint');
 const acceptUser = require('../controllers/adminController/acceptUser');
 const deleteUser = require('../controllers/adminController/deleteUser');
 const {acceptComplaint, rejectComplaint} = require('../controllers/adminController/manageComplaint');
@@ -64,15 +65,24 @@ router.get("/dashboard", isLoggedIn, async (req, res) => {
 router.get("/editUser" ,isLoggedIn,async(req, res) =>{
 
     let users = await userModel.find();
+    let error = req.flash("error");
+    let success = req.flash("success");
    
-    res.render("adminView/editUser" , {users});
+    res.render("adminView/editUser" , {users , error , success});
 })
 
 router.get('/complaintData/:id', isLoggedIn , async (req, res)=> {
    
     let complaint = await complaintModel.findOne({ _id: req.params.id}).populate("assignedWorker");
+
+    if(complaint.isPriority){
+
+        let priority = await priorityComplaintModel.findOne({ complaintId:req.params.id})
+        
+        res.render('complaintData', { complaint , desc : priority.description});                          
+    }
     
-    await res.render('complaintData', { complaint});
+    res.render('complaintData', {complaint});
 });
 
 router.get('/closed/complaintData/:id', isLoggedIn , async (req, res)=> {
@@ -86,8 +96,11 @@ router.get('/closed/complaintData/:id', isLoggedIn , async (req, res)=> {
 router.get("/approveComplaint" ,isLoggedIn,async(req, res) =>{
 
     let complaints = await complaintModel.find({isApproved : false}).populate("user");
+    let error = req.flash("error");
+    let success = req.flash("success");
+    
    
-    await res.render("adminView/approveComplaint",{complaints});
+    await res.render("adminView/approveComplaint",{complaints,error,success});
     
 })
 

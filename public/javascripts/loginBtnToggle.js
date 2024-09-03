@@ -6,6 +6,7 @@ var form = document.querySelector("form");
 user.style.backgroundColor = "#FF9F00";
 
 worker.addEventListener("click", function(event) {
+
     event.preventDefault(); // Prevent form submission
     worker.style.backgroundColor = "#FF9F00";
     user.style.backgroundColor = "#ffffff";
@@ -13,6 +14,7 @@ worker.addEventListener("click", function(event) {
 });
 
 user.addEventListener("click", function(event) {
+
     event.preventDefault(); // Prevent form submission
     user.style.backgroundColor = "#FF9F00";
     worker.style.backgroundColor = "#ffffff";

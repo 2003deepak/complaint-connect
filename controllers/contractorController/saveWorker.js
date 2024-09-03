@@ -26,7 +26,9 @@ const saveWorker  = async(req, res)=> {
 
         let workerExist = await workerModel.findOne({email : email});
         if(workerExist){
-            console.log("Worker already exists")
+            req.flash("error", "Worker already exists");
+            await res.redirect("/contractor/addWorker");
+            
         }else{
 
             bcrypt.genSalt(10, function(err, salt) {
@@ -64,7 +66,8 @@ const saveWorker  = async(req, res)=> {
 
                     sendOTP(email,"Account Created" , message)
 
-                    await res.redirect('/contractor/dashboard');
+                    req.flash("success", "Worker Added Successfully!");
+                    await res.redirect('/contractor/addWorker');
 
                
                 });
@@ -80,7 +83,8 @@ const saveWorker  = async(req, res)=> {
 
         
     }catch(err){
-        console.log(err);
+        req.flash("error", "Something went wrong");
+        await res.redirect("/contractor/addWorker");
     }
     
 
