@@ -1,3 +1,36 @@
+:root {
+    --nav-background-color : #161717; 
+    --icon-color:#8C8C8C;
+    --preview-background-color:#161717;
+    --heading-color:white ; 
+    --font-color:white;
+    --boxes-bg-color: #0B0b0f;
+    --box-count-color: #242424;
+    --i-count: #8C8C8C;
+    --div-hover : #FF9F00;
+    --innerbox-bg-color: #0b0b0f;
+    --complaintData-bg-color : #161717;
+    
+
+   
+}
+
+.light-mode {
+    --nav-background-color: #FFFFFF;
+    --icon-color:#000000;
+    --preview-background-color:#FFFFFF;
+    --heading-color:black;
+    --font-color:black;
+    --boxes-bg-color:#FFFFFF;
+    --box-count-color:#E3E3EA;
+    --i-count: #000000;
+    --div-hover : #000000;
+    --innerbox-bg-color: #E3E3EA;
+    --complaintData-bg-color : white;
+
+    
+    
+  }
 
 .nav{
     width: 100%;
@@ -7,13 +40,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid var(--font-color);
 }
 .nav i{
     display: none;
 }
 .nav img{
-    width: 20%;
+    width: 95%;
     padding-top: 2rem;
 }
 .rlinks{
@@ -28,7 +61,7 @@
     text-decoration: none;
     font-size: 1vw;
     font-weight: 700;
-    color: white
+    color: var(--font-color);
 }
 .rlinks i{
     font-size: 1.4vw ;
@@ -48,6 +81,11 @@
     
 }
 #btn{
+    color: black;
+}
+
+button a{
+    text-decoration: none;
     color: black;
 }
 

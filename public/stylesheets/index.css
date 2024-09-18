@@ -40,6 +40,7 @@ html, body {
     width: 100%;
     height: 100%;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 .main {
@@ -48,66 +49,9 @@ html, body {
     background-color: var(--background-color);
 }
 
-/* Navigation */
-.nav {
-    width: 100%;
-    height: 100px;
-    background-color: transparent;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid var(--font-color);
-}
-
-.nav img {
-    width: 20%;
-    padding-top: 2rem;
-}
-
-.nav i {
-    display: none;
-}
-
-.rlinks{
-    width: 40%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
-}
-.rlinks a{
-    text-decoration: none;
-    font-size: 1vw;
-    font-weight: 700;
-    color: var(--font-color);
-}
-
-.rlinks i{
-    font-size: 1.4vw ;
-    font-weight: 900;
-    display: none;
-}
-.rlinks button{
-    height: 2.2vw;
-    width: 7vw;
-    padding: 0vw 0.2vw;
-    cursor: pointer;
-    font-size: 1vw;
-    background-color: #FFB219;
-    border: none;
-    font-weight: 700;
-    border-radius: 5px;
-    
-}
-#btn{
-    color: black;
-}
-
-
 /* Content */
 .content {
+    
     width: 100%;
     min-height: 100vh;
     display: flex;

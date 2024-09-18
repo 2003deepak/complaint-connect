@@ -14,23 +14,24 @@ const registerUser  = async(req, res)=> {
     let {username,email,password,buildingNumber,roomNumber} = req.body;
 
     try{
-
-        
-            const file = req.file;
-            
-            // Upload file to ImageKit
-            const result = await imagekit.upload({
-            file: file.buffer,
-            fileName: file.originalname,
-            folder: "/allotmentLetter",
-            });
-        
     
             let userExist = await userModel.findOne({email : email});
 
             if(userExist){
-                console.log("User already exists")
+                req.flash("error", "User already exists");
+                await res.redirect("/signup");
             }else{
+
+                
+                const file = req.file;
+                
+                // Upload file to ImageKit
+                const result = await imagekit.upload({
+                file: file.buffer,
+                fileName: file.originalname,
+                folder: "/allotmentLetter",
+                });
+        
 
                 bcrypt.genSalt(10, function(err, salt) {
                     bcrypt.hash(password, salt, async (err, hash)=> {
@@ -53,7 +54,8 @@ const registerUser  = async(req, res)=> {
 
 
     }catch(err){
-        console.log(err);
+        req.flash("error", "Something went wrong");
+        await res.redirect("/signup");
     }
 
    

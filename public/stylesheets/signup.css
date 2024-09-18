@@ -115,24 +115,25 @@ form{
     gap: 1.5rem;
 }
 form input[type="text"] , form input[type="password"] , form input[type="email"]{
-    width: 85% ; 
-    height: 50.85px;
-    padding-left: 1rem;
-    border-radius: 10px;
-    border: none;
-    background-color: #B4B4B4;
-    font-size: 17px;
-    color: rgb(7, 7, 7);
+   
+    width: 85%;
+    padding: 12px 15px;
+    border-radius: 5px;
+    border: 2px solid #ced4da;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   
 }
 
 select{
-    width: 85% ; 
-    height: 50.85px;
-    padding-left: 1rem;
-    border-radius: 10px;
-    border: none;
-    font-size: 17px;
-    background-color: #B4B4B4;
+    width: 85%;
+    padding: 12px 15px;
+    border-radius: 5px;
+    border: 2px solid #ced4da;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
 }
 .upload{
@@ -158,6 +159,7 @@ form button{
     justify-content: center;
     gap: 1rem;
 }
+
 .loader {
     border: 5px solid #f3f3f3; /* Light grey */
     border-top: 5px solid #FFB219;
@@ -172,6 +174,26 @@ form button{
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+
+  .fail-message {
+    background-color: #dc3545; /* Bootstrap fail msg */
+    color: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    font-weight: 500;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+
+
+
 .left h1{
     font-size: 2.75vw;
     color: white;
@@ -187,6 +209,73 @@ span{
     text-decoration: none;
     color:#FFB219;
 }
+
+
+
+
+
+/* testing for input elements */ 
+input.text:focus, select.dropdown:focus, .form-control-file:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+input.text.valid {
+    border-color: #28a745;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.15); /* Subtle green box shadow */
+}
+
+input.text.invalid {
+    border-color: #dc3545;
+    background-color: #ffe9e9;
+    box-shadow: 0 0 8px rgba(220, 53, 69, 0.25);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Password checklist styles */
+#passwordChecklist {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    display: none; /* Hide by default */
+}
+
+#passwordChecklist li {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+/* Default invalid state */
+#passwordChecklist .invalid {
+    color: red;
+}
+
+/* Valid state hides the item */
+#passwordChecklist .valid {
+    color: green;
+    display: none;
+}
+
+/* Hide password checklist by default */
+.hidden {
+    display: none;
+}
+
+button:disabled {
+    /* background-color: #cccccc; */
+    cursor: not-allowed;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+  
+  button:disabled:hover {
+    box-shadow: none;
+  } 
+
 
 /* Mobile View */
 @media (max-width: 500px) {
@@ -244,7 +333,6 @@ span{
             width: 100%;
             height: 50.85px;
             padding-left: 1rem;
-            border-radius: 10px;
             font-size: 4vw;
         }
         select {

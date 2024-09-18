@@ -1,5 +1,5 @@
 :root {
-    --background-color: #242424; 
+    --background-color: #444449; 
     --nav-background-color : #161717; 
     --icon-color:#8C8C8C;
     --preview-background-color:#161717;
@@ -45,6 +45,97 @@ html,body{
     min-height: 100%;
     background-color: var(--background-color);
     display: flex;
+}
+.nav{
+    width: 80px;
+    height: 100%;
+    background-color: var(--nav-background-color);
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s;
+    position: fixed;
+    z-index: 999;
+}
+.ntop{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: center;
+    position: absolute;
+    top: 2%;
+}
+.nmid{
+    width: 100% ;
+    height: 55%;
+    position: absolute;
+    top: 17%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.nbtm{
+    width: 100%;
+    height: 15%;
+    position: absolute;
+    bottom: 2%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.logo{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo p{
+    font-size: 28px;
+    color: white;
+    font-family: 'Biryani', sans-serif;
+    font-weight: 600;
+}
+
+.nav:hover{
+    width: 270px;
+}
+
+.nmid div , .nbtm div{
+    width: 100%;
+    height: 65px;
+    display: flex;
+    gap: 1.9rem;
+    overflow: hidden;
+    align-items: center;
+    padding: 0rem 2rem;
+    border-radius: 10px 0px 0px 10px;
+}
+.nmid div a , .nbtm div a {
+    white-space: nowrap;
+    color: var(--icon-color);
+    font-size: 20px;
+    font-family: 'Biryani', sans-serif;
+    text-decoration: none;
+}
+.nmid div i , .nbtm div i {
+    font-size: 22px;
+    color: var(--i-count);
+}
+
+.nmid div:hover , .nbtm div:hover{
+    background-color: var(--div-hover); 
+}
+
+.nmid div:hover a, .nbtm div:hover a, .nmid div:hover i, .nbtm div:hover i {
+        color: white;
+}
+
+.nav .close{
+    display: none;
 }
 
 /* Code of Navbar End Here  */
@@ -110,11 +201,24 @@ html,body{
     align-items: center;
     padding-top: 4rem;
     gap: 2rem;
+    
 
 }
+.img{
+    max-height: 50vh;
+    width: 85%;
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
 
-.cbtmright>img{
-    width: 50%;
+.img img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensures the image is properly fitted inside */
+    
 }
 form{
     width: 100%;
@@ -131,6 +235,7 @@ form{
     justify-content: center;
     gap: 1.5rem;
     border: 2px solid #9D9D9D;
+    border-radius: 10px;
 }
 .upload label{
     color: var(--font-color) ;
@@ -156,30 +261,39 @@ form{
     display: flex;
     gap: 5%;
 }
-.name p , .address p , .contact p{
+.name p , .address p , .contact p,.password p{
     font-size: 18px;
-    color: var(--font-color) ;;
+    color: var(--font-color) ;
 }
 input[type="text"]{
+
     width: 50%;
-    padding: 1rem;
-    border: 1px solid black;
+    padding: 12px 15px;
+    border-radius: 5px;
+    border: 2px solid #ced4da;
     font-size: 16px;
-    border-radius: 10px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 input[type="email"],input[type="number"]{
+    
     width: 100%;
-    padding: 1rem;
-    border: 1px solid black;
+    padding: 12px 15px;
+    border-radius: 5px;
+    border: 2px solid #ced4da;
     font-size: 16px;
-    border-radius: 10px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 input[type="password"]{
+    
     width: 47%;
-    padding: 1rem;
-    border: 1px solid black;
+    padding: 12px 15px;
+    border-radius: 5px;
+    border: 2px solid #ced4da;
     font-size: 16px;
-    border-radius: 10px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .address{
     width: 100%;
@@ -196,7 +310,6 @@ input[type="password"]{
     border: 1px solid black;
     font-size: 16px;
     border-radius: 10px;
-    background-color: white;
 
 }
 .contact{
@@ -211,13 +324,18 @@ input[type="password"]{
     gap: 5%;
     width: 50%;
 }
+.password{
+    width: 100%;
+    min-height: 15%;
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+}
+
 .submit{
     width: 100%;
     min-height: 15%;
     padding-top: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 .submit button{
     background-color: #FFB219;
@@ -228,47 +346,46 @@ input[type="password"]{
     border-radius: 5px;
     font-size: 18px;
     font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
 
 }
 
-.loader {
-    border: 5px solid #f3f3f3; /* Light grey */
-    border-top: 5px solid #000000;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    animation: spin 1s linear infinite;
-    display: none;
-  }
+
+input.invalid,
+textarea.invalid {
+    border-color: #dc3545;
+    background-color: #ffe9e9;
+    box-shadow: 0 0 8px rgba(220, 53, 69, 0.25);
+}
+
+input.valid,
+textarea.valid {
+    border-color: #28a745;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.15); /* Subtle green box shadow */
+}
+
+button:disabled {
+    /* background-color: #cccccc; */
+    cursor: not-allowed;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
   
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+button:disabled:hover {
+    box-shadow: none;
+} 
 
-  .success-message {
-    background-color: #28a745; /* Bootstrap success green */
-    color: white;
-    padding: 15px;
-    text-align: center;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    font-weight: 500;
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-}
 
 /* Mobile View */
 @media (max-width: 500px) {
 
+    #toggle {
+        display: block;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 1.4rem;
+    }
+    
     .content {
         width: 100%;
         min-height: 100vh; /* Ensures it occupies the full viewport height */
@@ -280,7 +397,37 @@ input[type="password"]{
         gap: 1rem;
         align-items: center;
     }
-
+    
+    .nav {
+        transform: translateX(-20rem);
+    }
+    
+    .nmid div a, .nbtm div a {
+        font-size: 14px;
+    }
+    
+    .nav:hover + .content {
+        margin-left: 0;
+    }
+    
+    .nav-active {
+        transform: translateX(0);
+        transition: 0.5s;
+        width: 270px;
+    }
+    
+    .blur {
+        filter: blur(10px);
+    }
+    
+    .nav .close {
+        position: absolute;
+        font-size: 22px;
+        display: flex;
+        right: -30px;
+        top: 0;
+    }
+    
     .cinfo {
         width: 100%;
         height: auto; /* Allows height to adjust based on content */
@@ -310,7 +457,7 @@ input[type="password"]{
     .cbtmright {
         width: 100%;
         height: auto;
-        padding-top: 1rem;
+        padding-top: 0rem;
         gap: 1rem;
     }
     .cbtmright>img {
@@ -391,7 +538,7 @@ input[type="password"]{
 
     }
     
-    .submit button {
+    input[type="submit"] {
         width: 35%;
         height: 10vw;
         font-size: 3.8vw;
@@ -402,6 +549,13 @@ input[type="password"]{
 /* Tablet */
 @media (max-width: 768px) and (min-width: 500px) {
 
+    #toggle{
+        display: block;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 1.8rem;
+    }
     .content {
         width: 100%;
         min-height: 100vh; /* Ensures it occupies the full viewport height */
@@ -412,6 +566,34 @@ input[type="password"]{
         flex-direction: column;
         gap: 1rem;
         align-items: center;
+    }
+    .nav{
+        transform: translateX(-20rem);
+    }
+    
+    .nmid div a, .nbtm div a {
+        font-size: 20px;
+    }
+    .nav:hover + .content{
+        margin-left: 0rem;
+    }
+    .preview{
+        display: none;
+    }
+    .nav-active {
+        transform: translateX(0);
+        transition: 0.5s;
+        width: 300px;
+    }
+    .blur{
+        filter: blur(10px);
+    }
+    .nav .close{
+        position: absolute;
+        font-size: 24px;
+        display: flex;
+        right: -30px;
+        top: 0;
     }
     .cinfo{
         text-align: center;
@@ -506,11 +688,11 @@ input[type="password"]{
 
     }
     
-    .submit button {
+    input[type="submit"] {
         width: 35%;
         height: 7vw;
         font-size: 3vw;
-    }
+    } */
     
    
 
@@ -519,6 +701,13 @@ input[type="password"]{
 /* Tablet To Laptop */
 @media (min-width: 768px) and (max-width: 992px) {
 
+    #toggle{
+        display: block;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 1.5rem;
+    }
     .content {
         width: 100%;
         min-height : 100vh;
@@ -526,6 +715,34 @@ input[type="password"]{
         background-color: var(--background-color);
         padding: 1rem 1rem;
         align-items: center;
+    }
+    .nav{
+        transform: translateX(-20rem);
+    }
+    
+    .nmid div a, .nbtm div a {
+        font-size: 22px;
+    }
+    .nav:hover + .content{
+        margin-left: 0rem;
+    }
+    .preview{
+        display: none;
+    }
+    .nav-active {
+        transform: translateX(0);
+        transition: 0.5s;
+        width: 300px;
+    }
+    .blur{
+        filter: blur(10px);
+    }
+    .nav .close{
+        position: absolute;
+        font-size: 28px;
+        display: flex;
+        right: -30px;
+        top: 0;
     }
     .cinfo{
         text-align: center;

@@ -114,15 +114,29 @@ form{
     height: 100%;
 }
 form input[type="text"] , form input[type="password"]{
-    width: 90% ; 
-    height: 50.85px;
-    padding-left: 1rem;
-    border-radius: 10px;
+
+    width: 85%;
+    height: 100%;
     border: none;
-    background-color: #B4B4B4;
-    font-size: 17px;
-    color: rgb(7, 7, 7);
+    font-size: 16px;
+    padding: 12px 15px;
+    outline: none;
+   
 }
+.password , .username{
+   
+    width: 85%;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 2px solid #ced4da;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
 
 .submit button{
     width: 90% ; 
@@ -159,12 +173,23 @@ span{
     height: 3vw;
 
 }
-
-.msg{
-    width: 100%;
-    font-size: 1vw;
-    color: red;
+.fail-message {
+    background-color: #dc3545; /* Bootstrap fail msg */
+    color: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    font-weight: 500;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
 }
+
+
 
 .toggle button{
     width: 121px;

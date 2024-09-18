@@ -18,7 +18,9 @@ router.get('/', (req, res)=> {
 
 
 router.get('/signup', (req, res)=> {
-    res.render("signup");
+
+    let error = req.flash("error");
+    res.render("signup" ,{error});
 });
 
 router.get('/forgot', (req, res)=> {
@@ -117,6 +119,81 @@ router.post("/forgot/verify", async (req, res) => {
     
    
 });
+
+router.get("/forgot/resend/:email", async (req, res) => {
+
+    const user = await userModel.findOne({ email: req.params.email });
+
+    if (!user) {
+        return res.status(401).json({ message: 'User not found' });
+    }
+
+    let otp = generateOTP();
+
+
+    let msg = `<html>
+            <head>
+                <title>OTP For Password Reset</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        line-height: 1.6;
+                    }
+                    .container {
+                        margin: 0 auto;
+                        padding: 20px;
+                        max-width: 600px;
+                        border: 1px solid #ddd;
+                        border-radius: 10px;
+                    }
+                    .header {
+                        background-color: #FF9F00;
+                        padding: 10px;
+                        text-align: center;
+                        border-bottom: 1px solid #ddd;
+                    }
+                    p{
+                        font-size: 16px;
+                    }
+                    .content {
+                        padding: 20px;
+                    }
+                    .footer {
+                        margin-top: 20px;
+                        text-align: center;
+                        color: #888;
+                        font-size: 12px;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <div class="header">
+                        <h1>OTP For Password Reset</h1>
+                    </div>
+                    <div class="content">
+                        <p>Dear ${user.username},</p>
+                        <p>Your OTP is:</p>
+                        <div style="font-size: 24px; font-weight: bold; margin: 10px 0; color: #4CAF50;">${otp}</div>
+                        <p style="font-size: 14px; color: #666;">This OTP is valid for 5 minutes.</p>
+                        
+                    </div>
+                    <div class="footer">
+                        <p>&copy; ${new Date().getFullYear()} Your Company Name. All rights reserved.</p>
+                    </div>
+                </div>
+            </body>
+        </html>` ; 
+
+    res.cookie('otp', otp, { maxAge: 60000 * 5, httpOnly: true })
+    sendOTP(req.params.email,"OTP Verification", msg);
+
+    
+    res.render('forgot' , {otpsent : true , email : req.params.email});
+
+
+
+})
 
 router.post("/verify/otp/:email", async (req, res) => {
     

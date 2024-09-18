@@ -91,11 +91,13 @@
             </form>
 
             <% if (otpsent) { %>
-                <form action="/verify/otp/<%= email %>" method="post" id="otp">
+                <form action="/verify/otp/<%= email%>" method="post" id="otp">
                     <h1>Enter OTP</h1>
                     <p class="heading" style="width: 350px;">OTP is sent to your Email ID</p>
                     <p class="heading_label1">OTP</p>
                     <input type="number" placeholder="Enter OTP" name="otp" required>
+                    <br>
+                    <a href="/forgot/resend/<%= email %>">Resend OTP</a>
                     <input type="submit" value="Submit" name="save" class="btn1">
                 </form>
             <% } %>

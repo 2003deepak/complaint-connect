@@ -3,19 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
 
     <link rel="stylesheet" href="/stylesheets/login.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
     <div class="main">
-        <!-- Nav bar Starts for here -->
+        <!-- Nav bar Starts here -->
         <%- include('./partials/navTop') %>
           
         <div class="content">
+            <% if(error.length > 0){ %>
+                <div id="failMessage" class="fail-message">
+                    <%= error %>
+                </div>
+            <% } %>
+
             <div class="heading">
                 <p>You are <span>just</span> a Step <span>away.</span></p>
             </div>
@@ -30,18 +35,14 @@
                             <button id="worker">Worker</button>
                         </div>
 
-                        <% if(error.length>0){ %>
-                            <div class="msg">
-                                <p><%= error %></p>
-                            </div>
-                        <% } %>
-
                         <div class="username">
                             <input type="text" placeholder="Enter The Username" class="text" name="username" id="username" value="<%= credentials.username %>" autocomplete="off" required>
                         </div>
 
                         <div class="password">
                             <input type="password" placeholder="Enter Your Password" class="text" name="password" id="password" value="<%= credentials.password %>" autocomplete="off" required>
+                            <i class="fa fa-eye" id="eyeIcon"></i>
+                            
                         </div>
 
                         <div class="forgot">
@@ -66,13 +67,27 @@
                 </div>
             </div>
         </div>
-
-        
     </div>
 
     <script src="javascripts/loginBtnToggle.js"></script>
 
     <script>
+        // Password visibility toggle
+        const eyeIcon = document.getElementById('eyeIcon');
+        const passwordInput = document.getElementById('password');
+
+        eyeIcon.addEventListener('click', function () {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text'; // Show password
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password'; // Hide password
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        });
+
         async function validate(event) {
             event.preventDefault(); // Prevent default form submission
 
@@ -88,6 +103,13 @@
             // Proceed with the form submission
             event.target.submit();
         }
+
+        setTimeout(function() {
+            var failMessage = document.getElementById('failMessage');
+            if (failMessage) {
+                failMessage.style.display = 'none';
+            }
+        }, 2000);
     </script>
 </body>
 </html>
